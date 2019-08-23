@@ -1,0 +1,18 @@
+# Summary
+
+* [Introduction](README.md)
+* [Copyright](copyright.md)
+* [Preface](preface.md)
+* [Reader's Guide](readers_guide.md)
+* [Achnowledgements](acknowledgements.md)
+* [PART ONE: INTRODCUTION](part1/introduction.md)
+  * [1 What Is Software Architecture](part1/1.md)
+  * [2 Why Is Software Architecture Important?](part1/2.md)
+  * [3 The Many Context of Software Architecture](part1/3.md)
+* [PART TWO: QUALITY ATTRIBUTES](part2/quality_attributes.md)
+* [PART THREE: ARCHITECTURE IN THE LIFE CYCLE](part3/architecture_in_the_life_cycle.md)
+* [PART FOUR: ARCHITECTURE AND BUSINESS](part4/architecture_and_business.md)
+* [PART FIVE: THE BRAVE NEW WORLD](part5/the_brave_new_world.md)
+* [Reference](reference.md)
+* [About the Authors](about_the_authors.md)
+* [Index](index.md)
