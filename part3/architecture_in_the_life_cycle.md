@@ -1,7 +1,4 @@
-PART THREE  
-**ARCHITECTURE IN THE LIFE CYCLE**  
-第三部分  
-**生命周期中的架构**
+第三部分 **生命周期中的架构**
 ===
 
 Part I of this book introduced architecture and the various contextual lenses through which it could be viewed. To recap from Chapter 3, those contexts include the following:
@@ -25,8 +22,7 @@ Here in Part III we turn our attention to how to constructively apply that knowl
 
 在第三部分中，我们将注意力转移到如何在特定软件开发项目的上下文中建设性地应用该知识。 这是软件体系结构与软件工程相遇的地方：体系结构问题如何影响需求的收集，设计决策的执行，设计的验证和捕获以及设计到实现的转换？ 在第三部分中，我们将找出答案。
 
-# A Word about Methods
-# 关于方法的话
+# A Word about Methods 关于方法的话
 Because this is a book about software architecture in practice, we’ve tried to spell out specific methods in enough detail so that you can emulate them. You’ll see PALM, a method for eliciting business goals that an architecture should accommodate. You’ll see Views and Beyond, an approach for documenting architecture in a set of views that serve stakeholders and their concerns. You’ll see ATAM, a method for evaluating an architecture against stakeholders’ ideas of what quality attributes it should provide. You’ll see CBAM, a method for assessing which evolutionary path of an architecture will best serve stakeholders’ needs.
 
 由于这是一本有关实践中的软件体系结构的书，因此我们尝试了足够详细地阐明特定方法，以便您可以模拟它们。 您将看到PALM，这是一种用于实现架构应适应的业务目标的方法。 您将看到Views and Beyond，这是一种以一系列视图记录文档架构的方法，可为利益相关者及其关注的问题提供服务。 您将看到ATAM，这是一种根据利益相关者对架构应提供的质量属性的想法评估架构的方法。 您会看到CBAM，这是一种评估架构的演化路径最能满足利益相关者需求的方法。
@@ -57,6 +53,11 @@ Why has the big-meeting format (co-located, synchronous) tended to prevail? Ther
 * It benefits from the helpful group mentality that emerges when people are in the same room working toward a common goal. The group mentality fosters buy-in to the architecture and buy-in to the reasons it exists. Putting stakeholders in the same room lets them open communication paths with the architect and with each other, paths that will often remain open long
 
 ### table
+Model | Advantages | Disadvantages
+--|--|--
+All stakeholders in the same room for the duration of the exercise (co-located and synchronous). | All stakeholders participate equally. Group mentality produces buy-in for architecture and the results of the exercise. Enduring communication paths are opened among stakeholders. This option takes the shortest calendar time. | Scheduling can be problematic. Some stakeholders might not be forthcoming in a crowd. Stakeholders might incur substantial travel costs to attend.
+Some stakeholders participate in exercise remotely (distributed and synchronous). | Saves travel costs for remote participants; this option might permit participation by stakeholders who otherwise would not be able to contribute. | Technology is a limiting factor; remote participants almost always are secondclass citizens in terms of their participation and afterexercise “connection” to other participants.
+Facilitators interviewing stakeholders individually or in small groups (distributed and asynchronous). | Allows for in-depth interaction between facilitators and stakeholders. Eliminates group factors that might inhibit a stakeholder from speaking in public. | If stakeholders are widely distributed, increased travel costs incurred by facilitator(s). Reduced group buy-in. Reduced group mentality. Reduced after-exercise communication among stakeholders. Exercise stretched out over a longer period of calendar time.
 
 after the meeting has run its course. We always enjoy seeing business cards exchanged with handshakes when stakeholders meet each other for the first time. Putting the architect in a room full of stakeholders for a couple of days is a very healthy thing for any project.
 
