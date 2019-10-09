@@ -1,7 +1,4 @@
-PART TWO  
-**QUALITY ATTRIBUTES**  
-第二部分  
-**质量属性**
+第二部分 **质量属性**
 ===
 
 In Part II, we provide the technical foundations for you to design or analyze an architecture to achieve particular quality attributes. We do not discuss design or analysis processes here; we cover those topics in Part III. It is impossible, however, to understand how to improve the performance of a design, for example, without understanding something about performance.

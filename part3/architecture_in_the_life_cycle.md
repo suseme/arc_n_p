@@ -25,17 +25,18 @@ Here in Part III we turn our attention to how to constructively apply that knowl
 # A Word about Methods 关于方法的话
 Because this is a book about software architecture in practice, we’ve tried to spell out specific methods in enough detail so that you can emulate them. You’ll see PALM, a method for eliciting business goals that an architecture should accommodate. You’ll see Views and Beyond, an approach for documenting architecture in a set of views that serve stakeholders and their concerns. You’ll see ATAM, a method for evaluating an architecture against stakeholders’ ideas of what quality attributes it should provide. You’ll see CBAM, a method for assessing which evolutionary path of an architecture will best serve stakeholders’ needs.
 
-由于这是一本有关实践中的软件体系结构的书，因此我们尝试了足够详细地阐明特定方法，以便您可以模拟它们。 您将看到PALM，这是一种用于实现架构应适应的业务目标的方法。 您将看到Views and Beyond，这是一种以一系列视图记录文档架构的方法，可为利益相关者及其关注的问题提供服务。 您将看到ATAM，这是一种根据利益相关者对架构应提供的质量属性的想法评估架构的方法。 您会看到CBAM，这是一种评估架构的演化路径最能满足利益相关者需求的方法。
+由于这是一本有关实践中的软件架构的书，因此我们尝试了足够详细地阐明特定方法，以便您可以模拟它们。 您将看到PALM，这是一种用于实现架构应适应的业务目标的方法。 您将看到Views and Beyond，这是一种以一系列视图记录文档架构的方法，可为利益相关者及其关注的问题提供服务。 您将看到ATAM，这是一种根据利益相关者对架构应提供的质量属性的想法评估架构的方法。 您会看到CBAM，这是一种评估架构的演化路径最能满足利益相关者需求的方法。
 
 All of these methods rely in some way or another on tapping stakeholders’ knowledge about what an architecture under development should provide. As presented in their respective chapters, each of these methods includes a similar process of identifying the relevant stakeholders, putting them in a room together, presenting a briefing about the method that the stakeholders have been assembled to participate in, and then launching into the method.
 
-所有这些方法都以某种方式依赖于挖掘利益相关者对正在开发的体系结构应提供的内容的知识。 如在其各自的章节中所述，每种方法都包括一个类似的过程，该过程用于识别相关的利益相关者，将他们放到一个房间中，简要介绍有关利益相关者已经参与的方法，然后启动该方法。 。
+所有这些方法都以某种方式依赖于挖掘利益相关者对正在开发的架构应提供的内容的知识。 如在其各自的章节中所述，每种方法都包括一个类似的过程，该过程用于识别相关的利益相关者，将他们放到一个房间中，简要介绍有关利益相关者已经参与的方法，然后启动该方法。
 
 So why is it necessary to put all of the stakeholders in the same room? The short answer is that it isn’t. There are (at least) three major engagement models for conducting an architecture-focused method. Why three? Because we have identified two important factors, each of which has two values, that describe four potential engagement models for gathering information from stakeholders. These two factors are
 
 那么，为什么有必要将所有利益相关者放在同一个房间里？ 简短的答案是，不是。 至少有三个主要的参与模型可用于执行以体系结构为中心的方法。 为什么是三个？ 因为我们已经确定了两个重要因素，每个因素都有两个值，它们描述了四种潜在的参与模型，用于从利益相关者那里收集信息。 这两个因素是
+
 1. Location (co-located or distributed)  
-1.位置（同位或分布式）
+1.位置（同位或分布式）  
 2. Synchronicity (synchronous or asynchronous)  
 2.同步性（同步或异步）
 
@@ -46,22 +47,19 @@ One option (co-located and asynchronous) makes no sense, and so we are left with
 Why has the big-meeting format (co-located, synchronous) tended to prevail? There are several reasons:
 
 为什么大会议格式（并置，同步）倾向于盛行？ 有以下几个原因：
+
 * It compresses the time required for the method. Time on site for remote participants is minimized, although as we will see, travel time is not considered in this argument. All of the stakeholders are available with minimal external distractions.
 * 压缩该方法所需的时间。 远程参与者在现场的时间已减至最少，尽管正如我们将看到的，在此论点中未考虑旅行时间。 所有利益相关者都可以在外部干扰最小的情况下使用。
 * It emphasizes the importance of the method. Any meeting important enough to bring multiple people together for an extended time must be judged by management to be important.
 * 强调方法的重要性。 管理层必须认为任何重要的会议都足以使多人长时间聚会。
-* It benefits from the helpful group mentality that emerges when people are in the same room working toward a common goal. The group mentality fosters buy-in to the architecture and buy-in to the reasons it exists. Putting stakeholders in the same room lets them open communication paths with the architect and with each other, paths that will often remain open long
+* It benefits from the helpful group mentality that emerges when people are in the same room working toward a common goal. The group mentality fosters buy-in to the architecture and buy-in to the reasons it exists. Putting stakeholders in the same room lets them open communication paths with the architect and with each other, paths that will often remain open long after the meeting has run its course. We always enjoy seeing business cards exchanged with handshakes when stakeholders meet each other for the first time. Putting the architect in a room full of stakeholders for a couple of days is a very healthy thing for any project.
+* 当人们在同一个房间里朝着共同目标努力时，就会产生有益的团体心态。 团队的心态促进了对架构的认同和对架构存在的理由的认同。 将利益相关者放在同一个房间中，可以使他们与架构师以及彼此之间打开沟通路径，而这些路径通常会在会议进行之后很长时间才保持开放。 当利益相关者第一次见面时，我们总是很高兴看到名片被握手交换。 对于任何项目来说，将架构师放在一个充满利益相关者的房间中几天是一件很健康的事情。
 
-### table
 Model | Advantages | Disadvantages
 --|--|--
 All stakeholders in the same room for the duration of the exercise (co-located and synchronous). | All stakeholders participate equally. Group mentality produces buy-in for architecture and the results of the exercise. Enduring communication paths are opened among stakeholders. This option takes the shortest calendar time. | Scheduling can be problematic. Some stakeholders might not be forthcoming in a crowd. Stakeholders might incur substantial travel costs to attend.
 Some stakeholders participate in exercise remotely (distributed and synchronous). | Saves travel costs for remote participants; this option might permit participation by stakeholders who otherwise would not be able to contribute. | Technology is a limiting factor; remote participants almost always are secondclass citizens in terms of their participation and afterexercise “connection” to other participants.
 Facilitators interviewing stakeholders individually or in small groups (distributed and asynchronous). | Allows for in-depth interaction between facilitators and stakeholders. Eliminates group factors that might inhibit a stakeholder from speaking in public. | If stakeholders are widely distributed, increased travel costs incurred by facilitator(s). Reduced group buy-in. Reduced group mentality. Reduced after-exercise communication among stakeholders. Exercise stretched out over a longer period of calendar time.
-
-after the meeting has run its course. We always enjoy seeing business cards exchanged with handshakes when stakeholders meet each other for the first time. Putting the architect in a room full of stakeholders for a couple of days is a very healthy thing for any project.
-
-* 当人们在同一个房间里朝着共同目标努力时，就会产生有益的团体心态。 团队的心态促进了对架构的认同和对架构存在的理由的认同。 将利益相关者放在同一个房间中，可以使他们与架构师以及彼此之间打开沟通路径，而这些路径通常会在会议进行之后很长时间才保持开放。 当利益相关者第一次见面时，我们总是很高兴看到名片被握手交换。 对于任何项目来说，将建筑师放在一个充满利益相关者的房间中几天是一件很健康的事情。
 
 But there are, as ever, tradeoffs. The big-meeting format can be costly and difficult to fit into an already crowded project schedule. Often the hardest aspect of executing any of our methods is finding two contiguous days when all the important stakeholders are available. Also, the travel costs associated with a big meeting can be substantial in a distributed organization. And some stakeholders might not be as forthcoming as we would like if they are in a room surrounded by strong-willed peers or higher-ups (although our methods use facilitation techniques to try to correct for this).
 
@@ -71,13 +69,13 @@ So which model is best? You already know the answer: It depends. You can see the
 
 那么哪种模式最好呢？ 您已经知道答案：这取决于。 您可以看到不同方法之间的权衡。 选择最适合您的组织及其特殊性的人。
 
-# Conclusion
-# 结论
+# Conclusion 结论
 As you read Part III and learn about architecture methods, remember that the form of the method we present is the one in which the most practical experience resides. But:
 
 当您阅读第三部分并了解体系结构方法时，请记住，我们介绍的方法的形式是最实际的经验所在。 但：
+
 1. You can always adjust the engagement model to be something other than everybody-in-the-same-room if that will work better for you.  
-1.您可以始终将参与度模型调整为与其他人不在同一房间，如果这样对您更有效。
+1.您可以始终将参与度模型调整为与其他人不在同一房间，如果这样对您更有效。  
 2. Whereas the steps of a method are nominally carried out in sequential order according to a set agenda, sometimes there must be dynamic modifications to the schedule to accommodate personnel availability or architectural information. Every situation is unique, and there may be times when you need to return briefly to an earlier step, jump forward to a later step, or iterate among steps, as the need dictates.  
 2.尽管方法的步骤通常是按照设定的议程按顺序执行的，但有时必须对时间表进行动态修改以适应人员的可用性或体系结构信息。 每种情况都是独特的，有时您可能需要根据需要指示短暂返回到较早的步骤，跳到较晚的步骤或在各个步骤之间进行迭代。
 
