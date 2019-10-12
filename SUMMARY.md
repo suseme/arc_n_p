@@ -34,7 +34,7 @@
   * [17 Designing an Architecture 设计架构](part3/17.design_arch.md)
   * [18 Documenting Software Architecture 文档化软件架构](part3/18.doc_sw_arch.md)
   * [19 Architecture, Implementation, and Testing 架构、实现和测试](part3/19.arch_implementation_testing.md)
-  * [20 Architecture Reconstruction, and Conformance 架构重构和一致性](part3/20.arch_reconstruction_testing.md)
+  * [20 Architecture Reconstruction, and Conformance 架构重构和一致性](part3/20.arch_reconstruction_conformance.md)
   * [21 Architecture Evaluation 架构评估](part3/21.arch_evaluation.md)
   * [22 Management and Governance 管理和治理](part3/22.mgr_and_gov.md)
 * [PART FOUR: ARCHITECTURE AND BUSINESS 第四部分：架构和业务](part4/00.arch_and_business.md)
