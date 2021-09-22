@@ -1,0 +1,3767 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <title>5.2 Tactics for Availability · Software Architecture in Practice (Third Edition)</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="author" content="Len Bass, Paul Clements, Rick Kazman">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="05.3.a_design_checklist_4_availability.html" />
+    
+    
+    <link rel="prev" href="05.1.availability_general_scenario.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://suseme.github.io/sw_arch_in_p" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../01.copyright.html">
+            
+                <a href="../01.copyright.html">
+            
+                    
+                    Copyright 版权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../02.preface.html">
+            
+                <a href="../02.preface.html">
+            
+                    
+                    Preface 序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../03.readers_guide.html">
+            
+                <a href="../03.readers_guide.html">
+            
+                    
+                    Reader's Guide 读者指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../04.acknowledgements.html">
+            
+                <a href="../04.acknowledgements.html">
+            
+                    
+                    Achnowledgements 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../part1/00.intro.html">
+            
+                <a href="../part1/00.intro.html">
+            
+                    
+                    PART ONE: INTRODCUTION 第一部分：简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../part1/01.0.what_is_sw_arch.html">
+            
+                <a href="../part1/01.0.what_is_sw_arch.html">
+            
+                    
+                    1 What Is Software Architecture什么是软件构架
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../part1/01.1.what_sw_arch_is_and_what_it_isnt.html">
+            
+                <a href="../part1/01.1.what_sw_arch_is_and_what_it_isnt.html">
+            
+                    
+                    1.1 What Software Architecture Is and What It Isn't
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.2" data-path="../part1/01.2.arch_structures_and_views.html">
+            
+                <a href="../part1/01.2.arch_structures_and_views.html">
+            
+                    
+                    1.2 Architectural Structures and Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.3" data-path="../part1/01.3.arch_patterns.html">
+            
+                <a href="../part1/01.3.arch_patterns.html">
+            
+                    
+                    1.3 Architectural Patterns
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.4" data-path="../part1/01.4.what_makes_a_good_arch.html">
+            
+                <a href="../part1/01.4.what_makes_a_good_arch.html">
+            
+                    
+                    1.4 What Makes a "Good" Architecture?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.5" data-path="../part1/01.5.summay.html">
+            
+                <a href="../part1/01.5.summay.html">
+            
+                    
+                    1.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.6" data-path="../part1/01.6.for_further_reading.html">
+            
+                <a href="../part1/01.6.for_further_reading.html">
+            
+                    
+                    1.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.7" data-path="../part1/01.7.disc_qustn.html">
+            
+                <a href="../part1/01.7.disc_qustn.html">
+            
+                    
+                    1.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../part1/02.0.why_is_sw_arch_important.html">
+            
+                <a href="../part1/02.0.why_is_sw_arch_important.html">
+            
+                    
+                    2 Why Is Software Architecture Important?为什么说软件构架非常重要？
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../part1/02.1.inhibiting_or_enable_a_sys_quality_attr.html">
+            
+                <a href="../part1/02.1.inhibiting_or_enable_a_sys_quality_attr.html">
+            
+                    
+                    2.1 Inhibiting or Enabling a System’s Quality Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.2" data-path="../part1/02.2.reasoning_about_and_mgr_change.html">
+            
+                <a href="../part1/02.2.reasoning_about_and_mgr_change.html">
+            
+                    
+                    2.2 Reasoning About and Managing Change
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.3" data-path="../part1/02.3.predicting_sys_qualities.html">
+            
+                <a href="../part1/02.3.predicting_sys_qualities.html">
+            
+                    
+                    2.3 Predicting System Qualities
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.4" data-path="../part1/02.4.enhancing_communication_among_stackholders.html">
+            
+                <a href="../part1/02.4.enhancing_communication_among_stackholders.html">
+            
+                    
+                    2.4 Enhancing Communication among Stakeholders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.5" data-path="../part1/02.5.carrying_early_design_decisions.html">
+            
+                <a href="../part1/02.5.carrying_early_design_decisions.html">
+            
+                    
+                    2.5 Carrying Early Design Decisions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.6" data-path="../part1/02.6.defining_constrains_on_an_implementation.html">
+            
+                <a href="../part1/02.6.defining_constrains_on_an_implementation.html">
+            
+                    
+                    2.6 Defining Constraints on an Implementation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.7" data-path="../part1/02.7.influencing_the_organizational_structure.html">
+            
+                <a href="../part1/02.7.influencing_the_organizational_structure.html">
+            
+                    
+                    2.7 Influencing the Organizational Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.8" data-path="../part1/02.8.enabling_evo_prot.html">
+            
+                <a href="../part1/02.8.enabling_evo_prot.html">
+            
+                    
+                    2.8 Enabling Evolutionary Prototyping
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.9" data-path="../part1/02.9.impr_cost_schd_est.html">
+            
+                <a href="../part1/02.9.impr_cost_schd_est.html">
+            
+                    
+                    2.9 Improving Cost and Schedule Estimates
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.10" data-path="../part1/02.10.supplying_transf_reuse_model.html">
+            
+                <a href="../part1/02.10.supplying_transf_reuse_model.html">
+            
+                    
+                    2.10 Supplying a Transferable, Reusable Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.11" data-path="../part1/02.11.allowing_incorp_of_indpdt_dev_comp.html">
+            
+                <a href="../part1/02.11.allowing_incorp_of_indpdt_dev_comp.html">
+            
+                    
+                    2.11 Allowing Incorporation of Independently Developed Components
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.12" data-path="../part1/02.12.restrct_the_voc_design_alt.html">
+            
+                <a href="../part1/02.12.restrct_the_voc_design_alt.html">
+            
+                    
+                    2.12 Restricting the Vocabulary of Design Alternatives
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.13" data-path="../part1/02.13.provd_basis_4_training.html">
+            
+                <a href="../part1/02.13.provd_basis_4_training.html">
+            
+                    
+                    2.13 Providing a Basis for Training
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.14" data-path="../part1/02.14.summary.html">
+            
+                <a href="../part1/02.14.summary.html">
+            
+                    
+                    2.14 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.15" data-path="../part1/02.15.for_further_reading.html">
+            
+                <a href="../part1/02.15.for_further_reading.html">
+            
+                    
+                    2.15 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.16" data-path="../part1/02.16.disc_qustn.html">
+            
+                <a href="../part1/02.16.disc_qustn.html">
+            
+                    
+                    2.16 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../part1/03.0.the_many_context_of_sw_arch.html">
+            
+                <a href="../part1/03.0.the_many_context_of_sw_arch.html">
+            
+                    
+                    3 The Many Context of Software Architecture一些软件架构的上下文
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.3.1" data-path="../part1/03.1.arch_in_tech_cntx.html">
+            
+                <a href="../part1/03.1.arch_in_tech_cntx.html">
+            
+                    
+                    3.1 Architecture in a Technical Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.2" data-path="../part1/03.2.arch_in_prj_lc_cntx.html">
+            
+                <a href="../part1/03.2.arch_in_prj_lc_cntx.html">
+            
+                    
+                    3.2 Architecture in a Project Life-Cycle Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.3" data-path="../part1/03.3.arch_in_busi_cntx.html">
+            
+                <a href="../part1/03.3.arch_in_busi_cntx.html">
+            
+                    
+                    3.3 Architecture in a Business Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.4" data-path="../part1/03.4.arch_in_prof_cntx.html">
+            
+                <a href="../part1/03.4.arch_in_prof_cntx.html">
+            
+                    
+                    3.4 Architecture in a Professional Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.5" data-path="../part1/03.5.stackholders.html">
+            
+                <a href="../part1/03.5.stackholders.html">
+            
+                    
+                    3.5 Stakeholders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.6" data-path="../part1/03.6.how_is_arch_influenced.html">
+            
+                <a href="../part1/03.6.how_is_arch_influenced.html">
+            
+                    
+                    3.6 How Is Architecture Influenced?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.7" data-path="../part1/03.7.what_do_arch_influence.html">
+            
+                <a href="../part1/03.7.what_do_arch_influence.html">
+            
+                    
+                    3.7 What Do Architectures Influence?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.8" data-path="../part1/03.8.summary.html">
+            
+                <a href="../part1/03.8.summary.html">
+            
+                    
+                    3.8 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.9" data-path="../part1/03.9.for_further_reading.html">
+            
+                <a href="../part1/03.9.for_further_reading.html">
+            
+                    
+                    3.9 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.10" data-path="../part1/03.10.disc_qustn.html">
+            
+                <a href="../part1/03.10.disc_qustn.html">
+            
+                    
+                    3.10 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="00.quality_attributes.html">
+            
+                <a href="00.quality_attributes.html">
+            
+                    
+                    PART TWO: QUALITY ATTRIBUTES 第二部分：质量属性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="04.0.understanding_quality_attr.html">
+            
+                <a href="04.0.understanding_quality_attr.html">
+            
+                    
+                    4 Understanding Quality Attributes 理解质量属性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="04.1.arch_and_req.html">
+            
+                <a href="04.1.arch_and_req.html">
+            
+                    
+                    4.1 Architecture and Requirements
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="04.2.func.html">
+            
+                <a href="04.2.func.html">
+            
+                    
+                    4.2 Functionality
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="04.3.quality_attr_considerations.html">
+            
+                <a href="04.3.quality_attr_considerations.html">
+            
+                    
+                    4.3 Quality Attribute Considerations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.4" data-path="04.4.specifying_quality_attr_req.html">
+            
+                <a href="04.4.specifying_quality_attr_req.html">
+            
+                    
+                    4.4 Specifying Quality Attribute Requirements
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.5" data-path="04.5.achieving_quality_attr_though_tactics.html">
+            
+                <a href="04.5.achieving_quality_attr_though_tactics.html">
+            
+                    
+                    4.5 Achieving Quality Attributes through Tactics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.6" data-path="04.6.guiding_quality_design_decisions.html">
+            
+                <a href="04.6.guiding_quality_design_decisions.html">
+            
+                    
+                    4.6 Guiding Quality Design Decisions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.7" data-path="04.7.summary.html">
+            
+                <a href="04.7.summary.html">
+            
+                    
+                    4.7 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.8" data-path="04.8.for_further_reading.html">
+            
+                <a href="04.8.for_further_reading.html">
+            
+                    
+                    4.8 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.9" data-path="04.9.discussion_questions.html">
+            
+                <a href="04.9.discussion_questions.html">
+            
+                    
+                    4.9 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="05.0.availability.html">
+            
+                <a href="05.0.availability.html">
+            
+                    
+                    5 Avaibility 可用性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="05.1.availability_general_scenario.html">
+            
+                <a href="05.1.availability_general_scenario.html">
+            
+                    
+                    5.1 Availability General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.2.2" data-path="05.2.tactics_4_availability.html">
+            
+                <a href="05.2.tactics_4_availability.html">
+            
+                    
+                    5.2 Tactics for Availability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="05.3.a_design_checklist_4_availability.html">
+            
+                <a href="05.3.a_design_checklist_4_availability.html">
+            
+                    
+                    5.3 A Design Checklist for Availability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.4" data-path="05.4.summary.html">
+            
+                <a href="05.4.summary.html">
+            
+                    
+                    5.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.5" data-path="05.5.4_further_reading.html">
+            
+                <a href="05.5.4_further_reading.html">
+            
+                    
+                    5.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.6" data-path="05.6.discussion_questions.html">
+            
+                <a href="05.6.discussion_questions.html">
+            
+                    
+                    5.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="06.0.interoperability.html">
+            
+                <a href="06.0.interoperability.html">
+            
+                    
+                    6 Interoperability 可操作性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.3.1" data-path="06.1.inter_op_gen_scenario.html">
+            
+                <a href="06.1.inter_op_gen_scenario.html">
+            
+                    
+                    6.1 Interoperability General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.2" data-path="06.2.tactics.html">
+            
+                <a href="06.2.tactics.html">
+            
+                    
+                    6.2 Tactics for Interoperability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.3" data-path="06.3.checklist.html">
+            
+                <a href="06.3.checklist.html">
+            
+                    
+                    6.3 A Design Checklist for Interoperability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.4" data-path="06.4.summary.html">
+            
+                <a href="06.4.summary.html">
+            
+                    
+                    6.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.5" data-path="06.5.for_further_reading.html">
+            
+                <a href="06.5.for_further_reading.html">
+            
+                    
+                    6.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.6" data-path="06.6.disc_qustn.html">
+            
+                <a href="06.6.disc_qustn.html">
+            
+                    
+                    6.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="07.0.modifiability.html">
+            
+                <a href="07.0.modifiability.html">
+            
+                    
+                    7 Modifiability 可修改性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="07.1.scennario.html">
+            
+                <a href="07.1.scennario.html">
+            
+                    
+                    7.1 Modifiability General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="07.2.tactics.html">
+            
+                <a href="07.2.tactics.html">
+            
+                    
+                    7.2 Tactics for Modifiability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.3" data-path="07.3.checklist.html">
+            
+                <a href="07.3.checklist.html">
+            
+                    
+                    7.3 A Design Checklist for Modifiability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.4" data-path="07.4.summary.html">
+            
+                <a href="07.4.summary.html">
+            
+                    
+                    7.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.5" data-path="07.5.for_further_reading.html">
+            
+                <a href="07.5.for_further_reading.html">
+            
+                    
+                    7.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.6" data-path="07.6.disc_qustn.html">
+            
+                <a href="07.6.disc_qustn.html">
+            
+                    
+                    7.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="08.0.performance.html">
+            
+                <a href="08.0.performance.html">
+            
+                    
+                    8 Performance 性能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="08.1.scenario.md">
+            
+                <span>
+            
+                    
+                    8.1 Performance General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="08.2.tactics.md">
+            
+                <span>
+            
+                    
+                    8.2 Tactics for Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="08.3.checklist.md">
+            
+                <span>
+            
+                    
+                    8.3 A Design Checklist for Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="08.4.summary.md">
+            
+                <span>
+            
+                    
+                    8.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="08.5.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    8.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="08.6.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    8.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="09.0.security.html">
+            
+                <a href="09.0.security.html">
+            
+                    
+                    9 Security 安全
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="09.1.scenario.md">
+            
+                <span>
+            
+                    
+                    9.1 Security General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="09.2.tactics.md">
+            
+                <span>
+            
+                    
+                    9.2 Tactics for Security
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="09.3.checklist.md">
+            
+                <span>
+            
+                    
+                    9.3 A Design Checklist for Security
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.4" data-path="09.4.summary.md">
+            
+                <span>
+            
+                    
+                    9.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.5" data-path="09.5.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    9.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.6" data-path="09.6.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    9.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="10.0.testability.html">
+            
+                <a href="10.0.testability.html">
+            
+                    
+                    10 Testability 可测试性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="10.1.scenario.md">
+            
+                <span>
+            
+                    
+                    10.1 Testability General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="10.2.tactics.md">
+            
+                <span>
+            
+                    
+                    10.2 Tactics for Testability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="10.3.checklist.md">
+            
+                <span>
+            
+                    
+                    10.3 A Design Checklist for Testability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.4" data-path="10.4.summary.md">
+            
+                <span>
+            
+                    
+                    10.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.5" data-path="10.5.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    10.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.6" data-path="10.6.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    10.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="11.0.usability.html">
+            
+                <a href="11.0.usability.html">
+            
+                    
+                    11 Usability 可使用性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.8.1" data-path="11.1.scenario.md">
+            
+                <span>
+            
+                    
+                    11.1 Usability General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.2" data-path="11.2.tactics.md">
+            
+                <span>
+            
+                    
+                    11.2 Tactics for Usability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.3" data-path="11.3.checklist.md">
+            
+                <span>
+            
+                    
+                    11.3 A Design Checklist for Usability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.4" data-path="11.4.summary.md">
+            
+                <span>
+            
+                    
+                    11.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.5" data-path="11.5.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    11.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.6" data-path="11.6.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    11.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="12.0.other_qualityu_attr.html">
+            
+                <a href="12.0.other_qualityu_attr.html">
+            
+                    
+                    12 Other Quality Attributes 其他质量属性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.9.1" data-path=".">
+            
+                <span>
+            
+                    
+                    12.1 Other Important Quality Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.2" data-path=".">
+            
+                <span>
+            
+                    
+                    12.2 Other Categories of Quality Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.3" data-path=".">
+            
+                <span>
+            
+                    
+                    12.3 Software Quality Attributes and System Quality Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.4" data-path=".">
+            
+                <span>
+            
+                    
+                    12.4 Using Standard Lists of Quality Attributes—or Not
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.5" data-path=".">
+            
+                <span>
+            
+                    
+                    12.5 Dealing with “X-ability”: Bringing a New Quality Attribute into the Fold
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.6" data-path="12.6.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    12.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.7" data-path="12.7.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    12.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="13.0.arch_tactics_patterns.html">
+            
+                <a href="13.0.arch_tactics_patterns.html">
+            
+                    
+                    13 Architectural Tactics and Patterns 架构技巧和模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.10.1" data-path=".">
+            
+                <span>
+            
+                    
+                    13.1 A rchitectural Patterns
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.2" data-path=".">
+            
+                <span>
+            
+                    
+                    13.2 Overview of the Patterns Catalog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.3" data-path=".">
+            
+                <span>
+            
+                    
+                    13.3 Relationships between Tactics and Patterns
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.4" data-path=".">
+            
+                <span>
+            
+                    
+                    13.4 Using Tactics Together
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.5" data-path="13.5.summary.md">
+            
+                <span>
+            
+                    
+                    13.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.6" data-path="13.6.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    13.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.7" data-path="13.7.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    13.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="14.0.quality_attr_modeling_analysis.html">
+            
+                <a href="14.0.quality_attr_modeling_analysis.html">
+            
+                    
+                    14 Quality Attribute Modeling and Analysis 质量属性模型和分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.11.1" data-path=".">
+            
+                <span>
+            
+                    
+                    14.1 Modeling Architectures to Enable Quality Attribute Analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.2" data-path=".">
+            
+                <span>
+            
+                    
+                    14.2 Quality Attribute Checklists
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.3" data-path=".">
+            
+                <span>
+            
+                    
+                    14.3 Thought Experiments and Back-of-the-Envelope Analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.4" data-path=".">
+            
+                <span>
+            
+                    
+                    14.4 Experiments, Simulations, and Prototypes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.5" data-path=".">
+            
+                <span>
+            
+                    
+                    14.5 A nalysis at Different Stages of the Life Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.6" data-path="14.6.summary.md">
+            
+                <span>
+            
+                    
+                    14.6 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.7" data-path="14.7.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    14.7 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.8" data-path="14.8.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    14.8 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../part3/00.arch_in_the_life_cycle.html">
+            
+                <a href="../part3/00.arch_in_the_life_cycle.html">
+            
+                    
+                    PART THREE: ARCHITECTURE IN THE LIFE CYCLE 第三部分：生命期中的构架
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../part3/15.0.arch_in_agile_prj.html">
+            
+                <a href="../part3/15.0.arch_in_agile_prj.html">
+            
+                    
+                    15 Architecutre in Agile Projects 敏捷项目中的架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" data-path="../part3">
+            
+                <span>
+            
+                    
+                    15.1 How Much Architecture?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.2" data-path="../part3">
+            
+                <span>
+            
+                    
+                    15.2 Agility and Architecture Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.3" data-path="../part3">
+            
+                <span>
+            
+                    
+                    15.3 A Brief Example of Agile Architecting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.4" data-path="../part3">
+            
+                <span>
+            
+                    
+                    15.4 Guidelines for the Agile Architect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.5" data-path="../part3/15.5.summary.md">
+            
+                <span>
+            
+                    
+                    15.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.6" data-path="../part3/15.6.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    15.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.7" data-path="../part3/15.7.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    15.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../part3/16.0.arch_req.html">
+            
+                <a href="../part3/16.0.arch_req.html">
+            
+                    
+                    16 Architecture and Requirements 架构和需求
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="../part3">
+            
+                <span>
+            
+                    
+                    16.1 Gathering ASRs from Requirements Documents
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.2" data-path="../part3">
+            
+                <span>
+            
+                    
+                    16.2 Gathering ASRs by Interviewing Stakeholders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.3" data-path="../part3">
+            
+                <span>
+            
+                    
+                    16.3 Gathering ASRs by Understanding the Business Goals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.4" data-path="../part3">
+            
+                <span>
+            
+                    
+                    16.4 Capturing ASRs in a Utility Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.5" data-path="../part3">
+            
+                <span>
+            
+                    
+                    16.5 Tying the Methods Together
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.6" data-path="../part3/16.6.summary.md">
+            
+                <span>
+            
+                    
+                    16.6 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.7" data-path="../part3/16.7.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    16.7 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.8" data-path="../part3/16.8.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    16.8 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../part3/17.0.design_arch.html">
+            
+                <a href="../part3/17.0.design_arch.html">
+            
+                    
+                    17 Designing an Architecture 设计架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="../part3">
+            
+                <span>
+            
+                    
+                    17.1 Design Strategy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="../part3">
+            
+                <span>
+            
+                    
+                    17.2 The Attribute-Driven Design Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3" data-path="../part3">
+            
+                <span>
+            
+                    
+                    17.3 The Steps of ADD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.4" data-path="../part3/17.4.summary.md">
+            
+                <span>
+            
+                    
+                    17.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.5" data-path="../part3/17.5.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    17.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.6" data-path="../part3/17.6.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    17.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../part3/18.0.doc_sw_arch.html">
+            
+                <a href="../part3/18.0.doc_sw_arch.html">
+            
+                    
+                    18 Documenting Software Architecture 文档化软件架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../part3">
+            
+                <span>
+            
+                    
+                    18.1 Uses and Audiences for Architecture Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../part3">
+            
+                <span>
+            
+                    
+                    18.2 Notations for Architecture Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../part3">
+            
+                <span>
+            
+                    
+                    18.3 Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.4" data-path="../part3">
+            
+                <span>
+            
+                    
+                    18.4 Choosing the Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.5" data-path="../part3">
+            
+                <span>
+            
+                    
+                    18.5 Combining Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.6" data-path="../part3">
+            
+                <span>
+            
+                    
+                    18.6 Building the Documentation Package
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.7" data-path="../part3">
+            
+                <span>
+            
+                    
+                    18.7 Documenting Behavior
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.8" data-path="../part3">
+            
+                <span>
+            
+                    
+                    18.8 Architecture Documentation and Quality Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.9" data-path="../part3">
+            
+                <span>
+            
+                    
+                    18.9 Documenting Architectures That Change Faster Than You Can Document Them
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.10" data-path="../part3">
+            
+                <span>
+            
+                    
+                    18.10 Documenting Architecture in an Agile Development Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.11" data-path="../part3/18.11.summary.md">
+            
+                <span>
+            
+                    
+                    18.11 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.12" data-path="../part3/18.12.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    18.12 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.13" data-path="../part3/18.13.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    18.13 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../part3/19.0.arch_implementation_testing.html">
+            
+                <a href="../part3/19.0.arch_implementation_testing.html">
+            
+                    
+                    19 Architecture, Implementation, and Testing 架构、实现和测试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../part3">
+            
+                <span>
+            
+                    
+                    19.1 Architecture and Implementation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="../part3">
+            
+                <span>
+            
+                    
+                    19.2 Architecture and Testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.3" data-path="../part3/19.3.summary.md">
+            
+                <span>
+            
+                    
+                    19.3 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.4" data-path="../part3/19.4.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    19.4 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.5" data-path="../part3/19.5.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    19.5 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../part3/20.0.arch_reconstruction_conformance.html">
+            
+                <a href="../part3/20.0.arch_reconstruction_conformance.html">
+            
+                    
+                    20 Architecture Reconstruction, and Conformance 架构重构和一致性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.6.1" data-path="../part3">
+            
+                <span>
+            
+                    
+                    20.1 Architecture Reconstruction Process
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.2" data-path="../part3">
+            
+                <span>
+            
+                    
+                    20.2 Raw View Extraction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.3" data-path="../part3">
+            
+                <span>
+            
+                    
+                    20.3 Database Construction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.4" data-path="../part3">
+            
+                <span>
+            
+                    
+                    20.4 View Fusion
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.5" data-path="../part3">
+            
+                <span>
+            
+                    
+                    20.5 A rchitecture Analysis: Finding Violations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.6" data-path="../part3">
+            
+                <span>
+            
+                    
+                    20.6 Guidelines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.7" data-path="../part3/20.7.summary.md">
+            
+                <span>
+            
+                    
+                    20.7 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.8" data-path="../part3/20.8.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    20.8 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.9" data-path="../part3/20.9.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    20.9 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../part3/21.0.arch_evaluation.html">
+            
+                <a href="../part3/21.0.arch_evaluation.html">
+            
+                    
+                    21 Architecture Evaluation 架构评估
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.7.1" data-path="../part3">
+            
+                <span>
+            
+                    
+                    21.1 Evaluation Factors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.2" data-path="../part3">
+            
+                <span>
+            
+                    
+                    21.2 The Architecture Tradeoff Analysis Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.3" data-path="../part3">
+            
+                <span>
+            
+                    
+                    21.3 Lightweight Architecture Evaluation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.4" data-path="../part3/21.4.summary.md">
+            
+                <span>
+            
+                    
+                    21.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.5" data-path="../part3/21.5.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    21.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.6" data-path="../part3/21.6.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    21.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../part3/22.0.mgr_and_gov.html">
+            
+                <a href="../part3/22.0.mgr_and_gov.html">
+            
+                    
+                    22 Management and Governance 管理和治理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.8.1" data-path="../part3">
+            
+                <span>
+            
+                    
+                    22.1 Planning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.2" data-path="../part3">
+            
+                <span>
+            
+                    
+                    22.2 Organizing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.3" data-path="../part3">
+            
+                <span>
+            
+                    
+                    22.3 Implementing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.4" data-path="../part3">
+            
+                <span>
+            
+                    
+                    22.4 Measuring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.5" data-path="../part3">
+            
+                <span>
+            
+                    
+                    22.5 Governance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.6" data-path="../part3/22.6.summary.md">
+            
+                <span>
+            
+                    
+                    22.6 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.7" data-path="../part3/22.7.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    22.7 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.8" data-path="../part3/22.8.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    22.8 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../part4/00.arch_and_business.html">
+            
+                <a href="../part4/00.arch_and_business.html">
+            
+                    
+                    PART FOUR: ARCHITECTURE AND BUSINESS 第四部分：架构和业务
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../part4/23.0.eco_analysis_of_arch.html">
+            
+                <a href="../part4/23.0.eco_analysis_of_arch.html">
+            
+                    
+                    23 Economic Analysis of Architectures 架构的经济分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../part4">
+            
+                <span>
+            
+                    
+                    23.1 Decision-Making Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../part4">
+            
+                <span>
+            
+                    
+                    23.2 The Basis for the Economic Analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../part4">
+            
+                <span>
+            
+                    
+                    23.3 Putting Theory into Practice: The CBAM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.4" data-path="../part4">
+            
+                <span>
+            
+                    
+                    23.4 Case Study: The NASA ECS Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.5" data-path="../part4/23.5.summary.md">
+            
+                <span>
+            
+                    
+                    23.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.6" data-path="../part4/23.6.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    23.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.7" data-path="../part4/23.7.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    23.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../part4/24.0.arch_competence.html">
+            
+                <a href="../part4/24.0.arch_competence.html">
+            
+                    
+                    24 Architecture Competence 架构技能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../part4">
+            
+                <span>
+            
+                    
+                    24.1 Competence of Individuals: Duties, Skills, and Knowledge of Architects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../part4">
+            
+                <span>
+            
+                    
+                    24.2 Competence of a Software Architecture Organization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../part4/24.3.summary.md">
+            
+                <span>
+            
+                    
+                    24.3 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../part4/24.4.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    24.4 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="../part4/24.5.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    24.5 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../part4/25.0.arch_and_sw_product_lines.html">
+            
+                <a href="../part4/25.0.arch_and_sw_product_lines.html">
+            
+                    
+                    25 Architecture and Software Product Lines 架构和软件产品线
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.3.1" data-path="../part4">
+            
+                <span>
+            
+                    
+                    25.1 An Example of Product Line Variability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.2" data-path="../part4">
+            
+                <span>
+            
+                    
+                    25.2 What Makes a Software Product Line Work?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.3" data-path="../part4">
+            
+                <span>
+            
+                    
+                    25.3 Product Line Scope
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.4" data-path="../part4">
+            
+                <span>
+            
+                    
+                    25.4 The Quality Attribute of Variability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.5" data-path="../part4">
+            
+                <span>
+            
+                    
+                    25.5 The Role of a Product Line Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.6" data-path="../part4">
+            
+                <span>
+            
+                    
+                    25.6 Variation Mechanisms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.7" data-path="../part4">
+            
+                <span>
+            
+                    
+                    25.7 Evaluating a Product Line Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.8" data-path="../part4">
+            
+                <span>
+            
+                    
+                    25.8 Key Software Product Line Issues
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.9" data-path="../part4/25.9.summary.md">
+            
+                <span>
+            
+                    
+                    25.9 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.10" data-path="../part4/25.10.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    25.10 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.11" data-path="../part4/25.11.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    25.11 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../part5/00.the_brave_new_world.html">
+            
+                <a href="../part5/00.the_brave_new_world.html">
+            
+                    
+                    PART FIVE: THE BRAVE NEW WORLD 第五部分：勇敢面对新世界
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../part5/26.0.arch_in_the_cloud.html">
+            
+                <a href="../part5/26.0.arch_in_the_cloud.html">
+            
+                    
+                    26 Architecture in the Cloud 云上的架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="../part5">
+            
+                <span>
+            
+                    
+                    26.1 Basic Cloud Definitions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="../part5">
+            
+                <span>
+            
+                    
+                    26.2 Service Models and Deployment Options
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.3" data-path="../part5">
+            
+                <span>
+            
+                    
+                    26.3 Economic Justification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.4" data-path="../part5">
+            
+                <span>
+            
+                    
+                    26.4 Base Mechanisms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.5" data-path="../part5">
+            
+                <span>
+            
+                    
+                    26.5 Sample Technologies
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.6" data-path="../part5">
+            
+                <span>
+            
+                    
+                    26.6 Architecting in a Cloud Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.7" data-path="../part5/26.7.summary.md">
+            
+                <span>
+            
+                    
+                    26.7 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.8" data-path="../part5/26.8.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    26.8 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.9" data-path="../part5/26.9.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    26.9 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../part5/27.0.arch_4_the_edge.html">
+            
+                <a href="../part5/27.0.arch_4_the_edge.html">
+            
+                    
+                    27 Architectures for the Edge 边缘架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.2.1" data-path="../part5">
+            
+                <span>
+            
+                    
+                    27.1 The Ecosystem of Edge-Dominant Systems
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.2" data-path="../part5">
+            
+                <span>
+            
+                    
+                    27.2 Changes to the Software Development Life Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.3" data-path="../part5">
+            
+                <span>
+            
+                    
+                    27.3 Implications for Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.4" data-path="../part5">
+            
+                <span>
+            
+                    
+                    27.4 Implications of the Metropolis Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.5" data-path="../part5/27.5.summary.md">
+            
+                <span>
+            
+                    
+                    27.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.6" data-path="../part5/27.6.for_further_reading.md">
+            
+                <span>
+            
+                    
+                    27.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.7" data-path="../part5/27.7.disc_qustn.md">
+            
+                <span>
+            
+                    
+                    27.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../part5/28.0.epilogue.html">
+            
+                <a href="../part5/28.0.epilogue.html">
+            
+                    
+                    28 Epilogue 结语
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../05.reference.html">
+            
+                <a href="../05.reference.html">
+            
+                    
+                    Reference 参考文献
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../06.about_the_authors.html">
+            
+                <a href="../06.about_the_authors.html">
+            
+                    
+                    About the Authors 关于作者
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../07.index.html">
+            
+                <a href="../07.index.html">
+            
+                    
+                    Index 缩略语表
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >5.2 Tactics for Availability</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="52-tactics-for-availability-&#x53EF;&#x7528;&#x6027;&#x7B56;&#x7565;">5.2 Tactics for Availability &#x53EF;&#x7528;&#x6027;&#x7B56;&#x7565;</h1><p>A failure occurs when the system no longer delivers a service that is consistent with its specification; this failure is observable by the system&#x2019;s actors. A fault (or combination of faults) has the potential to cause a failure. Availability tactics, therefore, are designed to enable a system to endure system faults so that a service being delivered by the system remains compliant with its specification. The tactics we discuss in this section will keep faults from becoming failures or at least bound the effects of the fault and make repair possible. We illustrate this approach in Figure 5.4.</p><p>&#x5F53;&#x7CFB;&#x7EDF;&#x4E0D;&#x518D;&#x63D0;&#x4F9B;&#x4E0E;&#x5176;&#x89C4;&#x683C;&#x76F8;&#x4E00;&#x81F4;&#x7684;&#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x53D1;&#x751F;&#x5931;&#x6548;&#x3002; &#x7CFB;&#x7EDF;&#x53C2;&#x4E0E;&#x8005;&#x53EF;&#x4EE5;&#x89C2;&#x5BDF;&#x5230;&#x6B64;&#x5931;&#x6548;&#x3002;&#x6545;&#x969C;&#xFF08;&#x6216;&#x6545;&#x969C;&#x7EC4;&#x5408;&#xFF09;&#x6709;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x5931;&#x6548;&#x3002; &#x56E0;&#x6B64;&#xFF0C;&#x53EF;&#x7528;&#x6027;&#x7B56;&#x7565;&#x65E8;&#x5728;&#x4F7F;&#x7CFB;&#x7EDF;&#x80FD;&#x591F;&#x627F;&#x53D7;&#x7CFB;&#x7EDF;&#x6545;&#x969C;&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#x4FDD;&#x6301;&#x7B26;&#x5408;&#x5176;&#x89C4;&#x8303;&#x3002; &#x6211;&#x4EEC;&#x5728;&#x672C;&#x8282;&#x4E2D;&#x8BA8;&#x8BBA;&#x7684;&#x7B56;&#x7565;&#x5C06;&#x9632;&#x6B62;&#x6545;&#x969C;&#x6210;&#x4E3A;&#x5931;&#x6548;&#xFF0C;&#x6216;&#x8005;&#x81F3;&#x5C11;&#x9650;&#x5236;&#x6545;&#x969C;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x5E76;&#x4F7F;&#x7EF4;&#x4FEE;&#x6210;&#x4E3A;&#x53EF;&#x80FD;&#x3002; &#x6211;&#x4EEC;&#x5728;&#x56FE;5.4&#x4E2D;&#x8BF4;&#x660E;&#x4E86;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x3002;</p><p>Availability tactics may be categorized as addressing one of three categories: fault detection, fault recovery, and fault prevention. The tactics categorization for availability is shown in Figure 5.5 (on the next page). Note that it is often the case that these tactics will be provided for you by a software infrastructure, such as a middleware package, so your job as an architect is often one of choosing and assessing (rather than implementing) the right availability tactics and the right combination of tactics.</p><p>&#x53EF;&#x7528;&#x6027;&#x7B56;&#x7565;&#x53EF;&#x5206;&#x7C7B;&#x4E3A;&#x89E3;&#x51B3;&#x4EE5;&#x4E0B;&#x4E09;&#x7C7B;&#x4E4B;&#x4E00;&#xFF1A;&#x6545;&#x969C;&#x68C0;&#x6D4B;&#xFF0C;&#x6545;&#x969C;&#x6062;&#x590D;&#x548C;&#x6545;&#x969C;&#x9884;&#x9632;&#x3002; &#x53EF;&#x7528;&#x6027;&#x7684;&#x7B56;&#x7565;&#x5206;&#x7C7B;&#x5982;&#x56FE;5.5&#x6240;&#x793A;&#xFF08;&#x4E0B;&#x4E00;&#x9875;&#xFF09;&#x3002; &#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x901A;&#x5E38;&#x8FD9;&#x4E9B;&#x7B56;&#x7565;&#x662F;&#x7531;&#x8F6F;&#x4EF6;&#x57FA;&#x7840;&#x7ED3;&#x6784;&#xFF08;&#x4F8B;&#x5982;&#x4E2D;&#x95F4;&#x4EF6;&#x8F6F;&#x4EF6;&#x5305;&#xFF09;&#x4E3A;&#x60A8;&#x63D0;&#x4F9B;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x60A8;&#x4F5C;&#x4E3A;&#x67B6;&#x6784;&#x5E08;&#x7684;&#x5DE5;&#x4F5C;&#x901A;&#x5E38;&#x662F;&#x9009;&#x62E9;&#x548C;&#x8BC4;&#x4F30;&#xFF08;&#x800C;&#x4E0D;&#x662F;&#x5B9E;&#x73B0;&#xFF09;&#x6B63;&#x786E;&#x7684;&#x53EF;&#x7528;&#x6027;&#x7B56;&#x7565;&#x4EE5;&#x53CA;&#x6B63;&#x786E;&#x7684;&#x6218;&#x672F;&#x7EC4;&#x5408;&#x3002;</p><p><img alt="" src=".">
+<strong>Figure 5.4</strong> Goal of availability tactics &#x53EF;&#x7528;&#x6027;&#x7B56;&#x7565;&#x7684;&#x76EE;&#x6807;</p><p><img alt="" src=".">
+<strong>Figure 5.5</strong> Availability tactics &#x53EF;&#x7528;&#x6027;&#x7B56;&#x7565;</p><p><strong>Detect Faults &#x68C0;&#x6D4B;&#x6545;&#x969C;</strong></p><p>Before any system can take action regarding a fault, the presence of the fault must be detected or anticipated. Tactics in this category include the following:</p><p>&#x5728;&#x4EFB;&#x4F55;&#x7CFB;&#x7EDF;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x6545;&#x969C;&#x91C7;&#x53D6;&#x63AA;&#x65BD;&#x4E4B;&#x524D;&#xFF0C;&#x5FC5;&#x987B;&#x5148;&#x68C0;&#x6D4B;&#x5230;&#x6216;&#x9884;&#x671F;&#x5230;&#x6545;&#x969C;&#x7684;&#x5B58;&#x5728;&#x3002; &#x6B64;&#x7C7B;&#x522B;&#x4E2D;&#x7684;&#x7B56;&#x7565;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p><ul><li><em>Ping/echo</em> refers to an asynchronous request/response message pair exchanged between nodes, used to determine reachability and the round-trip delay through the associated network path. But the echo also determines that the pinged component is alive and responding correctly. The ping is often sent by a system monitor. Ping/echo requires a time threshold to be set; this threshold tells the pinging component how long to wait for the echo before considering the pinged component to have failed (&#x201C;timed out&#x201D;). Standard implementations of ping/echo are available for nodes interconnected via IP.
+</li>
+<li><em>Ping/echo</em> &#x662F;&#x6307;&#x5728;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x4EA4;&#x6362;&#x7684;&#x5F02;&#x6B65;&#x8BF7;&#x6C42;/&#x54CD;&#x5E94;&#x6D88;&#x606F;&#x5BF9;&#xFF0C;&#x7528;&#x4E8E;&#x786E;&#x5B9A;&#x901A;&#x8FC7;&#x76F8;&#x5173;&#x7F51;&#x7EDC;&#x8DEF;&#x5F84;&#x7684;&#x53EF;&#x8FBE;&#x6027;&#x548C;&#x5F80;&#x8FD4;&#x5EF6;&#x8FDF;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x56DE;&#x58F0;&#x8FD8;&#x786E;&#x5B9A;ping&#x7684;&#x7EC4;&#x4EF6;&#x4ECD;&#x7136;&#x6709;&#x6548;&#x5E76;&#x6B63;&#x786E;&#x54CD;&#x5E94;&#x3002; ping&#x901A;&#x5E38;&#x662F;&#x7531;&#x7CFB;&#x7EDF;&#x76D1;&#x89C6;&#x5668;&#x53D1;&#x9001;&#x7684;&#x3002; Ping/echo&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x65F6;&#x95F4;&#x9608;&#x503C;&#xFF1B; &#x6B64;&#x9608;&#x503C;&#x544A;&#x8BC9;ping&#x7EC4;&#x4EF6;&#x5728;&#x8003;&#x8651;ping&#x7EC4;&#x4EF6;&#x51FA;&#x73B0;&#x6545;&#x969C;&#xFF08;&#x201C;&#x8D85;&#x65F6;&#x201D;&#xFF09;&#x4E4B;&#x524D;&#x8981;&#x7B49;&#x5F85;&#x56DE;&#x58F0;&#x591A;&#x957F;&#x65F6;&#x95F4;&#x3002; ping / echo&#x7684;&#x6807;&#x51C6;&#x5B9E;&#x73B0;&#x53EF;&#x7528;&#x4E8E;&#x901A;&#x8FC7;IP&#x4E92;&#x8FDE;&#x7684;&#x8282;&#x70B9;&#x3002;
+</li>
+<li><em>Monitor</em>. A monitor is a component that is used to monitor the state of health of various other parts of the system: processors, processes, I/O, memory, and so on. A system monitor can detect failure or congestion in the network or other shared resources, such as from a denial-of-service attack. It orchestrates software using other tactics in this category to detect malfunctioning components. For example, the system monitor can initiate self-tests, or be the component that detects faulty time stamps or missed heartbeats. [1][1]
+</li>
+<li><em>&#x76D1;&#x89C6;&#x5668;</em>&#x3002;&#x76D1;&#x89C6;&#x5668;&#x662F;&#x7528;&#x4E8E;&#x76D1;&#x89C6;&#x7CFB;&#x7EDF;&#x5176;&#x4ED6;&#x5404;&#x4E2A;&#x90E8;&#x5206;&#x7684;&#x8FD0;&#x884C;&#x72B6;&#x51B5;&#x7684;&#x7EC4;&#x4EF6;&#xFF1A;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x8FDB;&#x7A0B;&#xFF0C;I / O&#xFF0C;&#x5185;&#x5B58;&#x7B49;&#x3002; &#x7CFB;&#x7EDF;&#x76D1;&#x89C6;&#x5668;&#x53EF;&#x4EE5;&#x68C0;&#x6D4B;&#x7F51;&#x7EDC;&#x6216;&#x5176;&#x4ED6;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x4E2D;&#x7684;&#x6545;&#x969C;&#x6216;&#x62E5;&#x585E;&#xFF0C;&#x4F8B;&#x5982;&#x6765;&#x81EA;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#x653B;&#x51FB;&#x3002; &#x5B83;&#x4F7F;&#x7528;&#x8BE5;&#x7C7B;&#x522B;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x7B56;&#x7565;&#x6765;&#x7F16;&#x6392;&#x8F6F;&#x4EF6;&#x4EE5;&#x68C0;&#x6D4B;&#x6545;&#x969C;&#x7EC4;&#x4EF6;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x7CFB;&#x7EDF;&#x76D1;&#x89C6;&#x5668;&#x53EF;&#x4EE5;&#x542F;&#x52A8;&#x81EA;&#x68C0;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x68C0;&#x6D4B;&#x9519;&#x8BEF;&#x65F6;&#x95F4;&#x6233;&#x6216;&#x5FC3;&#x8DF3;&#x7F3A;&#x5931;&#x7684;&#x7EC4;&#x4EF6;&#x3002;[1][1]
+</li>
+<li><em>Heartbeat</em> is a fault detection mechanism that employs a periodic message exchange between a system monitor and a process being monitored. A special case of heartbeat is when the process being monitored periodically resets the watchdog timer in its monitor to prevent it from expiring and thus signaling a fault. For systems where scalability is a concern, transport and processing overhead can be reduced by piggybacking heartbeat messages on to other control messages being exchanged between the process being monitored and the distributed system controller. The big difference between heartbeat and ping/echo is who holds the responsibility for initiating the health check&#x2014;the monitor or the component itself.
+</li>
+<li><em>&#x5FC3;&#x8DF3;</em> &#x662F;&#x4E00;&#x79CD;&#x6545;&#x969C;&#x68C0;&#x6D4B;&#x673A;&#x5236;&#xFF0C;&#x5728;&#x7CFB;&#x7EDF;&#x76D1;&#x89C6;&#x5668;&#x548C;&#x88AB;&#x76D1;&#x89C6;&#x7684;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x91C7;&#x7528;&#x5B9A;&#x671F;&#x7684;&#x6D88;&#x606F;&#x4EA4;&#x6362;&#x3002; &#x5FC3;&#x8DF3;&#x7684;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x662F;&#xFF0C;&#x5F53;&#x88AB;&#x76D1;&#x89C6;&#x7684;&#x8FDB;&#x7A0B;&#x5B9A;&#x671F;&#x91CD;&#x7F6E;&#x5176;&#x76D1;&#x89C6;&#x5668;&#x4E2D;&#x7684;&#x770B;&#x95E8;&#x72D7;&#x8BA1;&#x65F6;&#x5668;&#x4EE5;&#x9632;&#x6B62;&#x5176;&#x5230;&#x671F;&#x5E76;&#x56E0;&#x6B64;&#x53D1;&#x51FA;&#x6545;&#x969C;&#x4FE1;&#x53F7;&#x65F6;&#x3002; &#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x8003;&#x8651;&#x53EF;&#x4F38;&#x7F29;&#x6027;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06;&#x5FC3;&#x8DF3;&#x6D88;&#x606F;&#x9644;&#x52A0;&#x5230;&#x6B63;&#x5728;&#x76D1;&#x89C6;&#x7684;&#x8FDB;&#x7A0B;&#x548C;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x63A7;&#x5236;&#x5668;&#x4E4B;&#x95F4;&#x4EA4;&#x6362;&#x7684;&#x5176;&#x4ED6;&#x63A7;&#x5236;&#x6D88;&#x606F;&#x4E0A;&#x6765;&#x51CF;&#x5C11;&#x4F20;&#x8F93;&#x548C;&#x5904;&#x7406;&#x5F00;&#x9500;&#x3002; &#x5FC3;&#x8DF3;&#x548C;ping / echo&#x4E4B;&#x95F4;&#x7684;&#x6700;&#x5927;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF0C;&#x8C01;&#x8D1F;&#x8D23;&#x542F;&#x52A8;&#x8FD0;&#x884C;&#x72B6;&#x51B5;&#x68C0;&#x67E5;&#xFF08;&#x76D1;&#x89C6;&#x5668;&#x6216;&#x7EC4;&#x4EF6;&#x672C;&#x8EAB;&#xFF09;&#x3002;
+</li>
+<li><em>Time stamp</em>. This tactic is used to detect incorrect sequences of events, primarily in distributed message-passing systems. A time stamp of an event can be established by assigning the state of a local clock to the event immediately after the event occurs. Simple sequence numbers can also be used for this purpose, if time information is not important.
+</li>
+<li><em>&#x65F6;&#x95F4;&#x6233;</em>&#x3002;&#x8BE5;&#x7B56;&#x7565;&#x7528;&#x4E8E;&#x68C0;&#x6D4B;&#x9519;&#x8BEF;&#x7684;&#x4E8B;&#x4EF6;&#x5E8F;&#x5217;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x7CFB;&#x7EDF;&#x4E2D;&#x3002; &#x901A;&#x8FC7;&#x5728;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x540E;&#x7ACB;&#x5373;&#x5C06;&#x672C;&#x5730;&#x65F6;&#x949F;&#x7684;&#x72B6;&#x6001;&#x5206;&#x914D;&#x7ED9;&#x4E8B;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x4E8B;&#x4EF6;&#x7684;&#x65F6;&#x95F4;&#x6233;&#x3002; &#x5982;&#x679C;&#x65F6;&#x95F4;&#x4FE1;&#x606F;&#x4E0D;&#x91CD;&#x8981;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5C06;&#x7B80;&#x5355;&#x7684;&#x5E8F;&#x5217;&#x53F7;&#x7528;&#x4E8E;&#x6B64;&#x76EE;&#x7684;&#x3002;
+</li>
+<li><em>Sanity checking</em> checks the validity or reasonableness of specific operations or outputs of a component. This tactic is typically based on a knowledge of the internal design, the state of the system, or the nature of the information under scrutiny. It is most often employed at interfaces, to examine a specific information flow.
+</li>
+<li><em>&#x5B8C;&#x6574;&#x6027;&#x68C0;&#x67E5;</em> &#x68C0;&#x67E5;&#x7EC4;&#x4EF6;&#x7684;&#x7279;&#x5B9A;&#x64CD;&#x4F5C;&#x6216;&#x8F93;&#x51FA;&#x7684;&#x6709;&#x6548;&#x6027;&#x6216;&#x5408;&#x7406;&#x6027;&#x3002;&#x8BE5;&#x7B56;&#x7565;&#x901A;&#x5E38;&#x57FA;&#x4E8E;&#x5BF9;&#x5185;&#x90E8;&#x8BBE;&#x8BA1;&#xFF0C;&#x7CFB;&#x7EDF;&#x72B6;&#x6001;&#x6216;&#x6240;&#x68C0;&#x67E5;&#x4FE1;&#x606F;&#x7684;&#x6027;&#x8D28;&#x7684;&#x4E86;&#x89E3;&#x3002;&#x5B83;&#x6700;&#x5E38;&#x7528;&#x4E8E;&#x63A5;&#x53E3;&#xFF0C;&#x4EE5;&#x68C0;&#x67E5;&#x7279;&#x5B9A;&#x7684;&#x4FE1;&#x606F;&#x6D41;&#x3002;
+</li>
+<li><em>Condition monitoring</em> involves checking conditions in a process or device, or validating assumptions made during the design. By monitoring conditions, this tactic prevents a system from producing faulty behavior. The computation of checksums is a common example of this tactic. However, the monitor must itself be simple (and, ideally, provable) to ensure that it does not introduce new software errors.
+</li>
+<li><em>&#x72B6;&#x6001;&#x76D1;&#x89C6;</em> &#x6D89;&#x53CA;&#x68C0;&#x67E5;&#x8FC7;&#x7A0B;&#x6216;&#x8BBE;&#x5907;&#x4E2D;&#x7684;&#x6761;&#x4EF6;&#xFF0C;&#x6216;&#x9A8C;&#x8BC1;&#x8BBE;&#x8BA1;&#x8FC7;&#x7A0B;&#x4E2D;&#x6240;&#x505A;&#x7684;&#x5047;&#x8BBE;&#x3002;&#x901A;&#x8FC7;&#x76D1;&#x89C6;&#x6761;&#x4EF6;&#xFF0C;&#x6B64;&#x7B56;&#x7565;&#x53EF;&#x9632;&#x6B62;&#x7CFB;&#x7EDF;&#x4EA7;&#x751F;&#x9519;&#x8BEF;&#x7684;&#x884C;&#x4E3A;&#x3002;&#x6821;&#x9A8C;&#x548C;&#x7684;&#x8BA1;&#x7B97;&#x662F;&#x8BE5;&#x7B56;&#x7565;&#x7684;&#x5E38;&#x89C1;&#x793A;&#x4F8B;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x76D1;&#x89C6;&#x5668;&#x672C;&#x8EAB;&#x5FC5;&#x987B;&#x5F88;&#x7B80;&#x5355;&#xFF08;&#x7406;&#x60F3;&#x60C5;&#x51B5;&#x4E0B;&#x662F;&#x53EF;&#x8BC1;&#x660E;&#x7684;&#xFF09;&#xFF0C;&#x4EE5;&#x786E;&#x4FDD;&#x5B83;&#x4E0D;&#x4F1A;&#x5F15;&#x5165;&#x65B0;&#x7684;&#x8F6F;&#x4EF6;&#x9519;&#x8BEF;&#x3002;
+</li>
+<li><em>Voting</em>. The most common realization of this tactic is referred to as triple modular redundancy (TMR), which employs three components that do the same thing, each of which receives identical inputs, and forwards their output to voting logic, used to detect any inconsistency among the three output states. Faced with an inconsistency, the voter reports a fault. It must also decide what output to use. It can let the majority rule, or choose some computed average of the disparate outputs. This tactic depends critically on the voting logic, which is usually realized as a simple, rigorously reviewed and tested singleton so that the probability of error is low.
+</li>
+<li><p><em>&#x8868;&#x51B3;</em>&#x3002;&#x6B64;&#x7B56;&#x7565;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x662F;&#x79F0;&#x4E3A;&#x4E09;&#x91CD;&#x6A21;&#x5757;&#x5197;&#x4F59;&#xFF08;TMR&#xFF09;&#xFF0C;&#x5B83;&#x91C7;&#x7528;&#x4E09;&#x4E2A;&#x6267;&#x884C;&#x76F8;&#x540C;&#x64CD;&#x4F5C;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x6BCF;&#x4E2A;&#x7EC4;&#x4EF6;&#x63A5;&#x6536;&#x76F8;&#x540C;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x8F93;&#x51FA;&#x8F6C;&#x53D1;&#x7ED9;&#x6295;&#x7968;&#x903B;&#x8F91;&#xFF0C;&#x8BE5;&#x903B;&#x8F91;&#x7528;&#x4E8E;&#x68C0;&#x6D4B;&#x4E3B;&#x673A;&#x4E4B;&#x95F4;&#x7684;&#x4EFB;&#x4F55;&#x4E0D;&#x4E00;&#x81F4;&#x3002; &#x4E09;&#x79CD;&#x8F93;&#x51FA;&#x72B6;&#x6001;&#x3002; &#x9762;&#x5BF9;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x9009;&#x6C11;&#x62A5;&#x544A;&#x4E86;&#x9519;&#x8BEF;&#x3002; &#x5B83;&#x8FD8;&#x5FC5;&#x987B;&#x51B3;&#x5B9A;&#x4F7F;&#x7528;&#x4EC0;&#x4E48;&#x8F93;&#x51FA;&#x3002; &#x5B83;&#x53EF;&#x4EE5;&#x8BA9;&#x5927;&#x591A;&#x6570;&#x89C4;&#x5219;&#xFF0C;&#x6216;&#x9009;&#x62E9;&#x4E0D;&#x540C;&#x8F93;&#x51FA;&#x7684;&#x4E00;&#x4E9B;&#x8BA1;&#x7B97;&#x5E73;&#x5747;&#x503C;&#x3002; &#x8BE5;&#x7B56;&#x7565;&#x4E25;&#x91CD;&#x4F9D;&#x8D56;&#x4E8E;&#x8868;&#x51B3;&#x903B;&#x8F91;&#xFF0C;&#x8BE5;&#x903B;&#x8F91;&#x901A;&#x5E38;&#x5B9E;&#x73B0;&#x4E3A;&#x7B80;&#x5355;&#xFF0C;&#x7ECF;&#x8FC7;&#x4E25;&#x683C;&#x5BA1;&#x67E5;&#x548C;&#x6D4B;&#x8BD5;&#x7684;&#x5355;&#x4F8B;&#xFF0C;&#x56E0;&#x6B64;&#x51FA;&#x9519;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x8F83;&#x4F4E;&#x3002;</p><ul><li><em>Replication</em> is the simplest form of voting; here, the components are exact clones of each other. Having multiple copies of identical components can be effective in protecting against random failures of hardware, but this cannot protect against design or implementation errors, in hardware or software, because there is no form of diversity embedded in this tactic.
+</li>
+<li><em>&#x590D;&#x5236;</em> &#x662F;&#x6700;&#x7B80;&#x5355;&#x7684;&#x6295;&#x7968;&#x5F62;&#x5F0F;&#x3002; &#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x8FD9;&#x4E9B;&#x7EC4;&#x4EF6;&#x662F;&#x5F7C;&#x6B64;&#x7684;&#x7CBE;&#x786E;&#x514B;&#x9686;&#x3002; &#x5177;&#x6709;&#x76F8;&#x540C;&#x7EC4;&#x4EF6;&#x7684;&#x591A;&#x4E2A;&#x526F;&#x672C;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x5730;&#x9632;&#x6B62;&#x786C;&#x4EF6;&#x7684;&#x968F;&#x673A;&#x6545;&#x969C;&#xFF0C;&#x4F46;&#x8FD9;&#x4E0D;&#x80FD;&#x9632;&#x6B62;&#x786C;&#x4EF6;&#x6216;&#x8F6F;&#x4EF6;&#x4E2D;&#x7684;&#x8BBE;&#x8BA1;&#x6216;&#x5B9E;&#x73B0;&#x9519;&#x8BEF;&#xFF0C;&#x56E0;&#x4E3A;&#x6B64;&#x7B56;&#x7565;&#x4E2D;&#x6CA1;&#x6709;&#x5D4C;&#x5165;&#x4EFB;&#x4F55;&#x5F62;&#x5F0F;&#x7684;&#x591A;&#x6837;&#x6027;&#x3002;
+</li>
+<li><em>Functional redundancy</em> is a form of voting intended to address the issue of common-mode failures (design or implementation faults) in hardware or software components. Here, the components must always give the same output given the same input, but they are diversely designed and diversely implemented.
+</li>
+<li><em>&#x529F;&#x80FD;&#x5197;&#x4F59;</em> &#x662F;&#x4E00;&#x79CD;&#x6295;&#x7968;&#x5F62;&#x5F0F;&#xFF0C;&#x65E8;&#x5728;&#x89E3;&#x51B3;&#x786C;&#x4EF6;&#x6216;&#x8F6F;&#x4EF6;&#x7EC4;&#x4EF6;&#x4E2D;&#x7684;&#x5171;&#x6A21;&#x6545;&#x969C;&#xFF08;&#x8BBE;&#x8BA1;&#x6216;&#x5B9E;&#x73B0;&#x6545;&#x969C;&#xFF09;&#x7684;&#x95EE;&#x9898;&#x3002; &#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x7EC4;&#x4EF6;&#x5FC5;&#x987B;&#x59CB;&#x7EC8;&#x5728;&#x7ED9;&#x5B9A;&#x76F8;&#x540C;&#x8F93;&#x5165;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x63D0;&#x4F9B;&#x76F8;&#x540C;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x4EEC;&#x7684;&#x8BBE;&#x8BA1;&#x548C;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x5404;&#x4E0D;&#x76F8;&#x540C;&#x3002;
+</li>
+<li><em>Analytic redundancy</em> permits not only diversity among components&#x2019; private sides, but also diversity among the components&#x2019; inputs and outputs. This tactic is intended to tolerate specification errors by using separate requirement specifications. In embedded systems, analytic redundancy also helps when some input sources are likely to be unavailable at times. For example, avionics programs have multiple ways to compute aircraft altitude, such as using barometric pressure, the radar altimeter, and geometrically using the straight-line distance and look-down angle of a point ahead on the ground. The voter mechanism used with analytic redundancy needs to be more sophisticated than just letting majority rule or computing a simple average. It may have to understand which sensors are currently reliable or not, and it may be asked to produce a higher-fidelity value than any individual component can, by blending and smoothing individual values over time.
+</li>
+<li><em>&#x5206;&#x6790;&#x5197;&#x4F59;</em> &#x4E0D;&#x4EC5;&#x5141;&#x8BB8;&#x7EC4;&#x4EF6;&#x79C1;&#x6709;&#x4FA7;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x5F02;&#xFF0C;&#x8FD8;&#x5141;&#x8BB8;&#x7EC4;&#x4EF6;&#x8F93;&#x5165;&#x548C;&#x8F93;&#x51FA;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x5F02;&#x3002; &#x6B64;&#x7B56;&#x7565;&#x65E8;&#x5728;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x5355;&#x72EC;&#x7684;&#x9700;&#x6C42;&#x89C4;&#x8303;&#x6765;&#x5BB9;&#x5FCD;&#x89C4;&#x8303;&#x9519;&#x8BEF;&#x3002; &#x5728;&#x5D4C;&#x5165;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x5F53;&#x67D0;&#x4E9B;&#x8F93;&#x5165;&#x6E90;&#x6709;&#x65F6;&#x53EF;&#x80FD;&#x4E0D;&#x53EF;&#x7528;&#x65F6;&#xFF0C;&#x5206;&#x6790;&#x5197;&#x4F59;&#x4E5F;&#x6709;&#x5E2E;&#x52A9;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x822A;&#x7A7A;&#x7535;&#x5B50;&#x7A0B;&#x5E8F;&#x6709;&#x591A;&#x79CD;&#x8BA1;&#x7B97;&#x98DE;&#x673A;&#x9AD8;&#x5EA6;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F8B;&#x5982;&#x4F7F;&#x7528;&#x5927;&#x6C14;&#x538B;&#x529B;&#xFF0C;&#x96F7;&#x8FBE;&#x9AD8;&#x5EA6;&#x8BA1;&#xFF0C;&#x4EE5;&#x53CA;&#x5728;&#x51E0;&#x4F55;&#x4E0A;&#x4F7F;&#x7528;&#x5730;&#x9762;&#x4E0A;&#x524D;&#x65B9;&#x67D0;&#x4E2A;&#x70B9;&#x7684;&#x76F4;&#x7EBF;&#x8DDD;&#x79BB;&#x548C;&#x4FEF;&#x89C6;&#x89D2;&#x5EA6;&#x3002; &#x7528;&#x4E8E;&#x5206;&#x6790;&#x5197;&#x4F59;&#x7684;&#x8868;&#x51B3;&#x5668;&#x673A;&#x5236;&#x9700;&#x8981;&#x66F4;&#x590D;&#x6742;&#xFF0C;&#x800C;&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x8BA9;&#x591A;&#x6570;&#x4EBA;&#x7EDF;&#x6CBB;&#x6216;&#x8BA1;&#x7B97;&#x7B80;&#x5355;&#x7684;&#x5E73;&#x5747;&#x503C;&#x3002; &#x53EF;&#x80FD;&#x5FC5;&#x987B;&#x4E86;&#x89E3;&#x54EA;&#x4E9B;&#x4F20;&#x611F;&#x5668;&#x5F53;&#x524D;&#x53EF;&#x9760;&#x6216;&#x4E0D;&#x53EF;&#x9760;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x968F;&#x65F6;&#x95F4;&#x63A8;&#x79FB;&#x6DF7;&#x5408;&#x548C;&#x5E73;&#x6ED1;&#x5404;&#x4E2A;&#x503C;&#x6765;&#x4EA7;&#x751F;&#x6BD4;&#x4EFB;&#x4F55;&#x5355;&#x4E2A;&#x7EC4;&#x4EF6;&#x90FD;&#x66F4;&#x9AD8;&#x7684;&#x4FDD;&#x771F;&#x5EA6;&#x503C;&#x3002;
+</li></ul>
+</li>
+<li><p><em>Exception detection</em> refers to the detection of a system condition that alters the normal flow of execution. The exception detection tactic can be further refined:</p></li>
+<li><p><em>&#x5F02;&#x5E38;&#x68C0;&#x6D4B;</em> &#x662F;&#x6307;&#x68C0;&#x6D4B;&#x4F1A;&#x6539;&#x53D8;&#x6B63;&#x5E38;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x7684;&#x7CFB;&#x7EDF;&#x6761;&#x4EF6;&#x3002; &#x5F02;&#x5E38;&#x68C0;&#x6D4B;&#x7B56;&#x7565;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x5B8C;&#x5584;&#xFF1A;</p><ul><li><em>System exceptions</em> will vary according to the processor hardware architecture employed and include faults such as divide by zero, bus and address faults, illegal program instructions, and so forth.
+</li>
+<li><em>&#x7CFB;&#x7EDF;&#x5F02;&#x5E38;</em> &#x5C06;&#x6839;&#x636E;&#x6240;&#x91C7;&#x7528;&#x7684;&#x5904;&#x7406;&#x5668;&#x786C;&#x4EF6;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x800C;&#x53D8;&#x5316;&#xFF0C;&#x5E76;&#x4E14;&#x5305;&#x62EC;&#x8BF8;&#x5982;&#x9664;&#x4EE5;&#x96F6;&#xFF0C;&#x603B;&#x7EBF;&#x548C;&#x5730;&#x5740;&#x6545;&#x969C;&#xFF0C;&#x975E;&#x6CD5;&#x7A0B;&#x5E8F;&#x6307;&#x4EE4;&#x7B49;&#x6545;&#x969C;&#x3002;
+</li>
+<li>The <em>parameter fence</em> tactic incorporates an a priori data pattern (such as 0xDEADBEEF) placed immediately after any variable-length parameters of an object. This allows for runtime detection of overwriting the memory allocated for the object&#x2019;s variable-length parameters.
+</li>
+<li><em>&#x53C2;&#x6570;&#x56F4;&#x5899;</em> &#x7B56;&#x7565;&#x5C06;&#x5148;&#x9A8C;&#x6570;&#x636E;&#x6A21;&#x5F0F;&#xFF08;&#x4F8B;&#x5982;0xDEADBEEF&#xFF09;&#x5E76;&#x5165;&#x5BF9;&#x8C61;&#x7684;&#x4EFB;&#x4F55;&#x53EF;&#x53D8;&#x957F;&#x5EA6;&#x53C2;&#x6570;&#x4E4B;&#x540E;&#x3002; &#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x68C0;&#x6D4B;&#x662F;&#x5426;&#x8986;&#x76D6;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x53EF;&#x53D8;&#x957F;&#x5EA6;&#x53C2;&#x6570;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x3002;
+</li>
+<li><em>Parameter typing</em> employs a base class that defines functions that add, find, and iterate over type-length-value (TLV) formatted message parameters. Derived classes use the base class functions to implement functions that provide parameter typing according to each parameter&#x2019;s structure. Use of strong typing to build and parse messages results in higher availability than implementations that simply treat messages as byte buckets. Of course, all design involves tradeoffs. When you employ strong typing, you typically trade higher availability against ease of evolution.
+</li>
+<li><em>&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x5316;</em> &#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x57FA;&#x7C7B;&#xFF0C;&#x8BE5;&#x57FA;&#x7C7B;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E9B;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x6DFB;&#x52A0;&#xFF0C;&#x67E5;&#x627E;&#x548C;&#x8FED;&#x4EE3;&#x7C7B;&#x578B;&#x957F;&#x5EA6;&#x503C;&#xFF08;TLV&#xFF09;&#x683C;&#x5F0F;&#x7684;&#x6D88;&#x606F;&#x53C2;&#x6570;&#x3002; &#x6D3E;&#x751F;&#x7C7B;&#x4F7F;&#x7528;&#x57FA;&#x7C7B;&#x51FD;&#x6570;&#x6765;&#x5B9E;&#x73B0;&#x6839;&#x636E;&#x6BCF;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x7ED3;&#x6784;&#x63D0;&#x4F9B;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x7684;&#x51FD;&#x6570;&#x3002; &#x4E0E;&#x4EC5;&#x5C06;&#x6D88;&#x606F;&#x89C6;&#x4E3A;&#x5B57;&#x8282;&#x5B58;&#x50A8;&#x533A;&#x7684;&#x5B9E;&#x73B0;&#x76F8;&#x6BD4;&#xFF0C;&#x4F7F;&#x7528;&#x5F3A;&#x7C7B;&#x578B;&#x6765;&#x6784;&#x5EFA;&#x548C;&#x89E3;&#x6790;&#x6D88;&#x606F;&#x53EF;&#x63D0;&#x9AD8;&#x53EF;&#x7528;&#x6027;&#x3002; &#x5F53;&#x7136;&#xFF0C;&#x6240;&#x6709;&#x8BBE;&#x8BA1;&#x90FD;&#x9700;&#x8981;&#x6743;&#x8861;&#x3002; &#x5F53;&#x60A8;&#x4F7F;&#x7528;&#x5F3A;&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x4EE5;&#x66F4;&#x9AD8;&#x7684;&#x53EF;&#x7528;&#x6027;&#x4E0E;&#x6613;&#x7528;&#x6027;&#x8FDB;&#x884C;&#x4EA4;&#x6613;&#x3002;
+</li>
+<li><em>Timeout</em> is a tactic that raises an exception when a component detects that it or another component has failed to meet its timing constraints. For example, a component awaiting a response from another component can raise an exception if the wait time exceeds a certain value.
+</li>
+<li><em>&#x8D85;&#x65F6;</em> &#x662F;&#x4E00;&#x79CD;&#x7B56;&#x7565;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x68C0;&#x6D4B;&#x5230;&#x5B83;&#x6216;&#x53E6;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x672A;&#x80FD;&#x6EE1;&#x8DB3;&#x5176;&#x65F6;&#x5E8F;&#x7EA6;&#x675F;&#x65F6;&#x4F1A;&#x5F15;&#x53D1;&#x5F02;&#x5E38;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;&#x67D0;&#x4E2A;&#x503C;&#xFF0C;&#x5219;&#x7B49;&#x5F85;&#x53E6;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x54CD;&#x5E94;&#x7684;&#x7EC4;&#x4EF6;&#x53EF;&#x80FD;&#x4F1A;&#x5F15;&#x53D1;&#x5F02;&#x5E38;&#x3002;
+</li></ul>
+</li>
+<li><p><em>Self-test</em>. Components (or, more likely, whole subsystems) can run procedures to test themselves for correct operation. Self-test procedures can be initiated by the component itself, or invoked from time to time by a system monitor. These may involve employing some of the techniques found in condition monitoring, such as checksums.</p></li>
+<li><em>&#x81EA;&#x68C0;</em>&#x3002;&#x7EC4;&#x4EF6;&#xFF08;&#x6216;&#x66F4;&#x53EF;&#x80FD;&#x662F;&#x6574;&#x4E2A;&#x5B50;&#x7CFB;&#x7EDF;&#xFF09;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x8FC7;&#x7A0B;&#x4EE5;&#x6D4B;&#x8BD5;&#x81EA;&#x8EAB;&#x662F;&#x5426;&#x6B63;&#x786E;&#x8FD0;&#x884C;&#x3002; &#x81EA;&#x68C0;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x7531;&#x7EC4;&#x4EF6;&#x672C;&#x8EAB;&#x542F;&#x52A8;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7531;&#x7CFB;&#x7EDF;&#x76D1;&#x89C6;&#x5668;&#x4E0D;&#x65F6;&#x8C03;&#x7528;&#x3002; &#x8FD9;&#x4E9B;&#x53EF;&#x80FD;&#x6D89;&#x53CA;&#x91C7;&#x7528;&#x72B6;&#x6001;&#x76D1;&#x89C6;&#x4E2D;&#x53D1;&#x73B0;&#x7684;&#x67D0;&#x4E9B;&#x6280;&#x672F;&#xFF0C;&#x4F8B;&#x5982;&#x6821;&#x9A8C;&#x548C;&#x3002;
+</li></ul>
+<p><strong>Recover from Faults &#x6545;&#x969C;&#x6062;&#x590D;</strong></p><p>Recover-from-faults tactics are refined into preparation-and-repair tactics and reintroduction tactics. The latter are concerned with reintroducing a failed (but rehabilitated) component back into normal operation. Preparation-and-repair tactics are based on a variety of combinations of retrying a computation or introducing redundancy. They include the following:</p><p>&#x201C;&#x4ECE;&#x6545;&#x969C;&#x4E2D;&#x6062;&#x590D;&#x201D;&#x7B56;&#x7565;&#x88AB;&#x7EC6;&#x5316;&#x4E3A;&#x201C;&#x51C6;&#x5907;&#x548C;&#x4FEE;&#x590D;&#x201D;&#x7B56;&#x7565;&#x548C;&#x201C;&#x91CD;&#x65B0;&#x5F15;&#x5165;&#x201D;&#x7B56;&#x7565;&#x3002; &#x540E;&#x8005;&#x4E0E;&#x5C06;&#x53D1;&#x751F;&#x6545;&#x969C;&#xFF08;&#x4F46;&#x5DF2;&#x4FEE;&#x590D;&#xFF09;&#x7684;&#x7EC4;&#x4EF6;&#x91CD;&#x65B0;&#x5F15;&#x5165;&#x6B63;&#x5E38;&#x64CD;&#x4F5C;&#x6709;&#x5173;&#x3002; &#x51C6;&#x5907;&#x548C;&#x4FEE;&#x590D;&#x7B56;&#x7565;&#x57FA;&#x4E8E;&#x91CD;&#x8BD5;&#x8BA1;&#x7B97;&#x6216;&#x5F15;&#x5165;&#x5197;&#x4F59;&#x7684;&#x591A;&#x79CD;&#x7EC4;&#x5408;&#x3002; &#x5176;&#x4E2D;&#x5305;&#x62EC;&#xFF1A;</p><ul><li><em>Active redundancy (hot spare)</em>. This refers to a configuration where all of the nodes (active or redundant spare) in a protection group[2][2] receive and process identical inputs in parallel, allowing the redundant spare(s) to maintain synchronous state with the active node(s). Because the redundant spare possesses an identical state to the active processor, it can take over from a failed component in a matter of milliseconds. The simple case of one active node and one redundant spare node is commonly referred to as 1+1 (&#x201C;one plus one&#x201D;) redundancy. Active redundancy can also be used for facilities protection, where active and standby network links are used to ensure highly available network connectivity.
+</li>
+<li><em>&#x4E3B;&#x52A8;&#x5197;&#x4F59;&#xFF08;&#x70ED;&#x5907;&#xFF09;</em>&#x3002;&#x8FD9;&#x662F;&#x6307;&#x4E00;&#x79CD;&#x914D;&#x7F6E;&#xFF0C;&#x5176;&#x4E2D;&#x4FDD;&#x62A4;&#x7EC4;[2][2]&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#xFF08;&#x6D3B;&#x52A8;&#x6216;&#x5197;&#x4F59;&#x5907;&#x7528;&#x8282;&#x70B9;&#xFF09;&#x5E76;&#x884C;&#x63A5;&#x6536;&#x548C;&#x5904;&#x7406;&#x76F8;&#x540C;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x4ECE;&#x800C;&#x5141;&#x8BB8;&#x5197;&#x4F59;&#x5907;&#x7528;&#x8282;&#x70B9;&#x4E0E;&#x6D3B;&#x52A8;&#x8282;&#x70B9;&#x4FDD;&#x6301;&#x540C;&#x6B65;&#x72B6;&#x6001;&#xFF08; s&#xFF09;&#x3002; &#x56E0;&#x4E3A;&#x5197;&#x4F59;&#x5907;&#x4EF6;&#x5177;&#x6709;&#x4E0E;&#x6D3B;&#x52A8;&#x5904;&#x7406;&#x5668;&#x76F8;&#x540C;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x53EF;&#x4EE5;&#x5728;&#x51E0;&#x6BEB;&#x79D2;&#x5185;&#x4ECE;&#x53D1;&#x751F;&#x6545;&#x969C;&#x7684;&#x7EC4;&#x4EF6;&#x4E2D;&#x63A5;&#x7BA1;&#x3002; &#x4E00;&#x4E2A;&#x6D3B;&#x52A8;&#x8282;&#x70B9;&#x548C;&#x4E00;&#x4E2A;&#x5197;&#x4F59;&#x5907;&#x7528;&#x8282;&#x70B9;&#x7684;&#x7B80;&#x5355;&#x60C5;&#x51B5;&#x901A;&#x5E38;&#x79F0;&#x4E3A;1+1&#xFF08;&#x201C;&#x4E00;&#x52A0;&#x4E00;&#x201D;&#xFF09;&#x5197;&#x4F59;&#x3002; &#x6D3B;&#x52A8;&#x5197;&#x4F59;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x8BBE;&#x65BD;&#x4FDD;&#x62A4;&#xFF0C;&#x5176;&#x4E2D;&#x6D3B;&#x52A8;&#x548C;&#x5907;&#x7528;&#x7F51;&#x7EDC;&#x94FE;&#x63A5;&#x7528;&#x4E8E;&#x786E;&#x4FDD;&#x9AD8;&#x53EF;&#x7528;&#x6027;&#x7684;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x3002;
+</li>
+<li><em>Passive redundancy (warm spare)</em>. This refers to a configuration where only the active members of the protection group process input traffic; one of their duties is to provide the redundant spare(s) with periodic state updates. Because the state maintained by the redundant spares is only loosely coupled with that of the active node(s) in the protection group (with the looseness of the coupling being a function of the checkpointing mechanism employed between active and redundant nodes), the redundant nodes are referred to as warm spares. Depending on a system&#x2019;s availability requirements, passive redundancy provides a solution that achieves a balance between the more highly available but more compute-intensive (and expensive) active redundancy tactic and the less available but significantly less complex cold spare tactic (which is also significantly cheaper). (For an example of implementing passive redundancy, see the section on code templates in Chapter 19.)
+</li>
+<li><em>&#x88AB;&#x52A8;&#x5197;&#x4F59;&#xFF08;&#x6E29;&#x5907;&#xFF09;</em>&#x3002; &#x8FD9;&#x662F;&#x6307;&#x4EC5;&#x4FDD;&#x62A4;&#x7EC4;&#x7684;&#x6D3B;&#x52A8;&#x6210;&#x5458;&#x5904;&#x7406;&#x8F93;&#x5165;&#x6D41;&#x91CF;&#x7684;&#x914D;&#x7F6E;&#xFF1B; &#x4ED6;&#x4EEC;&#x7684;&#x804C;&#x8D23;&#x4E4B;&#x4E00;&#x662F;&#x4E3A;&#x5197;&#x4F59;&#x5907;&#x4EF6;&#x63D0;&#x4F9B;&#x5B9A;&#x671F;&#x7684;&#x72B6;&#x6001;&#x66F4;&#x65B0;&#x3002; &#x7531;&#x4E8E;&#x5197;&#x4F59;&#x5907;&#x4EF6;&#x7EF4;&#x62A4;&#x7684;&#x72B6;&#x6001;&#x4EC5;&#x4E0E;&#x4FDD;&#x62A4;&#x7EC4;&#x4E2D;&#x6D3B;&#x52A8;&#x8282;&#x70B9;&#x7684;&#x72B6;&#x6001;&#x677E;&#x6563;&#x8026;&#x5408;&#xFF08;&#x8026;&#x5408;&#x7684;&#x677E;&#x6563;&#x5EA6;&#x53D6;&#x51B3;&#x4E8E;&#x6D3B;&#x52A8;&#x8282;&#x70B9;&#x548C;&#x5197;&#x4F59;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x4F7F;&#x7528;&#x7684;&#x68C0;&#x67E5;&#x70B9;&#x673A;&#x5236;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x5197;&#x4F59;&#x8282;&#x70B9; &#x88AB;&#x79F0;&#x4E3A;&#x6E29;&#x6696;&#x5907;&#x4EF6;&#x3002; &#x6839;&#x636E;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x7528;&#x6027;&#x8981;&#x6C42;&#xFF0C;&#x88AB;&#x52A8;&#x5197;&#x4F59;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x53EF;&#x5728;&#x8F83;&#x9AD8;&#x53EF;&#x7528;&#x6027;&#xFF0C;&#x4F46;&#x8BA1;&#x7B97;&#x91CF;&#x66F4;&#x5927;&#xFF08;&#x4E14;&#x4EF7;&#x683C;&#x6602;&#x8D35;&#xFF09;&#x7684;&#x4E3B;&#x52A8;&#x5197;&#x4F59;&#x7B56;&#x7565;&#x4E0E;&#x8F83;&#x5C11;&#x53EF;&#x7528;&#x6027;&#x4F46;&#x590D;&#x6742;&#x7A0B;&#x5EA6;&#x8F83;&#x4F4E;&#x7684;&#x51B7;&#x5907;&#x7528;&#x7B56;&#x7565;&#xFF08;&#x4E5F;&#x663E;&#x7740;&#x4FBF;&#x5B9C;&#xFF09;&#x4E4B;&#x95F4;&#x53D6;&#x5F97;&#x5E73;&#x8861; &#xFF09;&#x3002; &#xFF08;&#x6709;&#x5173;&#x5B9E;&#x73B0;&#x88AB;&#x52A8;&#x5197;&#x4F59;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x8BF7;&#x53C2;&#x89C1;&#x7B2C;19&#x7AE0;&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x6A21;&#x677F;&#x90E8;&#x5206;&#x3002;&#xFF09;
+</li>
+<li><em>Spare (cold spare)</em>. Cold sparing refers to a configuration where the redundant spares of a protection group remain out of service until a fail-over occurs, at which point a power-on-reset procedure is initiated on the redundant spare prior to its being placed in service. Due to its poor recovery performance, cold sparing is better suited for systems having only high-reliability (MTBF) requirements as opposed to those also having high-availability requirements.
+</li>
+<li><em>&#x5907;&#x7528;&#xFF08;&#x51B7;&#x5907;&#xFF09;</em>&#x3002; &#x51B7;&#x5907;&#x7528;&#x662F;&#x6307;&#x4E00;&#x79CD;&#x914D;&#x7F6E;&#xFF0C;&#x5728;&#x8BE5;&#x914D;&#x7F6E;&#x4E2D;&#xFF0C;&#x4FDD;&#x62A4;&#x7EC4;&#x7684;&#x5197;&#x4F59;&#x5907;&#x4EF6;&#x5C06;&#x4FDD;&#x6301;&#x4E0D;&#x53EF;&#x7528;&#x72B6;&#x6001;&#xFF0C;&#x76F4;&#x5230;&#x53D1;&#x751F;&#x6545;&#x969C;&#x8F6C;&#x79FB;&#x4E3A;&#x6B62;&#xFF0C;&#x6B64;&#x65F6;&#xFF0C;&#x5C06;&#x5728;&#x5197;&#x4F59;&#x5907;&#x4EF6;&#x6295;&#x5165;&#x4F7F;&#x7528;&#x4E4B;&#x524D;&#x5BF9;&#x5176;&#x542F;&#x52A8;&#x4E0A;&#x7535;&#x590D;&#x4F4D;&#x8FC7;&#x7A0B;&#x3002; &#x7531;&#x4E8E;&#x6062;&#x590D;&#x6027;&#x80FD;&#x5DEE;&#xFF0C;&#x51B7;&#x5907;&#x7528;&#x66F4;&#x9002;&#x5408;&#x4EC5;&#x5177;&#x6709;&#x9AD8;&#x53EF;&#x9760;&#x6027;&#xFF08;MTBF&#xFF09;&#x8981;&#x6C42;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E5F;&#x5177;&#x6709;&#x9AD8;&#x53EF;&#x7528;&#x6027;&#x8981;&#x6C42;&#x7684;&#x7CFB;&#x7EDF;&#x3002;
+</li>
+<li><em>Exception handling</em>. Once an exception has been detected, the system must handle it in some fashion. The easiest thing it can do is simply to crash, but of course that&#x2019;s a terrible idea from the point of availability, usability, testability, and plain good sense. There are much more productive possibilities. The mechanism employed for exception handling depends largely on the programming environment employed, ranging from simple function return codes (error codes) to the use of exception classes that contain information helpful in fault correlation, such as the name of the exception thrown, the origin of the exception, and the cause of the exception thrown. Software can then use this information to mask the fault, usually by correcting the cause of the exception and retrying the operation.
+</li>
+<li><em>&#x5F02;&#x5E38;&#x5904;&#x7406;</em>&#x3002; &#x4E00;&#x65E6;&#x68C0;&#x6D4B;&#x5230;&#x5F02;&#x5E38;&#xFF0C;&#x7CFB;&#x7EDF;&#x5FC5;&#x987B;&#x4EE5;&#x67D0;&#x79CD;&#x65B9;&#x5F0F;&#x5904;&#x7406;&#x5B83;&#x3002; &#x5B83;&#x53EF;&#x4EE5;&#x505A;&#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x4E8B;&#x60C5;&#x5C31;&#x662F;&#x5D29;&#x6E83;&#xFF0C;&#x4F46;&#x662F;&#x4ECE;&#x53EF;&#x7528;&#x6027;&#xFF0C;&#x53EF;&#x4F7F;&#x7528;&#x6027;&#xFF0C;&#x53EF;&#x6D4B;&#x8BD5;&#x6027;&#x548C;&#x901A;&#x4FD7;&#x6613;&#x61C2;&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x770B;&#xFF0C;&#x8FD9;&#x5F53;&#x7136;&#x662F;&#x4E00;&#x4E2A;&#x7CDF;&#x7CD5;&#x7684;&#x4E3B;&#x610F;&#x3002; &#x8FD8;&#x6709;&#x66F4;&#x591A;&#x7684;&#x751F;&#x4EA7;&#x53EF;&#x80FD;&#x6027;&#x3002; &#x5F02;&#x5E38;&#x5904;&#x7406;&#x6240;&#x91C7;&#x7528;&#x7684;&#x673A;&#x5236;&#x5728;&#x5F88;&#x5927;&#x7A0B;&#x5EA6;&#x4E0A;&#x53D6;&#x51B3;&#x4E8E;&#x6240;&#x91C7;&#x7528;&#x7684;&#x7F16;&#x7A0B;&#x73AF;&#x5883;&#xFF0C;&#x8303;&#x56F4;&#x4ECE;&#x7B80;&#x5355;&#x7684;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7801;&#xFF08;&#x9519;&#x8BEF;&#x4EE3;&#x7801;&#xFF09;&#x5230;&#x5F02;&#x5E38;&#x7C7B;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x8FD9;&#x4E9B;&#x5F02;&#x5E38;&#x7C7B;&#x5305;&#x542B;&#x6709;&#x52A9;&#x4E8E;&#x6545;&#x969C;&#x76F8;&#x5173;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F8B;&#x5982;&#x629B;&#x51FA;&#x7684;&#x5F02;&#x5E38;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x5F02;&#x5E38;&#x7684;&#x6765;&#x6E90; &#x5F02;&#x5E38;&#x4EE5;&#x53CA;&#x5F15;&#x53D1;&#x5F02;&#x5E38;&#x7684;&#x539F;&#x56E0;&#x3002; &#x7136;&#x540E;&#xFF0C;&#x8F6F;&#x4EF6;&#x901A;&#x5E38;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x66F4;&#x6B63;&#x5F02;&#x5E38;&#x539F;&#x56E0;&#x5E76;&#x91CD;&#x8BD5;&#x64CD;&#x4F5C;&#xFF0C;&#x4F7F;&#x7528;&#x6B64;&#x4FE1;&#x606F;&#x6765;&#x63A9;&#x76D6;&#x6545;&#x969C;&#x3002;
+</li>
+<li><em>Rollback</em>. This tactic permits the system to revert to a previous known good state, referred to as the &#x201C;rollback line&#x201D;&#x2014;rolling back time&#x2014;upon the detection of a failure. Once the good state is reached, then execution can continue. This tactic is often combined with active or passive redundancy tactics so that after a rollback has occurred, a standby version of the failed component is promoted to active status. Rollback depends on a copy of a previous good state (a checkpoint) being available to the components that are rolling back. Checkpoints can be stored in a fixed location and updated at regular intervals, or at convenient or significant times in the processing, such as at the completion of a complex operation.
+</li>
+<li><em>&#x56DE;&#x6EDA;</em>&#x3002; &#x6B64;&#x7B56;&#x7565;&#x5141;&#x8BB8;&#x7CFB;&#x7EDF;&#x5728;&#x68C0;&#x6D4B;&#x5230;&#x6545;&#x969C;&#x540E;&#x6062;&#x590D;&#x5230;&#x5148;&#x524D;&#x5DF2;&#x77E5;&#x7684;&#x826F;&#x597D;&#x72B6;&#x6001;&#xFF0C;&#x79F0;&#x4E3A;&#x201C;&#x56DE;&#x9000;&#x7EBF;&#x201D;&#xFF08;&#x56DE;&#x9000;&#x65F6;&#x95F4;&#xFF09;&#x3002; &#x4E00;&#x65E6;&#x8FBE;&#x5230;&#x826F;&#x597D;&#x72B6;&#x6001;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002; &#x6B64;&#x7B56;&#x7565;&#x901A;&#x5E38;&#x4E0E;&#x4E3B;&#x52A8;&#x6216;&#x88AB;&#x52A8;&#x5197;&#x4F59;&#x7B56;&#x7565;&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x4EE5;&#x4FBF;&#x5728;&#x53D1;&#x751F;&#x56DE;&#x6EDA;&#x4E4B;&#x540E;&#xFF0C;&#x5C06;&#x6545;&#x969C;&#x7EC4;&#x4EF6;&#x7684;&#x5907;&#x7528;&#x7248;&#x672C;&#x63D0;&#x5347;&#x4E3A;&#x6D3B;&#x52A8;&#x72B6;&#x6001;&#x3002; &#x56DE;&#x6EDA;&#x53D6;&#x51B3;&#x4E8E;&#x5148;&#x524D;&#x826F;&#x597D;&#x72B6;&#x6001;&#xFF08;&#x68C0;&#x67E5;&#x70B9;&#xFF09;&#x7684;&#x526F;&#x672C;&#x53EF;&#x7528;&#x4E8E;&#x6B63;&#x5728;&#x56DE;&#x6EDA;&#x7684;&#x7EC4;&#x4EF6;&#x3002; &#x53EF;&#x4EE5;&#x5C06;&#x68C0;&#x67E5;&#x70B9;&#x5B58;&#x50A8;&#x5728;&#x56FA;&#x5B9A;&#x4F4D;&#x7F6E;&#xFF0C;&#x5E76;&#x5728;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF08;&#x4F8B;&#x5982;&#x5728;&#x5B8C;&#x6210;&#x590D;&#x6742;&#x64CD;&#x4F5C;&#x65F6;&#xFF09;&#x5B9A;&#x671F;&#x6216;&#x5728;&#x65B9;&#x4FBF;&#x6216;&#x91CD;&#x8981;&#x7684;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#x3002;
+</li>
+<li><em>Software upgrade</em> is another preparation-and-repair tactic whose goal is to achieve in-service upgrades to executable code images in a non-service-affecting manner. This may be realized as a function patch, a class patch, or a hitless in-service software upgrade (ISSU). A function patch is used in procedural programming and employs an incremental linker/loader to store an updated software function into a pre-allocated segment of target memory. The new version of the software function will employ the entry and exit points of the deprecated function. Also, upon loading the new software function, the symbol table must be updated and the instruction cache invalidated. The class patch tactic is applicable for targets executing object-oriented code, where the class definitions include a back-door mechanism that enables the runtime addition of member data and functions. Hitless in-service software upgrade leverages the active redundancy or passive redundancy tactics to achieve non-service-affecting upgrades to software and associated schema. In practice, the function patch and class patch are used to deliver bug fixes, while the hitless in-service software upgrade is used to deliver new features and capabilities.
+</li>
+<li><em>&#x8F6F;&#x4EF6;&#x5347;&#x7EA7;</em> &#x662F;&#x53E6;&#x4E00;&#x79CD;&#x51C6;&#x5907;&#x548C;&#x4FEE;&#x590D;&#x7B56;&#x7565;&#xFF0C;&#x5176;&#x76EE;&#x6807;&#x662F;&#x4EE5;&#x4E0D;&#x5F71;&#x54CD;&#x670D;&#x52A1;&#x7684;&#x65B9;&#x5F0F;&#x5B9E;&#x73B0;&#x5BF9;&#x53EF;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x6620;&#x50CF;&#x7684;&#x670D;&#x52A1;&#x4E2D;&#x5347;&#x7EA7;&#x3002;&#x8FD9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x529F;&#x80FD;&#x8865;&#x4E01;&#xFF0C;&#x7C7B;&#x8865;&#x4E01;&#x6216;&#x65E0;&#x4E2D;&#x65AD;&#x8FD0;&#x884C;&#x4E2D;&#x8F6F;&#x4EF6;&#x5347;&#x7EA7;&#xFF08;ISSU&#xFF09;&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x529F;&#x80FD;&#x8865;&#x4E01;&#x7528;&#x4E8E;&#x8FC7;&#x7A0B;&#x7F16;&#x7A0B;&#x4E2D;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x589E;&#x91CF;&#x94FE;&#x63A5;&#x5668;/&#x52A0;&#x8F7D;&#x5668;&#x5C06;&#x66F4;&#x65B0;&#x7684;&#x8F6F;&#x4EF6;&#x529F;&#x80FD;&#x5B58;&#x50A8;&#x5230;&#x76EE;&#x6807;&#x5185;&#x5B58;&#x7684;&#x9884;&#x5206;&#x914D;&#x6BB5;&#x4E2D;&#x3002;&#x65B0;&#x7248;&#x672C;&#x7684;&#x8F6F;&#x4EF6;&#x529F;&#x80FD;&#x5C06;&#x4F7F;&#x7528;&#x4E0D;&#x8D5E;&#x6210;&#x4F7F;&#x7528;&#x7684;&#x529F;&#x80FD;&#x7684;&#x5165;&#x53E3;&#x548C;&#x51FA;&#x53E3;&#x3002;&#x540C;&#x6837;&#xFF0C;&#x5728;&#x52A0;&#x8F7D;&#x65B0;&#x8F6F;&#x4EF6;&#x529F;&#x80FD;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x66F4;&#x65B0;&#x7B26;&#x53F7;&#x8868;&#xFF0C;&#x5E76;&#x4F7F;&#x6307;&#x4EE4;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x65E0;&#x6548;&#x3002;&#x7C7B;&#x8865;&#x4E01;&#x7B56;&#x7565;&#x9002;&#x7528;&#x4E8E;&#x6267;&#x884C;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x4EE3;&#x7801;&#x7684;&#x76EE;&#x6807;&#xFF0C;&#x5176;&#x4E2D;&#x7C7B;&#x5B9A;&#x4E49;&#x5305;&#x62EC;&#x540E;&#x95E8;&#x673A;&#x5236;&#xFF0C;&#x8BE5;&#x673A;&#x5236;&#x53EF;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x6DFB;&#x52A0;&#x6210;&#x5458;&#x6570;&#x636E;&#x548C;&#x51FD;&#x6570;&#x3002;&#x65E0;&#x4E2D;&#x65AD;&#x670D;&#x52A1;&#x4E2D;&#x8F6F;&#x4EF6;&#x5347;&#x7EA7;&#x5229;&#x7528;&#x4E3B;&#x52A8;&#x5197;&#x4F59;&#x6216;&#x88AB;&#x52A8;&#x5197;&#x4F59;&#x7B56;&#x7565;&#x6765;&#x5B9E;&#x73B0;&#x5BF9;&#x8F6F;&#x4EF6;&#x548C;&#x76F8;&#x5173;&#x67B6;&#x6784;&#x7684;&#x4E0D;&#x5F71;&#x54CD;&#x670D;&#x52A1;&#x7684;&#x5347;&#x7EA7;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x529F;&#x80FD;&#x8865;&#x4E01;&#x548C;&#x7C7B;&#x8865;&#x4E01;&#x7528;&#x4E8E;&#x63D0;&#x4F9B;&#x9519;&#x8BEF;&#x4FEE;&#x590D;&#xFF0C;&#x800C;&#x65E0;&#x4E2D;&#x65AD;&#x7684;&#x5728;&#x7EBF;&#x670D;&#x52A1;&#x8F6F;&#x4EF6;&#x5347;&#x7EA7;&#x7528;&#x4E8E;&#x63D0;&#x4F9B;&#x65B0;&#x529F;&#x80FD;&#x3002;
+</li>
+<li><em>Retry</em>. The retry tactic assumes that the fault that caused a failure is transient and retrying the operation may lead to success. This tactic is used in networks and in server farms where failures are expected and common. There should be a limit on the number of retries that are attempted before a permanent failure is declared.
+</li>
+<li><em>&#x91CD;&#x8BD5;</em>&#x3002; &#x91CD;&#x8BD5;&#x7B56;&#x7565;&#x5047;&#x5B9A;&#x5BFC;&#x81F4;&#x6545;&#x969C;&#x7684;&#x6545;&#x969C;&#x662F;&#x6682;&#x65F6;&#x7684;&#xFF0C;&#x91CD;&#x8BD5;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x6210;&#x529F;&#x3002; &#x5728;&#x7F51;&#x7EDC;&#x548C;&#x670D;&#x52A1;&#x5668;&#x573A;&#x4E2D;&#xFF0C;&#x8FD9;&#x79CD;&#x7B56;&#x7565;&#x662F;&#x7ECF;&#x5E38;&#x53D1;&#x751F;&#x5E76;&#x7ECF;&#x5E38;&#x53D1;&#x751F;&#x6545;&#x969C;&#x7684;&#x7B56;&#x7565;&#x3002; &#x5728;&#x58F0;&#x660E;&#x6C38;&#x4E45;&#x6027;&#x6545;&#x969C;&#x4E4B;&#x524D;&#xFF0C;&#x5C1D;&#x8BD5;&#x91CD;&#x8BD5;&#x7684;&#x6B21;&#x6570;&#x5E94;&#x8BE5;&#x6709;&#x9650;&#x5236;&#x3002;
+</li>
+<li><em>Ignore faulty behavior</em>. This tactic calls for ignoring messages sent from a particular source when we determine that those messages are spurious. For example, we would like to ignore the messages of an external component launching a denial-of-service attack by establishing Access Control List filters, for example.
+</li>
+<li><em>&#x5FFD;&#x7565;&#x9519;&#x8BEF;&#x7684;&#x884C;&#x4E3A;</em>&#x3002; &#x5F53;&#x6211;&#x4EEC;&#x786E;&#x5B9A;&#x8FD9;&#x4E9B;&#x6D88;&#x606F;&#x662F;&#x4F2A;&#x9020;&#x7684;&#x65F6;&#xFF0C;&#x6B64;&#x7B56;&#x7565;&#x8981;&#x6C42;&#x5FFD;&#x7565;&#x4ECE;&#x7279;&#x5B9A;&#x6765;&#x6E90;&#x53D1;&#x9001;&#x7684;&#x6D88;&#x606F;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x901A;&#x8FC7;&#x5EFA;&#x7ACB;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#x5217;&#x8868;&#x8FC7;&#x6EE4;&#x5668;&#x6765;&#x5FFD;&#x7565;&#x5916;&#x90E8;&#x7EC4;&#x4EF6;&#x53D1;&#x8D77;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#x653B;&#x51FB;&#x7684;&#x6D88;&#x606F;&#x3002;
+</li>
+<li>The <em>degradation</em> tactic maintains the most critical system functions in the presence of component failures, dropping less critical functions. This is done in circumstances where individual component failures gracefully reduce system functionality rather than causing a complete system failure.
+</li>
+<li>&#x5728;&#x5B58;&#x5728;&#x7EC4;&#x4EF6;&#x6545;&#x969C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<em>&#x964D;&#x7EA7;&#x7B56;&#x7565;</em> &#x53EF;&#x7EF4;&#x6301;&#x6700;&#x5173;&#x952E;&#x7684;&#x7CFB;&#x7EDF;&#x529F;&#x80FD;&#xFF0C;&#x800C;&#x964D;&#x4F4E;&#x6B21;&#x8981;&#x529F;&#x80FD;&#x3002; &#x5728;&#x5355;&#x4E2A;&#x7EC4;&#x4EF6;&#x6545;&#x969C;&#x4F1A;&#x9002;&#x5F53;&#x51CF;&#x5C11;&#x7CFB;&#x7EDF;&#x529F;&#x80FD;&#x800C;&#x4E0D;&#x662F;&#x5BFC;&#x81F4;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x6545;&#x969C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x505A;&#x3002;
+</li>
+<li><em>Reconfiguration</em> attempts to recover from component failures by reassigning responsibilities to the (potentially restricted) resources left functioning, while maintaining as much functionality as possible.
+</li>
+<li><em>&#x91CD;&#x65B0;&#x914D;&#x7F6E;</em> &#x5C1D;&#x8BD5;&#x901A;&#x8FC7;&#x5C06;&#x804C;&#x8D23;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x7ED9;&#xFF08;&#x53EF;&#x80FD;&#x53D7;&#x9650;&#x5236;&#x7684;&#xFF09;&#x5269;&#x4F59;&#x529F;&#x80FD;&#x6765;&#x6062;&#x590D;&#x7EC4;&#x4EF6;&#x6545;&#x969C;&#xFF0C;&#x540C;&#x65F6;&#x4FDD;&#x6301;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x529F;&#x80FD;&#x3002;
+</li></ul>
+<p>Reintroduction is where a failed component is reintroduced after it has been corrected. Reintroduction tactics include the following:</p><p>&#x91CD;&#x65B0;&#x5F15;&#x5165;&#x662F;&#x5728;&#x7EA0;&#x6B63;&#x6545;&#x969C;&#x7EC4;&#x4EF6;&#x540E;&#x5C06;&#x5176;&#x91CD;&#x65B0;&#x5F15;&#x5165;&#x7684;&#x5730;&#x65B9;&#x3002;&#x91CD;&#x65B0;&#x5F15;&#x5165;&#x7B56;&#x7565;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p><ul><li>The <em>shadow</em> tactic refers to operating a previously failed or in-service upgraded component in a &#x201C;shadow mode&#x201D; for a predefined duration of time prior to reverting the component back to an active role. During this duration its behavior can be monitored for correctness and it can repopulate its state incrementally.
+</li>
+<li><em>&#x5F71;&#x5B50;</em> &#x7B56;&#x7565;&#x662F;&#x6307;&#x5728;&#x5C06;&#x7EC4;&#x4EF6;&#x6062;&#x590D;&#x4E3A;&#x6D3B;&#x52A8;&#x89D2;&#x8272;&#x4E4B;&#x524D;&#xFF0C;&#x4EE5;&#x201C;&#x5F71;&#x5B50;&#x6A21;&#x5F0F;&#x201D;&#x5C06;&#x5148;&#x524D;&#x53D1;&#x751F;&#x6545;&#x969C;&#x6216;&#x670D;&#x52A1;&#x4E2D;&#x7684;&#x5347;&#x7EA7;&#x7EC4;&#x4EF6;&#x8FD0;&#x884C;&#x9884;&#x5B9A;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x3002; &#x5728;&#x6B64;&#x671F;&#x95F4;&#xFF0C;&#x53EF;&#x4EE5;&#x76D1;&#x89C6;&#x5176;&#x884C;&#x4E3A;&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x5E76;&#x53EF;&#x4EE5;&#x9012;&#x589E;&#x5176;&#x72B6;&#x6001;&#x3002;
+</li>
+<li><em>State resynchronization</em> is a reintroduction partner to the active redundancy and passive redundancy preparation-and-repair tactics. When used alongside the active redundancy tactic, the state resynchronization occurs organically, because the active and standby components each receive and process identical inputs in parallel. In practice, the states of the active and standby components are periodically compared to ensure synchronization. This comparison may be based on a cyclic redundancy check calculation (checksum) or, for systems providing safety-critical services, a message digest calculation (a one-way hash function). When used alongside the passive redundancy (warm spare) tactic, state resynchronization is based solely on periodic state information transmitted from the active component(s) to the standby component(s), typically via checkpointing. A special case of this tactic is found in stateless services, whereby any resource can handle a request from another (failed) resource.
+</li>
+<li><em>&#x72B6;&#x6001;&#x91CD;&#x65B0;&#x540C;&#x6B65;</em> &#x662F;&#x4E3B;&#x52A8;&#x5197;&#x4F59;&#x548C;&#x88AB;&#x52A8;&#x5197;&#x4F59;&#x51C6;&#x5907;&#x4E0E;&#x4FEE;&#x590D;&#x7B56;&#x7565;&#x7684;&#x91CD;&#x65B0;&#x5F15;&#x5165;&#x4F19;&#x4F34;&#x3002; &#x4E0E;&#x4E3B;&#x52A8;&#x5197;&#x4F59;&#x7B56;&#x7565;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x72B6;&#x6001;&#x91CD;&#x65B0;&#x540C;&#x6B65;&#x81EA;&#x7136;&#x53D1;&#x751F;&#xFF0C;&#x56E0;&#x4E3A;&#x4E3B;&#x52A8;&#x548C;&#x5907;&#x7528;&#x7EC4;&#x4EF6;&#x5404;&#x81EA;&#x5E76;&#x884C;&#x63A5;&#x6536;&#x548C;&#x5904;&#x7406;&#x76F8;&#x540C;&#x7684;&#x8F93;&#x5165;&#x3002; &#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5C06;&#x5B9A;&#x671F;&#x6BD4;&#x8F83;&#x6D3B;&#x52A8;&#x7EC4;&#x4EF6;&#x548C;&#x5907;&#x7528;&#x7EC4;&#x4EF6;&#x7684;&#x72B6;&#x6001;&#x4EE5;&#x786E;&#x4FDD;&#x540C;&#x6B65;&#x3002; &#x8BE5;&#x6BD4;&#x8F83;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x5FAA;&#x73AF;&#x5197;&#x4F59;&#x6821;&#x9A8C;&#x8BA1;&#x7B97;&#xFF08;&#x6821;&#x9A8C;&#x548C;&#xFF09;&#xFF0C;&#x6216;&#x8005;&#x5BF9;&#x4E8E;&#x63D0;&#x4F9B;&#x5B89;&#x5168;&#x5173;&#x952E;&#x670D;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x57FA;&#x4E8E;&#x6D88;&#x606F;&#x6458;&#x8981;&#x8BA1;&#x7B97;&#xFF08;&#x5355;&#x5411;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#xFF09;&#x3002; &#x5F53;&#x4E0E;&#x88AB;&#x52A8;&#x5197;&#x4F59;&#xFF08;&#x70ED;&#x5907;&#x7528;&#xFF09;&#x7B56;&#x7565;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x72B6;&#x6001;&#x91CD;&#x65B0;&#x540C;&#x6B65;&#x901A;&#x5E38;&#x4EC5;&#x57FA;&#x4E8E;&#x4ECE;&#x6D3B;&#x52A8;&#x7EC4;&#x4EF6;&#x4F20;&#x8F93;&#x5230;&#x5907;&#x7528;&#x7EC4;&#x4EF6;&#xFF08;&#x901A;&#x5E38;&#x901A;&#x8FC7;&#x68C0;&#x67E5;&#x70B9;&#xFF09;&#x7684;&#x5468;&#x671F;&#x6027;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x3002; &#x8FD9;&#x79CD;&#x7B56;&#x7565;&#x7684;&#x4E00;&#x4E2A;&#x7279;&#x4F8B;&#x662F;&#x5728;&#x65E0;&#x72B6;&#x6001;&#x670D;&#x52A1;&#x4E2D;&#x53D1;&#x73B0;&#xFF0C;&#x5176;&#x4E2D;&#x4EFB;&#x4F55;&#x8D44;&#x6E90;&#x90FD;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x6765;&#x81EA;&#x53E6;&#x4E00;&#x4E2A;&#xFF08;&#x5931;&#x8D25;&#xFF09;&#x8D44;&#x6E90;&#x7684;&#x8BF7;&#x6C42;&#x3002;
+</li>
+<li><em>Escalating restart</em> is a reintroduction tactic that allows the system to recover from faults by varying the granularity of the component(s) restarted and minimizing the level of service affected. For example, consider a system that supports four levels of restart, as follows. The lowest level of restart (call it Level 0), and hence having the least impact on services, employs passive redundancy (warm spare), where all child threads of the faulty component are killed and recreated. In this way, only data associated with the child threads is freed and reinitialized. The next level of restart (Level 1) frees and reinitializes all unprotected memory (protected memory would remain untouched). The next level of restart (Level 2) frees and reinitializes all memory, both protected and unprotected, forcing all applications to reload and reinitialize. And the final level of restart (Level 3) would involve completely reloading and reinitializing the executable image and associated data segments. Support for the escalating restart tactic is particularly useful for the concept of graceful degradation, where a system is able to degrade the services it provides while maintaining support for mission-critical or safety-critical applications.
+</li>
+<li><em>&#x5347;&#x7EA7;&#x91CD;&#x542F;</em> &#x662F;&#x4E00;&#x79CD;&#x91CD;&#x65B0;&#x5F15;&#x5165;&#x7684;&#x7B56;&#x7565;&#xFF0C;&#x901A;&#x8FC7;&#x6539;&#x53D8;&#x91CD;&#x542F;&#x7EC4;&#x4EF6;&#x7684;&#x7C92;&#x5EA6;&#x5E76;&#x6700;&#x5C0F;&#x5316;&#x53D7;&#x5F71;&#x54CD;&#x7684;&#x670D;&#x52A1;&#x6C34;&#x5E73;&#xFF0C;&#x5141;&#x8BB8;&#x7CFB;&#x7EDF;&#x4ECE;&#x6545;&#x969C;&#x4E2D;&#x6062;&#x590D;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x8003;&#x8651;&#x5982;&#x4E0B;&#x652F;&#x6301;&#x56DB;&#x4E2A;&#x91CD;&#x542F;&#x7EA7;&#x522B;&#x7684;&#x7CFB;&#x7EDF;&#x3002;&#x6700;&#x4F4E;&#x7EA7;&#x522B;&#x7684;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#xFF08;&#x79F0;&#x4E3A;&#x7EA7;&#x522B;0&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x5BF9;&#x670D;&#x52A1;&#x7684;&#x5F71;&#x54CD;&#x6700;&#x5C0F;&#xFF0C;&#x91C7;&#x7528;&#x88AB;&#x52A8;&#x5197;&#x4F59;&#xFF08;&#x70ED;&#x5907;&#x7528;&#xFF09;&#xFF0C;&#x5176;&#x4E2D;&#xFF0C;&#x6545;&#x969C;&#x7EC4;&#x4EF6;&#x7684;&#x6240;&#x6709;&#x5B50;&#x7EBF;&#x7A0B;&#x90FD;&#x5C06;&#x88AB;&#x6740;&#x6B7B;&#x5E76;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x4EC5;&#x91CA;&#x653E;&#x548C;&#x91CD;&#x65B0;&#x521D;&#x59CB;&#x5316;&#x4E0E;&#x5B50;&#x7EBF;&#x7A0B;&#x5173;&#x8054;&#x7684;&#x6570;&#x636E;&#x3002;&#x4E0B;&#x4E00;&#x7EA7;&#x522B;&#x7684;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#xFF08;&#x7EA7;&#x522B;1&#xFF09;&#x5C06;&#x91CA;&#x653E;&#x5E76;&#x91CD;&#x65B0;&#x521D;&#x59CB;&#x5316;&#x6240;&#x6709;&#x4E0D;&#x53D7;&#x4FDD;&#x62A4;&#x7684;&#x5185;&#x5B58;&#xFF08;&#x53D7;&#x4FDD;&#x62A4;&#x7684;&#x5185;&#x5B58;&#x5C06;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#xFF09;&#x3002;&#x4E0B;&#x4E00;&#x7EA7;&#x522B;&#x7684;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#xFF08;&#x7EA7;&#x522B;2&#xFF09;&#x5C06;&#x91CA;&#x653E;&#x5E76;&#x91CD;&#x65B0;&#x521D;&#x59CB;&#x5316;&#x6240;&#x6709;&#x53D7;&#x4FDD;&#x62A4;&#x548C;&#x4E0D;&#x53D7;&#x4FDD;&#x62A4;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x4ECE;&#x800C;&#x8FEB;&#x4F7F;&#x6240;&#x6709;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x548C;&#x91CD;&#x65B0;&#x521D;&#x59CB;&#x5316;&#x3002;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x7684;&#x6700;&#x7EC8;&#x7EA7;&#x522B;&#xFF08;&#x7EA7;&#x522B;3&#xFF09;&#x5C06;&#x6D89;&#x53CA;&#x5B8C;&#x5168;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x5E76;&#x91CD;&#x65B0;&#x521D;&#x59CB;&#x5316;&#x53EF;&#x6267;&#x884C;&#x6620;&#x50CF;&#x548C;&#x5173;&#x8054;&#x7684;&#x6570;&#x636E;&#x6BB5;&#x3002;&#x5BF9;&#x9010;&#x6B65;&#x91CD;&#x542F;&#x7B56;&#x7565;&#x7684;&#x652F;&#x6301;&#x5BF9;&#x4E8E;&#x5E73;&#x7A33;&#x964D;&#x7EA7;&#x7684;&#x6982;&#x5FF5;&#x7279;&#x522B;&#x6709;&#x7528;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x964D;&#x7EA7;&#x4E2D;&#xFF0C;&#x7CFB;&#x7EDF;&#x80FD;&#x591F;&#x964D;&#x7EA7;&#x5176;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x540C;&#x65F6;&#x4FDD;&#x6301;&#x5BF9;&#x5173;&#x952E;&#x4EFB;&#x52A1;&#x6216;&#x5B89;&#x5168;&#x5173;&#x952E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x652F;&#x6301;&#x3002;
+</li>
+<li><em>Non-stop forwarding</em> (NSF) is a concept that originated in router design. In this design functionality is split into two parts: supervisory, or control plane (which manages connectivity and routing information), and data plane (which does the actual work of routing packets from sender to receiver). If a router experiences the failure of an active supervisor, it can continue  forwarding packets along known routes&#x2014;with neighboring routers&#x2014;while the routing protocol information is recovered and validated. When the control plane is restarted, it implements what is sometimes called &#x201C;graceful restart,&#x201D; incrementally rebuilding its routing protocol database even as the data plane continues to operate.
+</li>
+<li><em>&#x4E0D;&#x95F4;&#x65AD;&#x8F6C;&#x53D1;</em>&#xFF08;NSF&#xFF09;&#x662F;&#x6E90;&#x81EA;&#x8DEF;&#x7531;&#x5668;&#x8BBE;&#x8BA1;&#x7684;&#x6982;&#x5FF5;&#x3002; &#x5728;&#x6B64;&#x8BBE;&#x8BA1;&#x4E2D;&#xFF0C;&#x529F;&#x80FD;&#x5206;&#x4E3A;&#x4E24;&#x90E8;&#x5206;&#xFF1A;&#x7BA1;&#x7406;&#x6216;&#x63A7;&#x5236;&#x5E73;&#x9762;&#xFF08;&#x7BA1;&#x7406;&#x8FDE;&#x63A5;&#x6027;&#x548C;&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#xFF09;&#xFF0C;&#x4EE5;&#x53CA;&#x6570;&#x636E;&#x5E73;&#x9762;&#xFF08;&#x5B8C;&#x6210;&#x5C06;&#x6570;&#x636E;&#x5305;&#x4ECE;&#x53D1;&#x9001;&#x65B9;&#x8DEF;&#x7531;&#x5230;&#x63A5;&#x6536;&#x65B9;&#x7684;&#x5B9E;&#x9645;&#x5DE5;&#x4F5C;&#xFF09;&#x3002; &#x5982;&#x679C;&#x8DEF;&#x7531;&#x5668;&#x9047;&#x5230;&#x6D3B;&#x52A8;&#x7684;&#x7BA1;&#x7406;&#x5668;&#x6545;&#x969C;&#xFF0C;&#x5219;&#x5B83;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x4E0E;&#x76F8;&#x90BB;&#x8DEF;&#x7531;&#x5668;&#x4E00;&#x8D77;&#x6CBF;&#x7740;&#x5DF2;&#x77E5;&#x8DEF;&#x7531;&#x8F6C;&#x53D1;&#x6570;&#x636E;&#x5305;&#xFF0C;&#x540C;&#x65F6;&#x6062;&#x590D;&#x5E76;&#x9A8C;&#x8BC1;&#x8DEF;&#x7531;&#x534F;&#x8BAE;&#x4FE1;&#x606F;&#x3002; &#x91CD;&#x65B0;&#x542F;&#x52A8;&#x63A7;&#x5236;&#x5E73;&#x9762;&#x540E;&#xFF0C;&#x5373;&#x4F7F;&#x6570;&#x636E;&#x5E73;&#x9762;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#xFF0C;&#x5B83;&#x4E5F;&#x4F1A;&#x6267;&#x884C;&#x6709;&#x65F6;&#x79F0;&#x4E3A;&#x201C;&#x6B63;&#x5E38;&#x91CD;&#x542F;&#x201D;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4ECE;&#x800C;&#x9010;&#x6B65;&#x91CD;&#x5EFA;&#x5176;&#x8DEF;&#x7531;&#x534F;&#x8BAE;&#x6570;&#x636E;&#x5E93;&#x3002;
+</li></ul>
+<p><strong>Prevent Faults &#x9884;&#x9632;&#x6545;&#x969C;</strong></p><p>Instead of detecting faults and then trying to recover from them, what if your system could prevent them from occurring in the first place? Although this sounds like some measure of clairvoyance might be required, it turns out that in many cases it is possible to do just that. [3][3]</p><p>&#x9664;&#x4E86;&#x68C0;&#x6D4B;&#x6545;&#x969C;&#x7136;&#x540E;&#x5C1D;&#x8BD5;&#x4ECE;&#x6545;&#x969C;&#x4E2D;&#x6062;&#x590D;&#x4E4B;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x7684;&#x7CFB;&#x7EDF;&#x53EF;&#x4EE5;&#x4ECE;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x9632;&#x6B62;&#x5B83;&#x4EEC;&#x53D1;&#x751F;&#x600E;&#x4E48;&#x529E;&#xFF1F; &#x5C3D;&#x7BA1;&#x8FD9;&#x542C;&#x8D77;&#x6765;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x5343;&#x91CC;&#x773C;&#xFF0C;&#x4F46;&#x4E8B;&#x5B9E;&#x8BC1;&#x660E;&#xFF0C;&#x5728;&#x8BB8;&#x591A;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x505A;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#x3002; [3][3]</p><ul><li><em>Removal from service</em>. This tactic refers to temporarily placing a system component in an out-of-service state for the purpose of mitigating potential system failures. One example involves taking a component of a system out of service and resetting the component in order to scrub latent faults (such as memory leaks, fragmentation, or soft errors in an unprotected cache) before the accumulation of faults affects service (resulting in system failure). Another term for this tactic is software rejuvenation.
+</li>
+<li><em>&#x4ECE;&#x670D;&#x52A1;&#x4E2D;&#x5220;&#x9664;</em>&#x3002; &#x6B64;&#x7B56;&#x7565;&#x662F;&#x6307;&#x4E3A;&#x4E86;&#x51CF;&#x8F7B;&#x6F5C;&#x5728;&#x7684;&#x7CFB;&#x7EDF;&#x5931;&#x6548;&#xFF0C;&#x5C06;&#x7CFB;&#x7EDF;&#x7EC4;&#x4EF6;&#x6682;&#x65F6;&#x7F6E;&#x4E8E;&#x670D;&#x52A1;&#x505C;&#x6B62;&#x72B6;&#x6001;&#x3002; &#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#x6D89;&#x53CA;&#x4F7F;&#x7CFB;&#x7EDF;&#x7684;&#x67D0;&#x4E2A;&#x7EC4;&#x4EF6;&#x505C;&#x6B62;&#x670D;&#x52A1;&#x5E76;&#x91CD;&#x7F6E;&#x8BE5;&#x7EC4;&#x4EF6;&#xFF0C;&#x4EE5;&#x4FBF;&#x5728;&#x6545;&#x969C;&#x7D2F;&#x79EF;&#x5F71;&#x54CD;&#x670D;&#x52A1;&#xFF08;&#x5BFC;&#x81F4;&#x7CFB;&#x7EDF;&#x6545;&#x969C;&#xFF09;&#x4E4B;&#x524D;&#x6E05;&#x9664;&#x6F5C;&#x5728;&#x6545;&#x969C;&#xFF08;&#x4F8B;&#x5982;&#x5185;&#x5B58;&#x6CC4;&#x6F0F;&#xFF0C;&#x788E;&#x7247;&#x6216;&#x4E0D;&#x53D7;&#x4FDD;&#x62A4;&#x7684;&#x7F13;&#x5B58;&#x4E2D;&#x7684;&#x8F6F;&#x9519;&#x8BEF;&#xFF09;&#x3002; &#xFF09;&#x3002; &#x6B64;&#x7B56;&#x7565;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x672F;&#x8BED;&#x662F;&#x8F6F;&#x4EF6;&#x590D;&#x539F;&#x3002;
+</li>
+<li><em>Transactions</em>. Systems targeting high-availability services leverage transactional semantics to ensure that asynchronous messages exchanged between distributed components are atomic, consistent, isolated, and durable. These four properties are called the &#x201C;ACID properties.&#x201D; The most common realization of the transactions tactic is &#x201C;two-phase commit&#x201D; (a.k.a. 2PC) protocol. This tactic prevents race conditions caused by two processes attempting to update the same data item.
+</li>
+<li><em>&#x4E8B;&#x52A1;</em>&#x3002;&#x9762;&#x5411;&#x9AD8;&#x53EF;&#x7528;&#x6027;&#x670D;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#x5229;&#x7528;&#x4E8B;&#x52A1;&#x8BED;&#x4E49;&#x6765;&#x786E;&#x4FDD;&#x5206;&#x5E03;&#x5F0F;&#x7EC4;&#x4EF6;&#x4E4B;&#x95F4;&#x4EA4;&#x6362;&#x7684;&#x5F02;&#x6B65;&#x6D88;&#x606F;&#x662F;&#x539F;&#x5B50;&#x7684;&#xFF0C;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x9694;&#x79BB;&#x7684;&#x548C;&#x6301;&#x4E45;&#x7684;&#x3002; &#x8FD9;&#x56DB;&#x4E2A;&#x5C5E;&#x6027;&#x79F0;&#x4E3A;&#x201C; ACID&#x5C5E;&#x6027;&#x201D;&#x3002;&#x4E8B;&#x52A1;&#x7B56;&#x7565;&#x7684;&#x6700;&#x5E38;&#x89C1;&#x5B9E;&#x73B0;&#x662F;&#x201C;&#x4E24;&#x9636;&#x6BB5;&#x63D0;&#x4EA4;&#x201D;&#xFF08;&#x4E5F;&#x79F0;&#x4E3A;2PC&#xFF09;&#x534F;&#x8BAE;&#x3002; &#x6B64;&#x7B56;&#x7565;&#x53EF;&#x9632;&#x6B62;&#x7531;&#x4E24;&#x4E2A;&#x8BD5;&#x56FE;&#x66F4;&#x65B0;&#x540C;&#x4E00;&#x6570;&#x636E;&#x9879;&#x7684;&#x8FDB;&#x7A0B;&#x5F15;&#x8D77;&#x7684;&#x4E89;&#x7528;&#x6761;&#x4EF6;&#x3002;
+</li>
+<li><em>Predictive model</em>. A predictive model, when combined with a monitor, is employed to monitor the state of health of a system process to ensure that the system is operating within its nominal operating parameters, and to take corrective action when conditions are detected that are predictive of likely future faults. The operational performance metrics monitored are used to predict the onset of faults; examples include session establishment rate (in an HTTP server), threshold crossing (monitoring high and low water marks for some constrained, shared resource), or maintaining statistics for process state (in service, out of service, under maintenance, idle), message queue length statistics, and so on.
+</li>
+<li><em>&#x9884;&#x6D4B;&#x6A21;&#x578B;</em>&#x3002; &#x5F53;&#x4E0E;&#x76D1;&#x63A7;&#x5668;&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#x9884;&#x6D4B;&#x6A21;&#x578B;&#x65F6;&#xFF0C;&#x8BE5;&#x6A21;&#x578B;&#x5C06;&#x7528;&#x4E8E;&#x76D1;&#x89C6;&#x7CFB;&#x7EDF;&#x8FDB;&#x7A0B;&#x7684;&#x8FD0;&#x884C;&#x72B6;&#x51B5;&#xFF0C;&#x4EE5;&#x786E;&#x4FDD;&#x7CFB;&#x7EDF;&#x5728;&#x5176;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x53C2;&#x6570;&#x8303;&#x56F4;&#x5185;&#x8FD0;&#x884C;&#xFF0C;&#x5E76;&#x5728;&#x68C0;&#x6D4B;&#x5230;&#x53EF;&#x9884;&#x6D4B;&#x672A;&#x6765;&#x7684;&#x6761;&#x4EF6;&#x65F6;&#x91C7;&#x53D6;&#x7EA0;&#x6B63;&#x63AA;&#x65BD; &#x6545;&#x969C;&#x3002; &#x76D1;&#x89C6;&#x7684;&#x64CD;&#x4F5C;&#x6027;&#x80FD;&#x6307;&#x6807;&#x7528;&#x4E8E;&#x9884;&#x6D4B;&#x6545;&#x969C;&#x7684;&#x53D1;&#x751F;&#xFF1B; &#x793A;&#x4F8B;&#x5305;&#x62EC;&#x4F1A;&#x8BDD;&#x5EFA;&#x7ACB;&#x901F;&#x7387;&#xFF08;&#x5728;HTTP&#x670D;&#x52A1;&#x5668;&#x4E2D;&#xFF09;&#xFF0C;&#x9608;&#x503C;&#x7A7F;&#x8D8A;&#xFF08;&#x76D1;&#x89C6;&#x67D0;&#x4E9B;&#x53D7;&#x9650;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x7684;&#x9AD8;&#x6C34;&#x4F4D;&#x7EBF;&#x548C;&#x4F4E;&#x6C34;&#x4F4D;&#x7EBF;&#xFF09;&#x6216;&#x7EF4;&#x62A4;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x7684;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#xFF08;&#x670D;&#x52A1;&#x4E2D;&#xFF0C;&#x670D;&#x52A1;&#x4E2D;&#xFF0C;&#x7EF4;&#x62A4;&#x4E2D;&#xFF0C;&#x7A7A;&#x95F2;&#xFF09;&#xFF0C;&#x6D88;&#x606F; &#x961F;&#x5217;&#x957F;&#x5EA6;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#xFF0C;&#x7B49;&#x7B49;&#x3002;
+</li>
+<li><em>Exception prevention</em>. This tactic refers to techniques employed for the purpose of preventing system exceptions from occurring. The use of exception classes, which allows a system to transparently recover from system exceptions, was discussed previously. Other examples of exception prevention include abstract data types, such as smart pointers, and the use of wrappers to prevent faults, such as dangling pointers and semaphore access violations from occurring. Smart pointers prevent exceptions by doing bounds checking on pointers, and by ensuring that resources are automatically deallocated when no data refers to it. In this way resource leaks are avoided.
+</li>
+<li><em>&#x5F02;&#x5E38;&#x9884;&#x9632;</em>&#x3002; &#x8BE5;&#x7B56;&#x7565;&#x662F;&#x6307;&#x7528;&#x4E8E;&#x9632;&#x6B62;&#x53D1;&#x751F;&#x7CFB;&#x7EDF;&#x5F02;&#x5E38;&#x7684;&#x6280;&#x672F;&#x3002; &#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x8BA8;&#x8BBA;&#x4E86;&#x4F7F;&#x7528;&#x5F02;&#x5E38;&#x7C7B;&#xFF0C;&#x8BE5;&#x7C7B;&#x5141;&#x8BB8;&#x7CFB;&#x7EDF;&#x900F;&#x660E;&#x5730;&#x4ECE;&#x7CFB;&#x7EDF;&#x5F02;&#x5E38;&#x4E2D;&#x6062;&#x590D;&#x3002; &#x5F02;&#x5E38;&#x9884;&#x9632;&#x7684;&#x5176;&#x4ED6;&#x793A;&#x4F8B;&#x5305;&#x62EC;&#x62BD;&#x8C61;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF08;&#x4F8B;&#x5982;&#x667A;&#x80FD;&#x6307;&#x9488;&#xFF09;&#x4EE5;&#x53CA;&#x4F7F;&#x7528;&#x5305;&#x88C5;&#x7A0B;&#x5E8F;&#x6765;&#x9632;&#x6B62;&#x9519;&#x8BEF;&#xFF08;&#x4F8B;&#x5982;&#x60AC;&#x6302;&#x7684;&#x6307;&#x9488;&#x548C;&#x4FE1;&#x53F7;&#x91CF;&#x8BBF;&#x95EE;&#x51B2;&#x7A81;&#xFF09;&#x53D1;&#x751F;&#x3002; &#x667A;&#x80FD;&#x6307;&#x9488;&#x901A;&#x8FC7;&#x5BF9;&#x6307;&#x9488;&#x8FDB;&#x884C;&#x8FB9;&#x754C;&#x68C0;&#x67E5;&#x4EE5;&#x53CA;&#x786E;&#x4FDD;&#x5728;&#x6CA1;&#x6709;&#x6570;&#x636E;&#x5F15;&#x7528;&#x65F6;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#x6765;&#x9632;&#x6B62;&#x5F02;&#x5E38;&#x3002; &#x8FD9;&#x6837;&#xFF0C;&#x907F;&#x514D;&#x4E86;&#x8D44;&#x6E90;&#x6CC4;&#x6F0F;&#x3002;
+</li>
+<li><em>Increase competence set</em>. A program&#x2019;s competence set is the set of states in which it is &#x201C;competent&#x201D; to operate. For example, the state when the denominator is zero is outside the competence set of most divide programs. When a component raises an exception, it is signaling that it has discovered itself to be outside its competence set; in essence, it doesn&#x2019;t know what to do and is throwing in the towel. Increasing a component&#x2019;s competence set means designing it to handle more cases&#x2014;faults&#x2014;as part of its normal operation. For example, a component that assumes it has access to a shared resource might throw an exception if it discovers that access is blocked. Another component might simply wait for access, or return immediately with an indication that it will complete its operation on its own the next time it does have access. In this example, the second component has a larger competence set than the first.
+</li>
+<li><em>&#x589E;&#x52A0;&#x80FD;&#x529B;&#x8BBE;&#x5B9A;</em>&#x3002; &#x7A0B;&#x5E8F;&#x7684;&#x6743;&#x9650;&#x96C6;&#x662F;&#x5728;&#x5176;&#x4E2D;&#x201C;&#x6709;&#x80FD;&#x529B;&#x201D;&#x8FD0;&#x884C;&#x7684;&#x72B6;&#x6001;&#x96C6;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x5206;&#x6BCD;&#x4E3A;&#x96F6;&#x65F6;&#x7684;&#x72B6;&#x6001;&#x5728;&#x5927;&#x591A;&#x6570;&#x9664;&#x6CD5;&#x7A0B;&#x5E8F;&#x7684;&#x80FD;&#x529B;&#x8303;&#x56F4;&#x4E4B;&#x5916;&#x3002; &#x5F53;&#x67D0;&#x4E2A;&#x7EC4;&#x4EF6;&#x5F15;&#x53D1;&#x5F02;&#x5E38;&#x65F6;&#xFF0C;&#x5B83;&#x8868;&#x793A;&#x5B83;&#x5DF2;&#x53D1;&#x73B0;&#x81EA;&#x5DF1;&#x4E0D;&#x5728;&#x5176;&#x80FD;&#x529B;&#x96C6;&#x4E2D;&#x3002; &#x4ECE;&#x672C;&#x8D28;&#x4E0A;&#x8BB2;&#xFF0C;&#x5B83;&#x4E0D;&#x77E5;&#x9053;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#xFF0C;&#x5E76;&#x4E14;&#x6B63;&#x5728;&#x5168;&#x529B;&#x4EE5;&#x8D74;&#x3002; &#x589E;&#x52A0;&#x7EC4;&#x4EF6;&#x7684;&#x80FD;&#x529B;&#x96C6;&#x610F;&#x5473;&#x7740;&#x5C06;&#x5176;&#x8BBE;&#x8BA1;&#x4E3A;&#x5904;&#x7406;&#x66F4;&#x591A;&#x60C5;&#x51B5;&#xFF08;&#x6545;&#x969C;&#xFF09;&#xFF0C;&#x8FD9;&#x662F;&#x5176;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x5047;&#x8BBE;&#x67D0;&#x4E2A;&#x7EC4;&#x4EF6;&#x6709;&#x6743;&#x8BBF;&#x95EE;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#xFF0C;&#x5219;&#x8BE5;&#x7EC4;&#x4EF6;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x8BBF;&#x95EE;&#x88AB;&#x963B;&#x6B62;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x5F15;&#x53D1;&#x5F02;&#x5E38;&#x3002; &#x53E6;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x53EF;&#x80FD;&#x53EA;&#x662F;&#x5728;&#x7B49;&#x5F85;&#x8BBF;&#x95EE;&#xFF0C;&#x6216;&#x8005;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x5E76;&#x6307;&#x793A;&#x4E0B;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;&#x65F6;&#x5C06;&#x81EA;&#x884C;&#x5B8C;&#x6210;&#x64CD;&#x4F5C;&#x3002; &#x5728;&#x6B64;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x80FD;&#x529B;&#x96C6;&#x6BD4;&#x7B2C;&#x4E00;&#x4E2A;&#x66F4;&#x5927;&#x3002;
+</li></ul>
+<p>[1]: When the detection mechanism is implemented using a counter or timer that is periodically reset, this specialization of system monitor is referred to as a &#x201C;watchdog.&#x201D; During nominal operation, the process being monitored will periodically reset the watchdog counter/timer as part of its signal that it&#x2019;s working correctly; this is sometimes referred to as &#x201C;petting the watchdog.&#x201D; &#x5F53;&#x4F7F;&#x7528;&#x5B9A;&#x671F;&#x91CD;&#x7F6E;&#x7684;&#x8BA1;&#x6570;&#x5668;&#x6216;&#x8BA1;&#x65F6;&#x5668;&#x6765;&#x5B9E;&#x73B0;&#x68C0;&#x6D4B;&#x673A;&#x5236;&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x76D1;&#x89C6;&#x5668;&#x7684;&#x8FD9;&#x79CD;&#x7279;&#x6B8A;&#x6027;&#x88AB;&#x79F0;&#x4E3A;&#x201C;&#x770B;&#x95E8;&#x72D7;&#x201D;&#x3002;&#x5728;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x671F;&#x95F4;&#xFF0C;&#x88AB;&#x76D1;&#x89C6;&#x7684;&#x8FC7;&#x7A0B;&#x5C06;&#x5B9A;&#x671F;&#x91CD;&#x7F6E;&#x770B;&#x95E8;&#x72D7;&#x8BA1;&#x6570;&#x5668;/&#x5B9A;&#x65F6;&#x5668;&#x4F5C;&#x4E3A;&#x5176;&#x4E00;&#x90E8;&#x5206;&#x3002; &#x8868;&#x793A;&#x5176;&#x5DE5;&#x4F5C;&#x6B63;&#x5E38;&#xFF1B; &#x6709;&#x65F6;&#x79F0;&#x4E3A;&#x201C;&#x5582;&#x72D7;&#x201D;&#x3002;</p><p>[2]: A protection group is a group of processing nodes where one or more nodes are &#x201C;active,&#x201D; with the remaining nodes in the protection group serving as redundant spares. &#x4FDD;&#x62A4;&#x7EC4;&#x662F;&#x4E00;&#x7EC4;&#x5904;&#x7406;&#x8282;&#x70B9;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x5904;&#x4E8E;&#x201C;&#x6D3B;&#x52A8;&#x201D;&#x72B6;&#x6001;&#xFF0C;&#x800C;&#x4FDD;&#x62A4;&#x7EC4;&#x4E2D;&#x7684;&#x5176;&#x4F59;&#x8282;&#x70B9;&#x7528;&#x4F5C;&#x5197;&#x4F59;&#x5907;&#x4EF6;&#x3002;</p><p>[3]: These tactics deal with runtime means to prevent faults from occurring. Of course, an excellent way to prevent faults&#x2014;at least in the system you&#x2019;re building, if not in systems that your system must interact with&#x2014;is to produce high-quality code. This can be done by means of code inspections, pair programming, solid requirements reviews, and a host of other good engineering practices. &#x8FD9;&#x4E9B;&#x7B56;&#x7565;&#x6D89;&#x53CA;&#x8FD0;&#x884C;&#x65F6;&#x65B9;&#x6CD5;&#xFF0C;&#x4EE5;&#x9632;&#x6B62;&#x53D1;&#x751F;&#x6545;&#x969C;&#x3002; &#x5F53;&#x7136;&#xFF0C;&#x81F3;&#x5C11;&#x5728;&#x6B63;&#x5728;&#x6784;&#x5EFA;&#x7684;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF08;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x5728;&#x5FC5;&#x987B;&#x4E0E;&#x4E4B;&#x4EA4;&#x4E92;&#x7684;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF09;&#x9632;&#x6B62;&#x9519;&#x8BEF;&#x7684;&#x4E00;&#x79CD;&#x6781;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x751F;&#x6210;&#x9AD8;&#x8D28;&#x91CF;&#x7684;&#x4EE3;&#x7801;&#x3002; &#x8FD9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x68C0;&#x67E5;&#xFF0C;&#x7ED3;&#x5BF9;&#x7F16;&#x7A0B;&#xFF0C;&#x53EF;&#x9760;&#x7684;&#x9700;&#x6C42;&#x68C0;&#x67E5;&#x4EE5;&#x53CA;&#x8BB8;&#x591A;&#x5176;&#x4ED6;&#x826F;&#x597D;&#x7684;&#x5DE5;&#x7A0B;&#x5B9E;&#x8DF5;&#x6765;&#x5B8C;&#x6210;&#x3002;</p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="05.1.availability_general_scenario.html" class="navigation navigation-prev " aria-label="Previous page: 5.1 Availability General Scenario">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="05.3.a_design_checklist_4_availability.html" class="navigation navigation-next " aria-label="Next page: 5.3 A Design Checklist for Availability">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"5.2 Tactics for Availability","level":"1.7.2.2","depth":3,"next":{"title":"5.3 A Design Checklist for Availability","level":"1.7.2.3","depth":3,"path":"part2/05.3.a_design_checklist_4_availability.md","ref":"part2/05.3.a_design_checklist_4_availability.md","articles":[]},"previous":{"title":"5.1 Availability General Scenario","level":"1.7.2.1","depth":3,"path":"part2/05.1.availability_general_scenario.md","ref":"part2/05.1.availability_general_scenario.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Len Bass, Paul Clements, Rick Kazman","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Software Architecture in Practice (Third Edition)","language":"en","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Home":"https://suseme.github.io/sw_arch_in_p"}},"gitbook":"","description":"","direction":"ltr"},"file":{"path":"part2/05.2.tactics_4_availability.md","mtime":"2021-09-22T03:02:51.722Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2021-09-22T07:29:56.833Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
