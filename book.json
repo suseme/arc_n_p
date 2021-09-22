@@ -3,10 +3,25 @@
 	"author": "Len Bass, Paul Clements, Rick Kazman",
 	"description": "",
 	"language": "en",
+	"direction": "ltr",
 	"gitbook": "",
+    "links": {
+      "sharing": {
+            "all": null,
+            "facebook": null,
+            "google": null,
+            "twitter": null,
+            "weibo": null
+        },
+        "sidebar": {
+            "Home": "https://suseme.github.io/sw_arch_in_p"
+        }
+    },
 	"styles": {
 	},
 	"structure": {
-		"readme": "README.md"
+		"readme": "README.md",
+		"summary": "SUMMARY.md",
+		"glossary": "GLOSSARY.md"
 	}
 }
