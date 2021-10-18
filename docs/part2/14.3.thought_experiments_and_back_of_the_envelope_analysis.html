@@ -1,0 +1,3665 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <title>14.3 Thought Experiments and Back-of-the-Envelope Analysis · Software Architecture in Practice (Third Edition)</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        <meta name="author" content="Len Bass, Paul Clements, Rick Kazman">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="14.4.experiments_simulations_and_prototypes.html" />
+    
+    
+    <link rel="prev" href="14.2.quality_attribute_checklists.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://sw-arc-in-p.misday.com" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../01.copyright.html">
+            
+                <a href="../01.copyright.html">
+            
+                    
+                    Copyright 版权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../02.preface.html">
+            
+                <a href="../02.preface.html">
+            
+                    
+                    Preface 序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../03.readers_guide.html">
+            
+                <a href="../03.readers_guide.html">
+            
+                    
+                    Reader's Guide 读者指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../04.acknowledgements.html">
+            
+                <a href="../04.acknowledgements.html">
+            
+                    
+                    Achnowledgements 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../part1/00.introdcution.html">
+            
+                <a href="../part1/00.introdcution.html">
+            
+                    
+                    PART ONE: INTRODCUTION 第一部分：简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../part1/01.0.what_is_software_architecture.html">
+            
+                <a href="../part1/01.0.what_is_software_architecture.html">
+            
+                    
+                    1 What Is Software Architecture什么是软件构架
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../part1/01.1.what_software_architecture_is_and_what_it_isnt.html">
+            
+                <a href="../part1/01.1.what_software_architecture_is_and_what_it_isnt.html">
+            
+                    
+                    1.1 What Software Architecture Is and What It Isn't
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.2" data-path="../part1/01.2.architectural_structures_and_views.html">
+            
+                <a href="../part1/01.2.architectural_structures_and_views.html">
+            
+                    
+                    1.2 Architectural Structures and Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.3" data-path="../part1/01.3.architectural_patterns.html">
+            
+                <a href="../part1/01.3.architectural_patterns.html">
+            
+                    
+                    1.3 Architectural Patterns
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.4" data-path="../part1/01.4.what_makes_a_good_architecture.html">
+            
+                <a href="../part1/01.4.what_makes_a_good_architecture.html">
+            
+                    
+                    1.4 What Makes a "Good" Architecture?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.5" data-path="../part1/01.5.summay.html">
+            
+                <a href="../part1/01.5.summay.html">
+            
+                    
+                    1.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.6" data-path="../part1/01.6.for_further_reading.html">
+            
+                <a href="../part1/01.6.for_further_reading.html">
+            
+                    
+                    1.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.7" data-path="../part1/01.7.discussion_questions.html">
+            
+                <a href="../part1/01.7.discussion_questions.html">
+            
+                    
+                    1.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../part1/02.0.why_is_software_architecture_important.html">
+            
+                <a href="../part1/02.0.why_is_software_architecture_important.html">
+            
+                    
+                    2 Why Is Software Architecture Important?为什么说软件构架非常重要？
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../part1/02.1.inhibiting_or_enable_a_system_quality_attributes.html">
+            
+                <a href="../part1/02.1.inhibiting_or_enable_a_system_quality_attributes.html">
+            
+                    
+                    2.1 Inhibiting or Enabling a System’s Quality Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.2" data-path="../part1/02.2.reasoning_about_and_managing_change.html">
+            
+                <a href="../part1/02.2.reasoning_about_and_managing_change.html">
+            
+                    
+                    2.2 Reasoning About and Managing Change
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.3" data-path="../part1/02.3.predicting_system_qualities.html">
+            
+                <a href="../part1/02.3.predicting_system_qualities.html">
+            
+                    
+                    2.3 Predicting System Qualities
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.4" data-path="../part1/02.4.enhancing_communication_among_stackholders.html">
+            
+                <a href="../part1/02.4.enhancing_communication_among_stackholders.html">
+            
+                    
+                    2.4 Enhancing Communication among Stakeholders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.5" data-path="../part1/02.5.carrying_early_design_decisions.html">
+            
+                <a href="../part1/02.5.carrying_early_design_decisions.html">
+            
+                    
+                    2.5 Carrying Early Design Decisions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.6" data-path="../part1/02.6.defining_constrains_on_an_implementation.html">
+            
+                <a href="../part1/02.6.defining_constrains_on_an_implementation.html">
+            
+                    
+                    2.6 Defining Constraints on an Implementation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.7" data-path="../part1/02.7.influencing_the_organizational_structure.html">
+            
+                <a href="../part1/02.7.influencing_the_organizational_structure.html">
+            
+                    
+                    2.7 Influencing the Organizational Structure
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.8" data-path="../part1/02.8.enabling_evolutionary_prototyping.html">
+            
+                <a href="../part1/02.8.enabling_evolutionary_prototyping.html">
+            
+                    
+                    2.8 Enabling Evolutionary Prototyping
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.9" data-path="../part1/02.9.improving_cost_schedule_estimates.html">
+            
+                <a href="../part1/02.9.improving_cost_schedule_estimates.html">
+            
+                    
+                    2.9 Improving Cost and Schedule Estimates
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.10" data-path="../part1/02.10.supplying_transferable_reusable_model.html">
+            
+                <a href="../part1/02.10.supplying_transferable_reusable_model.html">
+            
+                    
+                    2.10 Supplying a Transferable, Reusable Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.11" data-path="../part1/02.11.allowing_incorporation_of_independently_developed_components.html">
+            
+                <a href="../part1/02.11.allowing_incorporation_of_independently_developed_components.html">
+            
+                    
+                    2.11 Allowing Incorporation of Independently Developed Components
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.12" data-path="../part1/02.12.restricting_the_vocabulary_design_alternatives.html">
+            
+                <a href="../part1/02.12.restricting_the_vocabulary_design_alternatives.html">
+            
+                    
+                    2.12 Restricting the Vocabulary of Design Alternatives
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.13" data-path="../part1/02.13.providing_basis_4_training.md">
+            
+                <span>
+            
+                    
+                    2.13 Providing a Basis for Training
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.14" data-path="../part1/02.14.summary.html">
+            
+                <a href="../part1/02.14.summary.html">
+            
+                    
+                    2.14 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.15" data-path="../part1/02.15.for_further_reading.html">
+            
+                <a href="../part1/02.15.for_further_reading.html">
+            
+                    
+                    2.15 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.16" data-path="../part1/02.16.discussion_questions.html">
+            
+                <a href="../part1/02.16.discussion_questions.html">
+            
+                    
+                    2.16 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../part1/03.0.the_many_context_of_software_architecture.html">
+            
+                <a href="../part1/03.0.the_many_context_of_software_architecture.html">
+            
+                    
+                    3 The Many Context of Software Architecture一些软件架构的上下文
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.3.1" data-path="../part1/03.1.architecture_in_technical_context.html">
+            
+                <a href="../part1/03.1.architecture_in_technical_context.html">
+            
+                    
+                    3.1 Architecture in a Technical Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.2" data-path="../part1/03.2.architecture_in_project_life_cycle_context.html">
+            
+                <a href="../part1/03.2.architecture_in_project_life_cycle_context.html">
+            
+                    
+                    3.2 Architecture in a Project Life-Cycle Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.3" data-path="../part1/03.3.architecture_in_a_business_context.html">
+            
+                <a href="../part1/03.3.architecture_in_a_business_context.html">
+            
+                    
+                    3.3 Architecture in a Business Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.4" data-path="../part1/03.4.architecture_in_a_professional_context.html">
+            
+                <a href="../part1/03.4.architecture_in_a_professional_context.html">
+            
+                    
+                    3.4 Architecture in a Professional Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.5" data-path="../part1/03.5.stackholders.html">
+            
+                <a href="../part1/03.5.stackholders.html">
+            
+                    
+                    3.5 Stakeholders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.6" data-path="../part1/03.6.how_is_architecture_influenced.html">
+            
+                <a href="../part1/03.6.how_is_architecture_influenced.html">
+            
+                    
+                    3.6 How Is Architecture Influenced?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.7" data-path="../part1/03.7.what_do_architectures_influence.html">
+            
+                <a href="../part1/03.7.what_do_architectures_influence.html">
+            
+                    
+                    3.7 What Do Architectures Influence?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.8" data-path="../part1/03.8.summary.html">
+            
+                <a href="../part1/03.8.summary.html">
+            
+                    
+                    3.8 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.9" data-path="../part1/03.9.for_further_reading.html">
+            
+                <a href="../part1/03.9.for_further_reading.html">
+            
+                    
+                    3.9 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.10" data-path="../part1/03.10.discussion_questions.html">
+            
+                <a href="../part1/03.10.discussion_questions.html">
+            
+                    
+                    3.10 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="00.quality_attributes.html">
+            
+                <a href="00.quality_attributes.html">
+            
+                    
+                    PART TWO: QUALITY ATTRIBUTES 第二部分：质量属性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="04.0.understanding_quality_attributes.html">
+            
+                <a href="04.0.understanding_quality_attributes.html">
+            
+                    
+                    4 Understanding Quality Attributes 理解质量属性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1.1" data-path="04.1.architecture_and_requirements.html">
+            
+                <a href="04.1.architecture_and_requirements.html">
+            
+                    
+                    4.1 Architecture and Requirements
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.2" data-path="04.2.functionality.html">
+            
+                <a href="04.2.functionality.html">
+            
+                    
+                    4.2 Functionality
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.3" data-path="04.3.quality_attribute_considerations.html">
+            
+                <a href="04.3.quality_attribute_considerations.html">
+            
+                    
+                    4.3 Quality Attribute Considerations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.4" data-path="04.4.specifying_quality_attribute_requirements.html">
+            
+                <a href="04.4.specifying_quality_attribute_requirements.html">
+            
+                    
+                    4.4 Specifying Quality Attribute Requirements
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.5" data-path="04.5.achieving_quality_attributes_through_tactics.html">
+            
+                <a href="04.5.achieving_quality_attributes_through_tactics.html">
+            
+                    
+                    4.5 Achieving Quality Attributes through Tactics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.6" data-path="04.6.guiding_quality_design_decisions.html">
+            
+                <a href="04.6.guiding_quality_design_decisions.html">
+            
+                    
+                    4.6 Guiding Quality Design Decisions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.7" data-path="04.7.summary.html">
+            
+                <a href="04.7.summary.html">
+            
+                    
+                    4.7 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.8" data-path="04.8.for_further_reading.html">
+            
+                <a href="04.8.for_further_reading.html">
+            
+                    
+                    4.8 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.1.9" data-path="04.9.discussion_questions.html">
+            
+                <a href="04.9.discussion_questions.html">
+            
+                    
+                    4.9 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="05.0.availability.html">
+            
+                <a href="05.0.availability.html">
+            
+                    
+                    5 Avaibility 可用性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="05.1.availability_general_scenario.html">
+            
+                <a href="05.1.availability_general_scenario.html">
+            
+                    
+                    5.1 Availability General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="05.2.tactics_for_availability.html">
+            
+                <a href="05.2.tactics_for_availability.html">
+            
+                    
+                    5.2 Tactics for Availability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="05.3.a_design_checklist_for_availability.html">
+            
+                <a href="05.3.a_design_checklist_for_availability.html">
+            
+                    
+                    5.3 A Design Checklist for Availability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.4" data-path="05.4.summary.html">
+            
+                <a href="05.4.summary.html">
+            
+                    
+                    5.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.5" data-path="05.5.4_further_reading.html">
+            
+                <a href="05.5.4_further_reading.html">
+            
+                    
+                    5.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.6" data-path="05.6.discussion_questions.html">
+            
+                <a href="05.6.discussion_questions.html">
+            
+                    
+                    5.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="06.0.interoperability.html">
+            
+                <a href="06.0.interoperability.html">
+            
+                    
+                    6 Interoperability 可操作性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.3.1" data-path="06.1.interoperability_general_scenario.html">
+            
+                <a href="06.1.interoperability_general_scenario.html">
+            
+                    
+                    6.1 Interoperability General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.2" data-path="06.2.tactics_for_interoperability.html">
+            
+                <a href="06.2.tactics_for_interoperability.html">
+            
+                    
+                    6.2 Tactics for Interoperability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.3" data-path="06.3.a_design_checklist_for_interoperability.html">
+            
+                <a href="06.3.a_design_checklist_for_interoperability.html">
+            
+                    
+                    6.3 A Design Checklist for Interoperability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.4" data-path="06.4.summary.html">
+            
+                <a href="06.4.summary.html">
+            
+                    
+                    6.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.5" data-path="06.5.for_further_reading.html">
+            
+                <a href="06.5.for_further_reading.html">
+            
+                    
+                    6.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.6" data-path="06.6.discussion_questions.html">
+            
+                <a href="06.6.discussion_questions.html">
+            
+                    
+                    6.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="07.0.modifiability.html">
+            
+                <a href="07.0.modifiability.html">
+            
+                    
+                    7 Modifiability 可修改性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="07.1.modifiability_general_scenario.html">
+            
+                <a href="07.1.modifiability_general_scenario.html">
+            
+                    
+                    7.1 Modifiability General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="07.2.tactics_for_modifiability.html">
+            
+                <a href="07.2.tactics_for_modifiability.html">
+            
+                    
+                    7.2 Tactics for Modifiability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.3" data-path="07.3.a_design_checklist_for_modifiability.html">
+            
+                <a href="07.3.a_design_checklist_for_modifiability.html">
+            
+                    
+                    7.3 A Design Checklist for Modifiability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.4" data-path="07.4.summary.html">
+            
+                <a href="07.4.summary.html">
+            
+                    
+                    7.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.5" data-path="07.5.for_further_reading.html">
+            
+                <a href="07.5.for_further_reading.html">
+            
+                    
+                    7.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.6" data-path="07.6.discussion_questions.html">
+            
+                <a href="07.6.discussion_questions.html">
+            
+                    
+                    7.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="08.0.performance.html">
+            
+                <a href="08.0.performance.html">
+            
+                    
+                    8 Performance 性能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="08.1.performance_general_scenario.html">
+            
+                <a href="08.1.performance_general_scenario.html">
+            
+                    
+                    8.1 Performance General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="08.2.tactics_for_performance.html">
+            
+                <a href="08.2.tactics_for_performance.html">
+            
+                    
+                    8.2 Tactics for Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="08.3.a_design_checklist_for_performance.html">
+            
+                <a href="08.3.a_design_checklist_for_performance.html">
+            
+                    
+                    8.3 A Design Checklist for Performance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="08.4.summary.html">
+            
+                <a href="08.4.summary.html">
+            
+                    
+                    8.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="08.5.for_futher_reading.html">
+            
+                <a href="08.5.for_futher_reading.html">
+            
+                    
+                    8.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="08.6.discussion_questions.html">
+            
+                <a href="08.6.discussion_questions.html">
+            
+                    
+                    8.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="09.0.security.html">
+            
+                <a href="09.0.security.html">
+            
+                    
+                    9 Security 安全
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="09.1.security_general_scenario.html">
+            
+                <a href="09.1.security_general_scenario.html">
+            
+                    
+                    9.1 Security General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="09.2.tactics_for_security.html">
+            
+                <a href="09.2.tactics_for_security.html">
+            
+                    
+                    9.2 Tactics for Security
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="09.3.a_design_checklist_for_security.html">
+            
+                <a href="09.3.a_design_checklist_for_security.html">
+            
+                    
+                    9.3 A Design Checklist for Security
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.4" data-path="09.4.summary.html">
+            
+                <a href="09.4.summary.html">
+            
+                    
+                    9.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.5" data-path="09.5.for_further_reading.html">
+            
+                <a href="09.5.for_further_reading.html">
+            
+                    
+                    9.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.6" data-path="09.6.discussion_questions.html">
+            
+                <a href="09.6.discussion_questions.html">
+            
+                    
+                    9.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="10.0.testability.html">
+            
+                <a href="10.0.testability.html">
+            
+                    
+                    10 Testability 可测试性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="10.1.testability_general_scenario.html">
+            
+                <a href="10.1.testability_general_scenario.html">
+            
+                    
+                    10.1 Testability General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="10.2.tactics_for_testability.html">
+            
+                <a href="10.2.tactics_for_testability.html">
+            
+                    
+                    10.2 Tactics for Testability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="10.3.a_design_checklist_for_testability.html">
+            
+                <a href="10.3.a_design_checklist_for_testability.html">
+            
+                    
+                    10.3 A Design Checklist for Testability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.4" data-path="10.4.summary.html">
+            
+                <a href="10.4.summary.html">
+            
+                    
+                    10.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.5" data-path="10.5.for_further_reading.html">
+            
+                <a href="10.5.for_further_reading.html">
+            
+                    
+                    10.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.6" data-path="10.6.discussion_questions.html">
+            
+                <a href="10.6.discussion_questions.html">
+            
+                    
+                    10.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="11.0.usability.html">
+            
+                <a href="11.0.usability.html">
+            
+                    
+                    11 Usability 可使用性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.8.1" data-path="11.1.usability_general_scenario.html">
+            
+                <a href="11.1.usability_general_scenario.html">
+            
+                    
+                    11.1 Usability General Scenario
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.2" data-path="11.2.tactics_for_usability.html">
+            
+                <a href="11.2.tactics_for_usability.html">
+            
+                    
+                    11.2 Tactics for Usability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.3" data-path="11.3.a_design_checklist_for_usability.html">
+            
+                <a href="11.3.a_design_checklist_for_usability.html">
+            
+                    
+                    11.3 A Design Checklist for Usability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.4" data-path="11.4.summary.html">
+            
+                <a href="11.4.summary.html">
+            
+                    
+                    11.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.5" data-path="11.5.for_further_reading.html">
+            
+                <a href="11.5.for_further_reading.html">
+            
+                    
+                    11.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8.6" data-path="11.6.discussion_questions.html">
+            
+                <a href="11.6.discussion_questions.html">
+            
+                    
+                    11.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="12.0.other_quality_attributes.html">
+            
+                <a href="12.0.other_quality_attributes.html">
+            
+                    
+                    12 Other Quality Attributes 其他质量属性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.9.1" data-path="12.1.other_important_quality_attributes.html">
+            
+                <a href="12.1.other_important_quality_attributes.html">
+            
+                    
+                    12.1 Other Important Quality Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.2" data-path="12.2.other_categories_of_quality_attributes.html">
+            
+                <a href="12.2.other_categories_of_quality_attributes.html">
+            
+                    
+                    12.2 Other Categories of Quality Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.3" data-path="12.3.software_quality_attributes_and_system_quality_attributes.html">
+            
+                <a href="12.3.software_quality_attributes_and_system_quality_attributes.html">
+            
+                    
+                    12.3 Software Quality Attributes and System Quality Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.4" data-path="12.4.using_standard_list_of_quality_attributes_or_not.html">
+            
+                <a href="12.4.using_standard_list_of_quality_attributes_or_not.html">
+            
+                    
+                    12.4 Using Standard Lists of Quality Attributes—or Not
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.5" data-path="12.5.dealing_with_x_ability_bringing_a_new_quality_attribute_into_the_fold.html">
+            
+                <a href="12.5.dealing_with_x_ability_bringing_a_new_quality_attribute_into_the_fold.html">
+            
+                    
+                    12.5 Dealing with “X-ability”: Bringing a New Quality Attribute into the Fold
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.6" data-path="12.6.for_further_reading.html">
+            
+                <a href="12.6.for_further_reading.html">
+            
+                    
+                    12.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9.7" data-path="12.7.discussion_questions.html">
+            
+                <a href="12.7.discussion_questions.html">
+            
+                    
+                    12.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="13.0.architectural_tactics_and_patterns.html">
+            
+                <a href="13.0.architectural_tactics_and_patterns.html">
+            
+                    
+                    13 Architectural Tactics and Patterns 架构技巧和模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.10.1" data-path="13.1.architectural_patterns.html">
+            
+                <a href="13.1.architectural_patterns.html">
+            
+                    
+                    13.1 A rchitectural Patterns
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.2" data-path="13.2.overview_of_the_patterns_catalog.html">
+            
+                <a href="13.2.overview_of_the_patterns_catalog.html">
+            
+                    
+                    13.2 Overview of the Patterns Catalog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.3" data-path="13.3.relationships_between_tactics_and_patterns.html">
+            
+                <a href="13.3.relationships_between_tactics_and_patterns.html">
+            
+                    
+                    13.3 Relationships between Tactics and Patterns
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.4" data-path="13.4.using_tactics_together.html">
+            
+                <a href="13.4.using_tactics_together.html">
+            
+                    
+                    13.4 Using Tactics Together
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.5" data-path="13.5.summary.html">
+            
+                <a href="13.5.summary.html">
+            
+                    
+                    13.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.6" data-path="13.6.for_further_reading.html">
+            
+                <a href="13.6.for_further_reading.html">
+            
+                    
+                    13.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10.7" data-path="13.7.discussion_questions.html">
+            
+                <a href="13.7.discussion_questions.html">
+            
+                    
+                    13.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="14.0.quality_attribute_modeling_and_analysis.html">
+            
+                <a href="14.0.quality_attribute_modeling_and_analysis.html">
+            
+                    
+                    14 Quality Attribute Modeling and Analysis 质量属性模型和分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.11.1" data-path="14.1.modeling_architectures_to_enable_quality_attribute_analysis.html">
+            
+                <a href="14.1.modeling_architectures_to_enable_quality_attribute_analysis.html">
+            
+                    
+                    14.1 Modeling Architectures to Enable Quality Attribute Analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.2" data-path="14.2.quality_attribute_checklists.html">
+            
+                <a href="14.2.quality_attribute_checklists.html">
+            
+                    
+                    14.2 Quality Attribute Checklists
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.11.3" data-path="14.3.thought_experiments_and_back_of_the_envelope_analysis.html">
+            
+                <a href="14.3.thought_experiments_and_back_of_the_envelope_analysis.html">
+            
+                    
+                    14.3 Thought Experiments and Back-of-the-Envelope Analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.4" data-path="14.4.experiments_simulations_and_prototypes.html">
+            
+                <a href="14.4.experiments_simulations_and_prototypes.html">
+            
+                    
+                    14.4 Experiments, Simulations, and Prototypes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.5" data-path="14.5.analysis_at_different_stages_of_the_life_cycle.html">
+            
+                <a href="14.5.analysis_at_different_stages_of_the_life_cycle.html">
+            
+                    
+                    14.5 A nalysis at Different Stages of the Life Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.6" data-path="14.6.summary.html">
+            
+                <a href="14.6.summary.html">
+            
+                    
+                    14.6 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.7" data-path="14.7.for_further_reading.html">
+            
+                <a href="14.7.for_further_reading.html">
+            
+                    
+                    14.7 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11.8" data-path="14.8.discussion_questions.html">
+            
+                <a href="14.8.discussion_questions.html">
+            
+                    
+                    14.8 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../part3/00.architecture_in_the_life_cycle.html">
+            
+                <a href="../part3/00.architecture_in_the_life_cycle.html">
+            
+                    
+                    PART THREE: ARCHITECTURE IN THE LIFE CYCLE 第三部分：生命期中的构架
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../part3/15.0.architecutre_in_agile_projects.html">
+            
+                <a href="../part3/15.0.architecutre_in_agile_projects.html">
+            
+                    
+                    15 Architecutre in Agile Projects 敏捷项目中的架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" data-path="../part3/15.1.how_much_architecture.html">
+            
+                <a href="../part3/15.1.how_much_architecture.html">
+            
+                    
+                    15.1 How Much Architecture?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.2" data-path="../part3/15.2.agility_and_architecture_methods.html">
+            
+                <a href="../part3/15.2.agility_and_architecture_methods.html">
+            
+                    
+                    15.2 Agility and Architecture Methods
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.3" data-path="../part3/15.3.a_brief_example_of_agile_architecting.html">
+            
+                <a href="../part3/15.3.a_brief_example_of_agile_architecting.html">
+            
+                    
+                    15.3 A Brief Example of Agile Architecting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.4" data-path="../part3/15.4.guidelines_for_the_agile_architect.html">
+            
+                <a href="../part3/15.4.guidelines_for_the_agile_architect.html">
+            
+                    
+                    15.4 Guidelines for the Agile Architect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.5" data-path="../part3/15.5.summary.html">
+            
+                <a href="../part3/15.5.summary.html">
+            
+                    
+                    15.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.6" data-path="../part3/15.6.for_further_reading.html">
+            
+                <a href="../part3/15.6.for_further_reading.html">
+            
+                    
+                    15.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.7" data-path="../part3/15.7.discussion_questions.html">
+            
+                <a href="../part3/15.7.discussion_questions.html">
+            
+                    
+                    15.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../part3/16.0.architecture_and_requirements.html">
+            
+                <a href="../part3/16.0.architecture_and_requirements.html">
+            
+                    
+                    16 Architecture and Requirements 架构和需求
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="../part3/16.1.gathering_asrs_from_requirements_documents.html">
+            
+                <a href="../part3/16.1.gathering_asrs_from_requirements_documents.html">
+            
+                    
+                    16.1 Gathering ASRs from Requirements Documents
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.2" data-path="../part3/16.2.gethering_asrs_by_interviewing_stackholders.html">
+            
+                <a href="../part3/16.2.gethering_asrs_by_interviewing_stackholders.html">
+            
+                    
+                    16.2 Gathering ASRs by Interviewing Stakeholders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.3" data-path="../part3/16.3.gethering_asrs_by_understanding_the_business_goals.html">
+            
+                <a href="../part3/16.3.gethering_asrs_by_understanding_the_business_goals.html">
+            
+                    
+                    16.3 Gathering ASRs by Understanding the Business Goals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.4" data-path="../part3/16.4.capturing_asrs_in_a_utility_tree.html">
+            
+                <a href="../part3/16.4.capturing_asrs_in_a_utility_tree.html">
+            
+                    
+                    16.4 Capturing ASRs in a Utility Tree
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.5" data-path="../part3/16.5.tying_the_methods_together.html">
+            
+                <a href="../part3/16.5.tying_the_methods_together.html">
+            
+                    
+                    16.5 Tying the Methods Together
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.6" data-path="../part3/16.6.summary.html">
+            
+                <a href="../part3/16.6.summary.html">
+            
+                    
+                    16.6 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.7" data-path="../part3/16.7.for_further_reading.html">
+            
+                <a href="../part3/16.7.for_further_reading.html">
+            
+                    
+                    16.7 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.8" data-path="../part3/16.8.discussion_questions.html">
+            
+                <a href="../part3/16.8.discussion_questions.html">
+            
+                    
+                    16.8 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../part3/17.0.designing_an_architecture.html">
+            
+                <a href="../part3/17.0.designing_an_architecture.html">
+            
+                    
+                    17 Designing an Architecture 设计架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="../part3/17.1.design_strategy.html">
+            
+                <a href="../part3/17.1.design_strategy.html">
+            
+                    
+                    17.1 Design Strategy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="../part3/17.2.the_attribute_driven_design_method.html">
+            
+                <a href="../part3/17.2.the_attribute_driven_design_method.html">
+            
+                    
+                    17.2 The Attribute-Driven Design Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3" data-path="../part3/17.3.the_steps_of_add.html">
+            
+                <a href="../part3/17.3.the_steps_of_add.html">
+            
+                    
+                    17.3 The Steps of ADD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.4" data-path="../part3/17.4.summary.html">
+            
+                <a href="../part3/17.4.summary.html">
+            
+                    
+                    17.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.5" data-path="../part3/17.5.for_further_reading.html">
+            
+                <a href="../part3/17.5.for_further_reading.html">
+            
+                    
+                    17.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.6" data-path="../part3/17.6.discussion_questions.html">
+            
+                <a href="../part3/17.6.discussion_questions.html">
+            
+                    
+                    17.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../part3/18.0.documenting_software_architecture.html">
+            
+                <a href="../part3/18.0.documenting_software_architecture.html">
+            
+                    
+                    18 Documenting Software Architecture 文档化软件架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../part3/18.1.uses_and_audiences_for_architecture_documents.html">
+            
+                <a href="../part3/18.1.uses_and_audiences_for_architecture_documents.html">
+            
+                    
+                    18.1 Uses and Audiences for Architecture Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../part3/18.2.notations_for_architecture_documentation.html">
+            
+                <a href="../part3/18.2.notations_for_architecture_documentation.html">
+            
+                    
+                    18.2 Notations for Architecture Documentation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../part3/18.3.views.html">
+            
+                <a href="../part3/18.3.views.html">
+            
+                    
+                    18.3 Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.4" data-path="../part3/18.4.choosing_the_views.html">
+            
+                <a href="../part3/18.4.choosing_the_views.html">
+            
+                    
+                    18.4 Choosing the Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.5" data-path="../part3/18.5.combining_views.html">
+            
+                <a href="../part3/18.5.combining_views.html">
+            
+                    
+                    18.5 Combining Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.6" data-path="../part3/18.6.building_the_documentation_package.html">
+            
+                <a href="../part3/18.6.building_the_documentation_package.html">
+            
+                    
+                    18.6 Building the Documentation Package
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.7" data-path="../part3/18.7.documenting_behavior.html">
+            
+                <a href="../part3/18.7.documenting_behavior.html">
+            
+                    
+                    18.7 Documenting Behavior
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.8" data-path="../part3/18.8.architecture_documentatin_and_quality_attributes.html">
+            
+                <a href="../part3/18.8.architecture_documentatin_and_quality_attributes.html">
+            
+                    
+                    18.8 Architecture Documentation and Quality Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.9" data-path="../part3/18.9.documenting_architectures_that_change_faster_than_you_can_document.html">
+            
+                <a href="../part3/18.9.documenting_architectures_that_change_faster_than_you_can_document.html">
+            
+                    
+                    18.9 Documenting Architectures That Change Faster Than You Can Document Them
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.10" data-path="../part3/18.10.documenting_architecture_in_an_agile_development_project.html">
+            
+                <a href="../part3/18.10.documenting_architecture_in_an_agile_development_project.html">
+            
+                    
+                    18.10 Documenting Architecture in an Agile Development Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.11" data-path="../part3/18.11.summary.html">
+            
+                <a href="../part3/18.11.summary.html">
+            
+                    
+                    18.11 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.12" data-path="../part3/18.12.for_further_reading.html">
+            
+                <a href="../part3/18.12.for_further_reading.html">
+            
+                    
+                    18.12 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.13" data-path="../part3/18.13.discussion_questions.html">
+            
+                <a href="../part3/18.13.discussion_questions.html">
+            
+                    
+                    18.13 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../part3/19.0.architecture_implementation_and_testing.html">
+            
+                <a href="../part3/19.0.architecture_implementation_and_testing.html">
+            
+                    
+                    19 Architecture, Implementation, and Testing 架构、实现和测试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../part3/19.1.architecture_and_implementation.html">
+            
+                <a href="../part3/19.1.architecture_and_implementation.html">
+            
+                    
+                    19.1 Architecture and Implementation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="../part3/19.2.architecture_and_testing.html">
+            
+                <a href="../part3/19.2.architecture_and_testing.html">
+            
+                    
+                    19.2 Architecture and Testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.3" data-path="../part3/19.3.summary.html">
+            
+                <a href="../part3/19.3.summary.html">
+            
+                    
+                    19.3 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.4" data-path="../part3/19.4.for_further_reading.html">
+            
+                <a href="../part3/19.4.for_further_reading.html">
+            
+                    
+                    19.4 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.5" data-path="../part3/19.5.discussion_questions.html">
+            
+                <a href="../part3/19.5.discussion_questions.html">
+            
+                    
+                    19.5 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../part3/20.0.architecture_reconstruction_and_conformance.html">
+            
+                <a href="../part3/20.0.architecture_reconstruction_and_conformance.html">
+            
+                    
+                    20 Architecture Reconstruction, and Conformance 架构重构和一致性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.6.1" data-path="../part3/20.1.architecture_reconstruction_process.html">
+            
+                <a href="../part3/20.1.architecture_reconstruction_process.html">
+            
+                    
+                    20.1 Architecture Reconstruction Process
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.2" data-path="../part3/20.2.raw_view_extraction.html">
+            
+                <a href="../part3/20.2.raw_view_extraction.html">
+            
+                    
+                    20.2 Raw View Extraction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.3" data-path="../part3/20.3.database_construction.html">
+            
+                <a href="../part3/20.3.database_construction.html">
+            
+                    
+                    20.3 Database Construction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.4" data-path="../part3/20.4.view_fusion.html">
+            
+                <a href="../part3/20.4.view_fusion.html">
+            
+                    
+                    20.4 View Fusion
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.5" data-path="../part3/20.5.architecture_analysis_finding_violations.html">
+            
+                <a href="../part3/20.5.architecture_analysis_finding_violations.html">
+            
+                    
+                    20.5 Architecture Analysis: Finding Violations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.6" data-path="../part3/20.6.guidelines.html">
+            
+                <a href="../part3/20.6.guidelines.html">
+            
+                    
+                    20.6 Guidelines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.7" data-path="../part3/20.7.summary.html">
+            
+                <a href="../part3/20.7.summary.html">
+            
+                    
+                    20.7 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.8" data-path="../part3/20.8.for_further_reading.html">
+            
+                <a href="../part3/20.8.for_further_reading.html">
+            
+                    
+                    20.8 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.9" data-path="../part3/20.9.discussion_questions.html">
+            
+                <a href="../part3/20.9.discussion_questions.html">
+            
+                    
+                    20.9 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../part3/21.0.architecture_evaluation.html">
+            
+                <a href="../part3/21.0.architecture_evaluation.html">
+            
+                    
+                    21 Architecture Evaluation 架构评估
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.7.1" data-path="../part3/21.1.evaluation_factors.html">
+            
+                <a href="../part3/21.1.evaluation_factors.html">
+            
+                    
+                    21.1 Evaluation Factors
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.2" data-path="../part3/21.2.the_architecture_tradeoff_analysis_method.html">
+            
+                <a href="../part3/21.2.the_architecture_tradeoff_analysis_method.html">
+            
+                    
+                    21.2 The Architecture Tradeoff Analysis Method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.3" data-path="../part3/21.3.lightweight_architecture_evaluation.html">
+            
+                <a href="../part3/21.3.lightweight_architecture_evaluation.html">
+            
+                    
+                    21.3 Lightweight Architecture Evaluation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.4" data-path="../part3/21.4.summary.html">
+            
+                <a href="../part3/21.4.summary.html">
+            
+                    
+                    21.4 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.5" data-path="../part3/21.5.for_further_reading.html">
+            
+                <a href="../part3/21.5.for_further_reading.html">
+            
+                    
+                    21.5 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.6" data-path="../part3/21.6.discussion_questions.html">
+            
+                <a href="../part3/21.6.discussion_questions.html">
+            
+                    
+                    21.6 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../part3/22.0.management_and_governance.html">
+            
+                <a href="../part3/22.0.management_and_governance.html">
+            
+                    
+                    22 Management and Governance 管理和治理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.8.1" data-path="../part3/22.1.planning.html">
+            
+                <a href="../part3/22.1.planning.html">
+            
+                    
+                    22.1 Planning
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.2" data-path="../part3/22.2.organizing.html">
+            
+                <a href="../part3/22.2.organizing.html">
+            
+                    
+                    22.2 Organizing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.3" data-path="../part3/22.3.implementing.html">
+            
+                <a href="../part3/22.3.implementing.html">
+            
+                    
+                    22.3 Implementing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.4" data-path="../part3/22.4.measuring.html">
+            
+                <a href="../part3/22.4.measuring.html">
+            
+                    
+                    22.4 Measuring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.5" data-path="../part3/22.5.governance.html">
+            
+                <a href="../part3/22.5.governance.html">
+            
+                    
+                    22.5 Governance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.6" data-path="../part3/22.6.summary.html">
+            
+                <a href="../part3/22.6.summary.html">
+            
+                    
+                    22.6 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.7" data-path="../part3/22.7.for_further_reading.html">
+            
+                <a href="../part3/22.7.for_further_reading.html">
+            
+                    
+                    22.7 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.8" data-path="../part3/22.8.discussion_questions.html">
+            
+                <a href="../part3/22.8.discussion_questions.html">
+            
+                    
+                    22.8 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../part4/00.architecture_and_business.html">
+            
+                <a href="../part4/00.architecture_and_business.html">
+            
+                    
+                    PART FOUR: ARCHITECTURE AND BUSINESS 第四部分：架构和业务
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../part4/23.0.economic_analysis_of_architectures.html">
+            
+                <a href="../part4/23.0.economic_analysis_of_architectures.html">
+            
+                    
+                    23 Economic Analysis of Architectures 架构的经济分析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../part4/23.1.decision_making_context.html">
+            
+                <a href="../part4/23.1.decision_making_context.html">
+            
+                    
+                    23.1 Decision-Making Context
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../part4/23.2.the_basis_for_the_economic_analyses.html">
+            
+                <a href="../part4/23.2.the_basis_for_the_economic_analyses.html">
+            
+                    
+                    23.2 The Basis for the Economic Analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../part4/23.3.putting_theory_into_practices_the_cbam.html">
+            
+                <a href="../part4/23.3.putting_theory_into_practices_the_cbam.html">
+            
+                    
+                    23.3 Putting Theory into Practice: The CBAM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.4" data-path="../part4/23.4.case_study_the_nasa_ecs_project.html">
+            
+                <a href="../part4/23.4.case_study_the_nasa_ecs_project.html">
+            
+                    
+                    23.4 Case Study: The NASA ECS Project
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.5" data-path="../part4/23.5.summary.html">
+            
+                <a href="../part4/23.5.summary.html">
+            
+                    
+                    23.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.6" data-path="../part4/23.6.for_further_reading.html">
+            
+                <a href="../part4/23.6.for_further_reading.html">
+            
+                    
+                    23.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.7" data-path="../part4/23.7.discussion_questions.html">
+            
+                <a href="../part4/23.7.discussion_questions.html">
+            
+                    
+                    23.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../part4/24.0.architecture_competence.html">
+            
+                <a href="../part4/24.0.architecture_competence.html">
+            
+                    
+                    24 Architecture Competence 架构技能
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../part4/24.1.competence_of_individuals_duties_skills_and_knowledge_of_architects.html">
+            
+                <a href="../part4/24.1.competence_of_individuals_duties_skills_and_knowledge_of_architects.html">
+            
+                    
+                    24.1 Competence of Individuals: Duties, Skills, and Knowledge of Architects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../part4/24.2.competence_of_a_software_architecture_organization.html">
+            
+                <a href="../part4/24.2.competence_of_a_software_architecture_organization.html">
+            
+                    
+                    24.2 Competence of a Software Architecture Organization
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../part4/24.3.summary.html">
+            
+                <a href="../part4/24.3.summary.html">
+            
+                    
+                    24.3 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../part4/24.4.for_further_reading.html">
+            
+                <a href="../part4/24.4.for_further_reading.html">
+            
+                    
+                    24.4 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="../part4/24.5.discussion_questions.html">
+            
+                <a href="../part4/24.5.discussion_questions.html">
+            
+                    
+                    24.5 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../part4/25.0.architecture_and_software_product_lines.html">
+            
+                <a href="../part4/25.0.architecture_and_software_product_lines.html">
+            
+                    
+                    25 Architecture and Software Product Lines 架构和软件产品线
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.3.1" data-path="../part4/25.1.an_example_of_product_line_variability.html">
+            
+                <a href="../part4/25.1.an_example_of_product_line_variability.html">
+            
+                    
+                    25.1 An Example of Product Line Variability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.2" data-path="../part4/25.2.what_makes_a_software_product_line_work.html">
+            
+                <a href="../part4/25.2.what_makes_a_software_product_line_work.html">
+            
+                    
+                    25.2 What Makes a Software Product Line Work?
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.3" data-path="../part4/25.3.product_line_scope.html">
+            
+                <a href="../part4/25.3.product_line_scope.html">
+            
+                    
+                    25.3 Product Line Scope
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.4" data-path="../part4/25.4.the_quality_attribute_of_vaiability.html">
+            
+                <a href="../part4/25.4.the_quality_attribute_of_vaiability.html">
+            
+                    
+                    25.4 The Quality Attribute of Variability
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.5" data-path="../part4/25.5.the_role_of_a_product_line_architecture.html">
+            
+                <a href="../part4/25.5.the_role_of_a_product_line_architecture.html">
+            
+                    
+                    25.5 The Role of a Product Line Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.6" data-path="../part4/25.6.variation_mechanisms.html">
+            
+                <a href="../part4/25.6.variation_mechanisms.html">
+            
+                    
+                    25.6 Variation Mechanisms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.7" data-path="../part4/25.7.evaluating_a_product_line_architecture.html">
+            
+                <a href="../part4/25.7.evaluating_a_product_line_architecture.html">
+            
+                    
+                    25.7 Evaluating a Product Line Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.8" data-path="../part4/25.8.key_software_product_line_issues.html">
+            
+                <a href="../part4/25.8.key_software_product_line_issues.html">
+            
+                    
+                    25.8 Key Software Product Line Issues
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.9" data-path="../part4/25.9.summary.html">
+            
+                <a href="../part4/25.9.summary.html">
+            
+                    
+                    25.9 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.10" data-path="../part4/25.10.for_further_reading.html">
+            
+                <a href="../part4/25.10.for_further_reading.html">
+            
+                    
+                    25.10 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.11" data-path="../part4/25.11.discussion_questions.html">
+            
+                <a href="../part4/25.11.discussion_questions.html">
+            
+                    
+                    25.11 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../part5/00.the_brave_new_world.html">
+            
+                <a href="../part5/00.the_brave_new_world.html">
+            
+                    
+                    PART FIVE: THE BRAVE NEW WORLD 第五部分：勇敢面对新世界
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../part5/26.0.architecture_in_the_cloud.html">
+            
+                <a href="../part5/26.0.architecture_in_the_cloud.html">
+            
+                    
+                    26 Architecture in the Cloud 云上的架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1.1" data-path="../part5/26.1.basic_cloud_definitions.html">
+            
+                <a href="../part5/26.1.basic_cloud_definitions.html">
+            
+                    
+                    26.1 Basic Cloud Definitions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.2" data-path="../part5/26.2.service_models_and_deployment_options.html">
+            
+                <a href="../part5/26.2.service_models_and_deployment_options.html">
+            
+                    
+                    26.2 Service Models and Deployment Options
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.3" data-path="../part5/26.3.economic_justification.html">
+            
+                <a href="../part5/26.3.economic_justification.html">
+            
+                    
+                    26.3 Economic Justification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.4" data-path="../part5/26.4.base_mechanisms.html">
+            
+                <a href="../part5/26.4.base_mechanisms.html">
+            
+                    
+                    26.4 Base Mechanisms
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.5" data-path="../part5/26.5.sample_technologies.html">
+            
+                <a href="../part5/26.5.sample_technologies.html">
+            
+                    
+                    26.5 Sample Technologies
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.6" data-path="../part5/26.6.architecting_in_a_cloud_environment.html">
+            
+                <a href="../part5/26.6.architecting_in_a_cloud_environment.html">
+            
+                    
+                    26.6 Architecting in a Cloud Environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.7" data-path="../part5/26.7.summary.html">
+            
+                <a href="../part5/26.7.summary.html">
+            
+                    
+                    26.7 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.8" data-path="../part5/26.8.for_further_reading.html">
+            
+                <a href="../part5/26.8.for_further_reading.html">
+            
+                    
+                    26.8 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.1.9" data-path="../part5/26.9.discussion_questions.html">
+            
+                <a href="../part5/26.9.discussion_questions.html">
+            
+                    
+                    26.9 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../part5/27.0.architectures_for_the_edge.html">
+            
+                <a href="../part5/27.0.architectures_for_the_edge.html">
+            
+                    
+                    27 Architectures for the Edge 边缘架构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.2.1" data-path="../part5/27.1.the_ecosystem_of_edge_dominant_system.html">
+            
+                <a href="../part5/27.1.the_ecosystem_of_edge_dominant_system.html">
+            
+                    
+                    27.1 The Ecosystem of Edge-Dominant Systems
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.2" data-path="../part5/27.2.changes_to_the_software_development_lif_cycle.html">
+            
+                <a href="../part5/27.2.changes_to_the_software_development_lif_cycle.html">
+            
+                    
+                    27.2 Changes to the Software Development Life Cycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.3" data-path="../part5/27.3.implications_for_architecture.html">
+            
+                <a href="../part5/27.3.implications_for_architecture.html">
+            
+                    
+                    27.3 Implications for Architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.4" data-path="../part5/27.4.implications_of_the_metroplis_model.html">
+            
+                <a href="../part5/27.4.implications_of_the_metroplis_model.html">
+            
+                    
+                    27.4 Implications of the Metropolis Model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.5" data-path="../part5/27.5.summary.html">
+            
+                <a href="../part5/27.5.summary.html">
+            
+                    
+                    27.5 Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.6" data-path="../part5/27.6.for_further_reading.html">
+            
+                <a href="../part5/27.6.for_further_reading.html">
+            
+                    
+                    27.6 For Further Reading
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2.7" data-path="../part5/27.7.discussion_questions.html">
+            
+                <a href="../part5/27.7.discussion_questions.html">
+            
+                    
+                    27.7 Discussion Questions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../part5/28.0.epilogue.html">
+            
+                <a href="../part5/28.0.epilogue.html">
+            
+                    
+                    28 Epilogue 结语
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../05.reference.html">
+            
+                <a href="../05.reference.html">
+            
+                    
+                    Reference 参考文献
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../06.about_the_authors.html">
+            
+                <a href="../06.about_the_authors.html">
+            
+                    
+                    About the Authors 关于作者
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../07.index.html">
+            
+                <a href="../07.index.html">
+            
+                    
+                    Index 缩略语表
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >14.3 Thought Experiments and Back-of-the-Envelope Analysis</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#143-thought-experiments-and-back-of-the-envelope-analysis"><b></b>14.3 Thought Experiments and Back-of-the-Envelope Analysis</a></li></ul></div><a href="#143-thought-experiments-and-back-of-the-envelope-analysis" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="143-thought-experiments-and-back-of-the-envelope-analysis"><a name="143-thought-experiments-and-back-of-the-envelope-analysis" class="anchor-navigation-ex-anchor" href="#143-thought-experiments-and-back-of-the-envelope-analysis"><i class="fa fa-link" aria-hidden="true"></i></a>14.3 Thought Experiments and Back-of-the-Envelope Analysis</h1><p>A thought experiment is a fancy name for the kinds of discussions that develop-ers and architects have on a daily basis in their offices, in their meetings, over lunch, over whiteboards, in hallways, and around the coffee machine. One of the participants might draw two circles and an arrow on the whiteboard and make an assertion about the quality attribute behavior of these two circles and the arrow in a particular context; a discussion ensues. The discussion can last for a long time, especially if the two circles are augmented with a third and one more arrow, or if some of the assumptions underlying a circle or an arrow are still in flux. In this section, we describe this process somewhat more formally.</p><p>The level of formality one would use in performing a thought experiment is, as with most techniques discussed in this book, a question of context. If two people with a shared understanding of the system are performing the thought ex-periment for their own private purposes, then circles and lines on a whiteboard are adequate, and the discussion proceeds in a kind of shorthand. If a third person is to review the results and the third person does not share the common under-standing, then sufficient details must be captured to enable the third person to un-derstand the argument&#x2014;perhaps a quick legend and a set of properties need to be added to the diagram. If the results are to be included in documentation as design rationale, then even more detail must be captured, as discussed in Chapter 18. Frequently such thought experiments are accompanied by rough analyses&#x2014;back-of-the-envelope analyses&#x2014;based on the best data available, based on past expe-riences, or even based on the guesses of the architects, without too much concern for precision.</p><p>The purpose of thought experiments and back-of-the-envelope analysis is to find problems or confirmation of the nonexistence of problems in the quality attribute requirements as applied to sunny-day use cases. That is, for each use case, consider the quality attribute requirements that pertain to that use case and analyze the use case with the quality attribute requirements in mind. Models and checklists focus on one quality attribute. To consider other quality attributes, one must model or have a checklist for the second quality attribute and understand how those models interact. A thought experiment may consider several of the quality attribute requirements simultaneously; typically it will focus on just the most important ones.</p><p>The process of creating a thought experiment usually begins with listing the steps associated with carrying out the use case under consideration; perhaps a se-quence diagram is employed. At each step of the sequence diagram, the (mental) question is asked: What can go wrong with this step with respect to any of the quality attribute requirements? For example, if the step involves user input, then the possibility of erroneous input must be considered. Also the user may not have been properly authenticated and, even if authenticated, may not be authorized to provide that particular input. If the step involves interaction with another system, then the possibility that the input format will change after some time must be considered. The network passing the input to a processor may fail; the processor performing the step may fail; or the computation to provide the step may fail, take too long, or be dependent on another computation that may have had prob-lems. In addition, the architect must ask about the frequency of the input, and the anticipated distribution of requests (e.g., Are service requests regular and predict-able or irregular and &#x201C;bursty&#x201D;?), other processes that might be competing for the same resources, and so forth. These questions go on and on.</p><p>For each possible problem with respect to a quality attribute requirement, the follow-on questions consist of things like these:</p><ul><li>Are there mechanisms to detect that problem?
+</li>
+<li>Are there mechanisms to prevent or avoid that problem?
+</li>
+<li>Are there mechanisms to repair or recover from that problem if it occurs?
+</li>
+<li>Is this a problem we are willing to live with?
+</li></ul>
+<p>The problems hypothesized are scrutinized in terms of a cost/benefit analy-sis. That is, what is the cost of preventing this problem compared to the benefits that accrue if the problem does not occur?</p><p>As you might have gathered, if the architects are being thorough and if the problems are significant (that is, they present a large risk for the system), then these discussions can continue for a long time. The discussions are a normal por-tion of design and analysis and will naturally occur, even if only in the mind of a single designer. On the other hand, the time spent performing a particular thought experiment should be bounded. This sounds obvious, but every grey-haired archi-tect can tell you war stories about being stuck in endless meetings, trapped in the purgatory of &#x201C;analysis paralysis.&#x201D;</p><p>Analysis paralysis can be avoided with several techniques:</p><ul><li>&#x201C;Time boxing&#x201D;: setting a deadline on the length of a discussion.
+</li>
+<li>Estimating the cost if the problem occurs and not spending more than that cost in the analysis. In other words, do not spend an inordinate amount of time in discussing minor or unlikely potential problems.
+</li></ul>
+<p>Prioritizing the requirements will help both with the cost estimation and with the time estimation.</p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="14.2.quality_attribute_checklists.html" class="navigation navigation-prev " aria-label="Previous page: 14.2 Quality Attribute Checklists">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="14.4.experiments_simulations_and_prototypes.html" class="navigation navigation-next " aria-label="Next page: 14.4 Experiments, Simulations, and Prototypes">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"14.3 Thought Experiments and Back-of-the-Envelope Analysis","level":"1.7.11.3","depth":3,"next":{"title":"14.4 Experiments, Simulations, and Prototypes","level":"1.7.11.4","depth":3,"path":"part2/14.4.experiments_simulations_and_prototypes.md","ref":"part2/14.4.experiments_simulations_and_prototypes.md","articles":[]},"previous":{"title":"14.2 Quality Attribute Checklists","level":"1.7.11.2","depth":3,"path":"part2/14.2.quality_attribute_checklists.md","ref":"part2/14.2.quality_attribute_checklists.md","articles":[]},"dir":"ltr"},"config":{"plugins":["ga","simple-page-toc","splitter","expandable-chapters-small","anchor-navigation-ex"],"styles":{},"pluginsConfig":{"simple-page-toc":{"maxDepth":3,"skipFirstH1":true},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right","showGoTop":true,"isShowTocTitleIcon":true,"printLog":false,"multipleH1":true,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false}},"expandable-chapters-small":{},"ga":{"configuration":"auto","token":"G-6JKFXBVLWS"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Len Bass, Paul Clements, Rick Kazman","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Software Architecture in Practice (Third Edition)","language":"en","links":{"sharing":{"all":null,"facebook":null,"google":null,"twitter":null,"weibo":null},"sidebar":{"Home":"http://sw-arc-in-p.misday.com"}},"gitbook":"","description":"","direction":"ltr"},"file":{"path":"part2/14.3.thought_experiments_and_back_of_the_envelope_analysis.md","mtime":"2021-10-18T01:26:35.837Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2021-10-18T05:21:50.267Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
