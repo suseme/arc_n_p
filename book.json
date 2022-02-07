@@ -18,7 +18,7 @@
     }
   },
   "plugins": [
-    "analytics",
+    "ga",
     "simple-page-toc",
     "splitter",
     "expandable-chapters-small",
@@ -26,9 +26,8 @@
     "popup"
   ],
   "pluginsConfig": {
-    "analytics": {
-      "baidu": "U44rX2nKCF",
-      "google": "UA-28333273-3"
+    "ga": {
+      "token": "UA-28333273-3"
     },
     "anchor-navigation-ex": {
       "isShowTocTitleIcon": true,
