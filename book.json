@@ -26,16 +26,16 @@
     "popup"
   ],
   "pluginsConfig": {
+    "analytics": {
+      "baidu": "U44rX2nKCF",
+      "google": "UA-28333273-3"
+    },
     "anchor-navigation-ex": {
       "isShowTocTitleIcon": true,
       "showLevel": false,
       "tocLevel1Icon": "fa fa-hand-o-right",
       "tocLevel2Icon": "fa fa-hand-o-right",
       "tocLevel3Icon": "fa fa-hand-o-right"
-    },
-    "analytics": {
-      "google": "UA-28333273-1",
-      "baidu": "U44rX2nKCF"
     },
     "simple-page-toc": {
       "maxDepth": 3,
