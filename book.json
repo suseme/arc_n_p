@@ -13,15 +13,17 @@
       "weibo": null
     },
     "sidebar": {
-      "Home": "http://sw-arc-in-p.misday.com"
+      "Home": "http://www.misday.com",
+      "This book": "http://arc.misday.com"
     }
   },
   "plugins": [
-    "ga",
+    "analytics",
     "simple-page-toc",
     "splitter",
     "expandable-chapters-small",
-    "anchor-navigation-ex"
+    "anchor-navigation-ex",
+    "popup"
   ],
   "pluginsConfig": {
     "anchor-navigation-ex": {
@@ -31,8 +33,9 @@
       "tocLevel2Icon": "fa fa-hand-o-right",
       "tocLevel3Icon": "fa fa-hand-o-right"
     },
-    "ga": {
-      "token": "G-6JKFXBVLWS"
+    "analytics": {
+      "google": "UA-28333273-1",
+      "baidu": "U44rX2nKCF"
     },
     "simple-page-toc": {
       "maxDepth": 3,

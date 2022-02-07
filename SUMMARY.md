@@ -219,7 +219,7 @@
     * [25.3 Product Line Scope 产品线范围](part4/25.3.product_line_scope.md)
     * [25.4 The Quality Attribute of Variability 可变性的质量属性](part4/25.4.the_quality_attribute_of_vaiability.md)
     * [25.5 The Role of a Product Line Architecture 产品线架构的作用](part4/25.5.the_role_of_a_product_line_architecture.md)
-    * [25.6 Variation Mechanisms 变化机制](part4/25.6.variation_mechanisms.md)
+    * [25.6 Variation Mechanisms 差异化机制](part4/25.6.variation_mechanisms.md)
     * [25.7 Evaluating a Product Line Architecture 评估产品线架构](part4/25.7.evaluating_a_product_line_architecture.md)
     * [25.8 Key Software Product Line Issues 关键软件产品线问题](part4/25.8.key_software_product_line_issues.md)
     * [25.9 Summary 小结](part4/25.9.summary.md)
