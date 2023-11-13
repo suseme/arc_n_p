@@ -1,29 +1,77 @@
-**Software Architecture in Practice** Third Edition 软件构架实践（第三版）
+**Software Architecture in Practice** 4th Edition 软件构架实践（第四版）
 ===
 
-Len Bass （林·巴斯）  
-Paul Clements （保罗·克莱门茨）  
-Rick Kazman （瑞克·凯兹曼）
+- Len Bass （林·巴斯）
+- Paul Clements （保罗·克莱门茨）
+- Rick Kazman （瑞克·凯兹曼）
 
-_中文由机器翻译，主要依赖[Google翻译](https://translate.google.com)，在明显的错误处作了简单地调整。_
+_中文由机器翻译，主要依赖 [Bing翻译](https://cn.bing.com/translator)，在明显的错误处作了简单地调整。_
 
 _如有copyright问题，请联系。_
 
-# How to
-We are using gitbook to organize this book and hosted the output on github [https://suseme.github.io/sw_arch_in_p]().
-## How to build
-```bash
-# Generate HTML pages
-docker run -v $PWD:/srv/gitbook -v $PWD/docs:/srv/html fellah/gitbook gitbook build . /srv/html
-# Generate PDF file
-docker run -v $PWD:/srv/gitbook -v $PWD/docs:/srv/html fellah/gitbook gitbook pdf . /srv/html/sw_arch_in_p.pdf
-# Generate EPub format
-docker run -v $PWD:/srv/gitbook -v $PWD/docs:/srv/html fellah/gitbook gitbook epub . /srv/html/sw_arch_in_p.epub
-# Generate Mobi format
-docker run -v $PWD:/srv/gitbook -v $PWD/docs:/srv/html fellah/gitbook gitbook mobi . /srv/html/sw_arch_in_p.mobi
-```
+------
 
-## How to run gitbook server
-```bash
-docker run -p 4000:4000 -v $PWD:/srv/gitbook -v $PWD/docs:/srv/gitbook/_book fellah/gitbook gitbook serve ./
-```
+**构建现代软件的权威、实用、经过验证的指南 —— 全面更新了有关移动性、云、能源管理、DevOps、量子计算等的新内容**
+
+更新了十一个新章节，***软件架构实践，第四版***，彻底解释了什么是软件架构，为什么它很重要，以及如何以规范和有效的方式设计、实例化、分析、发展和管理它。
+
+三位著名的软件架构师涵盖了整个生命周期，提供了实用的指导、专家方法和经过测试的模型，可用于任何项目，无论多么复杂。您将学习如何使用架构来满足需求、系统规模和抽象的加速增长，并在系统以新方式动态组合时管理紧急质量属性。
+
+本指南提供了有关利用架构优化关键质量属性（包括性能、可修改性、安全性、可用性、互操作性、可测试性、易用性、可部署性等）的见解，介绍了如何管理和优化现有架构，对其进行转换以解决新问题，以及构建可重用的架构，成为战略业务资产。
+
+- 了解架构如何影响（以及受其影响）技术环境、项目生命周期、业务概况和您自己的实践
+
+- 利用经过验证的模式、接口和实践，通过架构优化质量
+
+- 为移动应用、云、机器学习和量子计算的架构师
+
+- 针对能源效率和安全性等日益重要的属性进行设计
+
+- 通过发现架构上的重要影响、使用 DevOps 和部署管道以及管理架构债务来扩展系统
+
+- 了解架构在组织中的角色，以便提供更多价值
+
+------
+
+第四版在第三版的基础上增加了一些与时俱进的部分，同时也删掉了一些不那么紧贴时代的部分。
+
+目录
+
+- [序](pref02.md)
+- [致谢](pref03.md)
+- [第一部分 简介](part01.md)
+  - [1. 第1章 什么是软件架构？](ch01.md)
+  - [2. 第2章 为社么软件架构很重要？](ch02)
+- [第二部分 质量属性](part02.md)
+  - [3. 第3章 理解质量属性](ch03.md)
+  - [4. 第4章 可用性](ch04.md)
+  - [5. 第5章 可部署性](ch05.md)
+  - [6. 第6章 能效性](ch06.md)
+  - [7. 第7章 可集成性](ch07.md)
+  - [8. 第8章 可修改性](ch08.md)
+  - [9. 第9章 性能](ch09.md)
+  - [10. 第10章 安全性](ch10.md)
+  - [11. 第11章 信息安全性](ch11.md)
+  - [12. 第12章 可测试性](ch12.md)
+  - [13. 第13章 易用性](ch13.md)
+  - [14. 第14章 其他质量属性](ch14.md)
+- [第三部分 架构解决方案](part03.md)
+  - [15. 第15章 软件接口](ch15.md)
+  - [16. 第16章 虚拟化](ch16.md)
+  - [17. 第17章 云计算和分布式计算](ch17.md)
+  - [18. 第18章 移动系统](ch18.md)
+- [第四部分 可扩展的架构实践](part04.md)
+  - [19. 第19章 对架构影响重大的需求](ch19.md)
+  - [20. 第20章 设计架构](ch20.md)
+  - [21. 第21章 评估架构](ch21.md)
+  - [22. 第22章 记录架构](ch22.md)
+  - [23. 第23章 管理架构债](ch23.md)
+- [第五部分 架构和其组织](part05.md)
+  - [24. 第24章 架构师在项目中的角色](ch24.md)
+  - [25. 第25章 架构能力](ch25.md)
+- [第六部分 总结](part06.md)
+  - [26. 第26章 未来一瞥：量子计算](ch26.md)
+- [参考文献](ref01.md)
+- [关于作者](app01.md)
+- [索引](index.md)
+

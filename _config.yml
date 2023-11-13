@@ -1,0 +1,15 @@
+
+# Site settings
+auto: false
+name: Arc in P
+title: Arc in P
+url: "https://arc.misday.com"
+baseurl: "/"
+timezone: Asia/Chongqing
+
+theme: hacker
+
+# Your info.
+email: vin@misday.com
+author: Vin
+
